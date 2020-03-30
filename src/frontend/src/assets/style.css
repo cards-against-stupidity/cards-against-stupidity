@@ -12,7 +12,7 @@ body{
 }
 
 main{
-  min-height: 300vh;
+  min-height: 100vh;
   background-color: var(--cas-brand2);
 }
 sidebar{
@@ -25,7 +25,9 @@ section {
   min-height: 100vh;
   background-color: rgba(0,0,0,0);
 }
-
+.study-mode{
+  padding: 20%;
+}
 .timer{
   background-color: green;
   width: 100%;
@@ -51,6 +53,7 @@ section {
 }
 
 .single-card{
+
   display: block;
   position: relative;
   min-height:20rem;
