@@ -1,4 +1,33 @@
 package org.wcci.cardsagainststupidity.storage;
 
-public class DeckJPA {
+import org.springframework.stereotype.Service;
+import org.wcci.cardsagainststupidity.models.Card;
+import org.wcci.cardsagainststupidity.models.Deck;
+import org.wcci.cardsagainststupidity.storage.repositories.DeckRepository;
+
+import java.util.Optional;
+
+@Service
+public class DeckJPA implements DeckStorage {
+    
+    private DeckRepository deckRepository;
+    
+    public DeckJPA(DeckRepository deckRepository) {
+        this.deckRepository = deckRepository;
+    }
+    
+    @Override
+    public Optional<Deck> findById(Long id) {
+        return deckRepository.findById(id);
+    }
+    
+    @Override
+    public Optional<Deck> findDeckByTitle(String title) {
+        return deckRepository.findDeckByTitle(title);
+    }
+    
+    @Override
+    public Optional<Deck> findDeckByCards(Card card) {
+        return deckRepository.findDeckByCards(card);
+    }
 }
