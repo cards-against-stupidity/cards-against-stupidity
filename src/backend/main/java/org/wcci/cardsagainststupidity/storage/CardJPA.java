@@ -16,6 +16,11 @@ public class CardJPA implements CardStorage {
     }
     
     @Override
+    public Optional<Card> findById(Long id) {
+        return cardRepository.findById(id);
+    }
+    
+    @Override
     public Optional<Card> findCardByTerm(String term) {
         return cardRepository.findCardByTerm(term);
     }
