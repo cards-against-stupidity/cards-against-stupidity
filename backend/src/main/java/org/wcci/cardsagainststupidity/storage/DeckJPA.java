@@ -44,6 +44,7 @@ public class DeckJPA implements DeckStorage {
 
     @Override
     public void delete(Long id) {
+        deckRepository.deleteById(id);
 
     }
 
