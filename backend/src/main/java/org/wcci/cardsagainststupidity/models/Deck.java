@@ -1,7 +1,10 @@
 package org.wcci.cardsagainststupidity.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Deck {
@@ -11,7 +14,7 @@ public class Deck {
     private Long id;
     private String title;
     @OneToMany(mappedBy = "deck")
-    private Collection<Card> cards;
+    private Collection<Card> cards = new ArrayList<>();
     @ManyToOne
     private Topic topic;
     
@@ -22,6 +25,12 @@ public class Deck {
         this.title = title;
     }
     
+    public Deck(String title, Topic topic) {
+        this.title = title;
+        this.topic = topic;
+        topic.getDecks().add(this);
+    }
+    
     public String getTitle() {
         return title;
     }
@@ -30,7 +39,29 @@ public class Deck {
         return cards;
     }
     
+    public void addCards(Card... cards) {
+        this.cards.addAll(Arrays.asList(cards));
+    }
+    
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+    
     public Topic getTopic() {
         return topic;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Deck deck = (Deck) o;
+        return Objects.equals(title, deck.title) &&
+                Objects.equals(topic, deck.topic);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, topic);
     }
 }
