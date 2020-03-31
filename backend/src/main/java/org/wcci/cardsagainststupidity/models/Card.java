@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.Objects;
 
 @Entity
 public class Card {
@@ -24,6 +25,13 @@ public class Card {
         this.definition = definition;
     }
     
+    public Card(String term, String definition, Deck deck) {
+        this.term = term;
+        this.definition = definition;
+        this.deck = deck;
+        deck.addCard(this);
+    }
+    
     public String getTerm() {
         return term;
     }
@@ -34,5 +42,20 @@ public class Card {
     
     public Deck getDeck() {
         return deck;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return Objects.equals(term, card.term) &&
+                Objects.equals(definition, card.definition) &&
+                Objects.equals(deck, card.deck);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(term, definition, deck);
     }
 }
