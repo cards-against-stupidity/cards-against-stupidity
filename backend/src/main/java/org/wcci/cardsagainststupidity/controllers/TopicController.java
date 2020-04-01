@@ -22,7 +22,7 @@ public class TopicController {
     }
 
     @GetMapping("/{title}")
-    public Topic deckByTopic(@PathVariable String title) {
+    public Topic topicByTitle(@PathVariable String title) {
         return topicStorage.findTopicByTitle(title).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class TopicController {
         return topicStorage.findById(id).orElse(null);
     }
 
-    @PutMapping("/createTopic")
+    @PutMapping("/create-topic")
     public Collection<Topic> createTopic(@RequestBody Topic topicToAdd) {
         topicStorage.save(topicToAdd);
         return topicStorage.findAllTopics();
