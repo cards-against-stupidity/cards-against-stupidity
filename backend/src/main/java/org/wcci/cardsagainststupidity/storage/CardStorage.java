@@ -2,6 +2,7 @@ package org.wcci.cardsagainststupidity.storage;
 
 import org.wcci.cardsagainststupidity.models.Card;
 
+import java.util.Collection;
 import java.util.Optional;
 
 public interface CardStorage {
@@ -13,5 +14,10 @@ public interface CardStorage {
     Iterable<Card> findCardsByDeckTitle(String title);
     
     Iterable<Card> findCardsByDefinitionContaining(String search);
-    
+
+    Collection<Card> findAllCards();
+
+    void save(Card card);
+
+    void delete(Long id);
 }
