@@ -2,52 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-       Study View
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- CSS Files -->
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Study View
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- CSS Files -->
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="src/assets/style.css" rel="stylesheet"/>
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="src/assets/style.css" rel="stylesheet" />
 </head>
 
 <body>
+  <main>
 
-<sidebar>
-  some sidebar stuff
-</sidebar>
-<main>
-  <div class="timer">
-    timer
-  </div>
-<section class="study-mode">
 
-  <div class="single-card">
-    <div class="single-card__card-front">
-      <h2>Card Header and Title Here </h2>
+    <sidebar role="navigation">
+      <div id= "menuToggle">
+      <input type="checkbox" id="menuToggler" />
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+
+      <div class="nav-expanded">
+        <div>Some Stuff</div>
+        <div>Some Stuff</div>
+        <div>Some Stuff</div>
+      </div>
+</div>
+    </sidebar>
+
+    <div class="timer">
+      timer
     </div>
-    <div class="single-card__card-back">
-      <p>Card description and back of card goes right here </p>
-    </div>
-  </div>
-</section>
+    <section class="study-mode">
+
+      <div class="single-card">
+        <div class="single-card__card-front">
+          <h2>Card Header and Title Here </h2>
+        </div>
+        <div class="single-card__card-back">
+          <p>Card description and back of card goes right here </p>
+        </div>
+      </div>
+    </section>
 
 
 
-  some main stuff
-</main>
-<footer>
-some footer stuff
-</footer>
+    some main stuff
+  </main>
+  <footer>
+    some footer stuff
+  </footer>
 </body>
 
 <script></script>
