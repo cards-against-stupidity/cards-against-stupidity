@@ -1,6 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+nav {
+  display: block;
 }
 
 :root {
@@ -8,6 +13,12 @@ body {
   --cas-brand2: #dedede;
   --cas-brand3: #272731;
   --cas-green: #00cb30;
+  --cas-white: #ffffff;
+}
+
+section {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
   --cas-blue: #0084f5;
 }
 
@@ -16,20 +27,102 @@ main {
   background-color: var(--cas-brand2);
 }
 
+nav {
+  position: absolute;
+  display: block;
+  height: 100vh;
+}
+
+#menuToggle {
+  top: 0px;
+  left: 5px;
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+#menuToggler {
+  z-index: 2;
+}
+
+#menuToggle span {
+  top: 50px;
+  left: 5px;
+  display: block;
+  position: relative;
+  width: 32px;
+  height: 4px;
+  margin-bottom: 5px;
+  background-color: var(--cas-white);
+  border-radius: 3px;
+  transform-origin: 4px 0px;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease, transform-origin 0.55s ease;
+}
+
+#menuToggle input {
+  top: 50px;
+  left: 5px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+#menuToggler:hover~span:nth-last-child(3) {
+  transform-origin: 50% 0%;
+  transform: scale(0.8, 1);
+  border-radius: 10px;
+  transition: transform-origin 0.25s ease;
+}
+
+#menuToggle input:checked~span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background-color: var(--cas-brand2);
+}
+
+#menuToggle input:checked~span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked~span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#nav-expanded {
 sidebar {
   background-color: var(--cas-brand1);
-  width: 200px;
+  width: 150px;
   height: 100%;
+  margin: -27px 0 0 -50px;
+  padding-left: 50px;
+  transform-origin: 0% 0%;
+  transform: translate(-100px, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  z-index: 1;
   position: fixed;
 }
 
-section {
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
+#menuToggle input:checked~#nav-expanded {
+  transform: none;
 }
 
 .study-mode {
-  padding: 20%;
+  top: 25%;
+  width: 100%;
 }
 
 .timer {
@@ -39,39 +132,32 @@ section {
   position: fixed;
 }
 
-@media screen and (max-width: 700px) {
-  sidebar {
-    width: 100%;
-    height: 100px;
-    /* position: sticky; */
-  }
-}
+/* scrunch the nav bar at this width */
 
-@media screen and (max-width: 400px) {
-  sidebar {
-    width: 100%;
-    height: 100px;
-    display: none;
-    /* position: sticky; */
-  }
+@media screen and (max-width: 15000px) {}
+
+@media screen and (max-width: 400px) {}
+
+.study-mode--card-view {
+  perspective: 1000px;
+  perspective-origin: 50%  -50%;
 }
 
 .single-card {
+  overflow: visible;
+  position: absolute;
+
+  min-height: 20rem;
+  background-color: white;
+}
+
+.current-card {
+  width: 35rem;
+}
+
+.next-card, .previous-card {
   display: block;
   position: relative;
   min-height: 20rem;
-  background-color: white;
-  width: 65%;
-}
-
-.single-card__card-front {
-  display: none;
-}
-
-.single-card__card-back {
-  display: none;
-}
-
-.show {
-  display: block !important;
+  background-color: red;
 }
