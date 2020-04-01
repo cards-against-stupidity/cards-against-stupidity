@@ -39,14 +39,6 @@ public class CardController {
         return cardStorage.findAllCards();
     }
 
-    @PutMapping("/{id}/add-card-to-deck")
-    public Collection<Card> addCardToDeck(@PathVariable Long id, @RequestBody Card cardToAddToDeck) {
-        Optional<Card> cardOptional = cardStorage.findById(id);
-        cardOptional.ifPresent(card -> card.getDeck().addCard(cardToAddToDeck));
-        return cardStorage.findAllCards();
-    }
-
-
     @DeleteMapping("/delete")
     public Collection<Card> deleteCard(@RequestParam Long id) {
         cardStorage.delete(id);
