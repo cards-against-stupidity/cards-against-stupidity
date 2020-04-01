@@ -7,7 +7,6 @@ body {
 nav {
   display: block;
 }
-
 :root {
   --cas-brand1: #39363c;
   --cas-brand2: #dedede;
@@ -17,7 +16,9 @@ nav {
 }
 
 section {
-  background-color: rgba(0, 0, 0, 0);
+
+  min-height: 100vh;
+  width: 100%;
   position: absolute;
   --cas-blue: #0084f5;
 }
@@ -102,18 +103,18 @@ nav {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
+
 #nav-expanded {
-sidebar {
+
   background-color: var(--cas-brand1);
   width: 150px;
   height: 100%;
-  margin: -27px 0 0 -50px;
+  margin: -50px 0 0 -50px;
   padding-left: 50px;
   transform-origin: 0% 0%;
   transform: translate(-100px, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  z-index: 1;
-  position: fixed;
+  z-index: 0;
 }
 
 #menuToggle input:checked~#nav-expanded {
@@ -121,8 +122,7 @@ sidebar {
 }
 
 .study-mode {
-  top: 25%;
-  width: 100%;
+  padding: 20%;
 }
 
 .timer {
@@ -134,30 +134,18 @@ sidebar {
 
 /* scrunch the nav bar at this width */
 
-@media screen and (max-width: 15000px) {}
+@media screen and (max-width: 15000px) {
 
-@media screen and (max-width: 400px) {}
+}
 
-.study-mode--card-view {
-  perspective: 1000px;
-  perspective-origin: 50%  -50%;
+@media screen and (max-width: 400px) {
+
 }
 
 .single-card {
-  overflow: visible;
-  position: absolute;
-
-  min-height: 20rem;
-  background-color: white;
-}
-
-.current-card {
-  width: 35rem;
-}
-
-.next-card, .previous-card {
   display: block;
   position: relative;
   min-height: 20rem;
-  background-color: red;
+  background-color: white;
+  width: 65%;
 }
