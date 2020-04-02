@@ -17,9 +17,8 @@ nav {
 }
 
 section {
-  background-color: rgba(0, 0, 0, 0);
-  position: absolute;
-  --cas-blue: #0084f5;
+  min-height: 100vh;
+  width: 100%;
 }
 
 main {
@@ -103,17 +102,15 @@ nav {
 }
 
 #nav-expanded {
-sidebar {
   background-color: var(--cas-brand1);
   width: 150px;
   height: 100%;
-  margin: -27px 0 0 -50px;
+  margin: -50px 0 0 -50px;
   padding-left: 50px;
   transform-origin: 0% 0%;
   transform: translate(-100px, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  z-index: 1;
-  position: fixed;
+  z-index: 0;
 }
 
 #menuToggle input:checked~#nav-expanded {
@@ -140,19 +137,21 @@ sidebar {
 
 .study-mode--card-view {
   perspective: 1000px;
-  perspective-origin: 50%  -50%;
+  perspective-origin: 50% -50%;
 }
 
 .single-card {
-  overflow: visible;
-  position: absolute;
-
   min-height: 20rem;
   background-color: white;
+  width: 65%;
 }
 
 .current-card {
   width: 35rem;
+}
+
+.single-card__card-back {
+  display: none;
 }
 
 .next-card, .previous-card {
