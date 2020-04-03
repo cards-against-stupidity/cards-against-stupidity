@@ -1,14 +1,16 @@
-const flipCard = (elem) => {
+const currentCard = document.querySelector(".current-card");
+
+
+const flipCard = () => {
     //switch them
-    cardFront = elem.firstElementChild;
-    cardBack = cardFront.nextElementSibling;
+    cardFront = currentCard.querySelector('.single-card__card-front');
+    cardBack = currentCard.querySelector('.single-card__card-back');
     //ternary
-    if (cardFront.classList.contains('show')) {
-        cardFront.classList.remove('show')
-        cardBack.classList.add('show')
-    } else {
-        cardFront.classList.add('show')
-        cardBack.classList.remove('show')
-    }
+    currentCard.classList.toggle("flip-show");
+    cardFront.classList.toggle("flip-hide");
+    cardBack.classList.toggle("flip-show");
 };
+
+currentCard.addEventListener("dblclick", flipCard);
+
 
