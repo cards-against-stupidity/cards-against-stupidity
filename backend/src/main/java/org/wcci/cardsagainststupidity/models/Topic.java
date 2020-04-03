@@ -22,7 +22,7 @@ public class Topic {
     private Long id;
     private String title;
     @OneToMany(mappedBy = "topic")
-    @JsonIgnoreProperties("topic")
+    @JsonIgnoreProperties({"topic", "cards"})
     private Collection<Deck> decks = new ArrayList<>();
     
     public Topic() {
