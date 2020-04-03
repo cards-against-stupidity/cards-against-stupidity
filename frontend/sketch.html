@@ -1,0 +1,19 @@
+<div id="timer"> </div>
+
+<style>
+#timer{
+    height: 50px;
+    background-color: green;
+    width: 100%;
+}
+</style>
+
+<script>
+   const timer =  document.querySelector('#timer');
+    let widthVar = 10;
+   timer.addEventListener('click', ()=>{
+       console.log('helo')
+       timer.style(`[width=${widthVar}%]`)
+       
+       });
+</script>

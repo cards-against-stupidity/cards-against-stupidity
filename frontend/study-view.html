@@ -2,52 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-       Study View
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- CSS Files -->
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Study View
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- CSS Files -->
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="src/assets/style.css" rel="stylesheet"/>
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="src/assets/style.css" rel="stylesheet" />
 </head>
 
 <body>
 
-<sidebar>
-  some sidebar stuff
-</sidebar>
-<main>
-  <div class="timer">
-    timer
-  </div>
-<section class="study-mode">
 
-  <div class="single-card">
-    <div class="single-card__card-front">
-      <h2>Card Header and Title Here </h2>
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" id="menuToggler" />
+      <!-- hamburger-->
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <div id="nav-expanded" class="nav-items">
+        <div class="nav-brand">
+
+        </div>
+        <div>Some Stuff</div>
+        <div>Some Stuff</div>
+        <div>Some Stuff</div>
+      </div>
     </div>
-    <div class="single-card__card-back">
-      <p>Card description and back of card goes right here </p>
-    </div>
-  </div>
-</section>
+  </nav>
+  <main>
+    <section class="study-mode">
+      <div class="study-mode--card-view">
+        <div class="single-card previous-card">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> Here would be first div</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of card Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
+
+        <div class="single-card current-card">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> Here would be first div </div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+
+          <div class="single-card__card-back">
+            <div> Back of card Here</div>
+            <div> bhere would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+        <div class="single-card--footer"> </div>
+        </div>
 
 
+        <div class="single-card next-card">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> Front of card Here</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of card Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
 
-  some main stuff
-</main>
-<footer>
-some footer stuff
-</footer>
+
+      </div>
+    </section>
+  </main>
+  <footer>
+    some footer stuff
+  </footer>
 </body>
 
-<script></script>
+<script src="src/assets/js/single-card.js"></script>
+  
+
