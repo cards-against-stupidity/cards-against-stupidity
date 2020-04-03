@@ -24,6 +24,7 @@
            getCurrentCard();
        }
    }
+   
    window.addEventListener('keyup', nextCard)
 
    getCurrentCard();
