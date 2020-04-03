@@ -5,6 +5,7 @@ import org.wcci.cardsagainststupidity.models.Card;
 import org.wcci.cardsagainststupidity.models.Deck;
 import org.wcci.cardsagainststupidity.storage.repositories.DeckRepository;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -30,4 +31,22 @@ public class DeckJPA implements DeckStorage {
     public Optional<Deck> findDeckByCards(Card card) {
         return deckRepository.findDeckByCards(card);
     }
+
+    @Override
+    public Collection<Deck> findAllDecks() {
+        return (Collection<Deck>) deckRepository.findAll();
+    }
+
+    @Override
+    public void save(Deck deck) {
+        deckRepository.save(deck);
+    }
+
+    @Override
+    public void delete(Long id) {
+        deckRepository.deleteById(id);
+
+    }
+
+
 }
