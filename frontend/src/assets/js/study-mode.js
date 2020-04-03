@@ -3,28 +3,29 @@ let i = 0
 
 
 const getVisibleCards = () => {
-    console.log('getCardRan')
+    console.log("i: " + i);
     let currentCard = allCards[i];
-    allCards[i].classList.add('current-card', "show")
-    if (allCards[i + 1] != null) {
+    currentCard.classList.add('current-card', "show");
+  
+    //if there is a next card
+    if (i < allCards.length) {
+        console.log('there is a next card');
         let nextCard = allCards[i + 1]
         nextCard.classList.add("next-card", "show");
         // let cardToHide = nextCard.nextElementSibling != null ? nextCard.nextElementSibling.classList.remove('show') : null;
-        console.log(cardToHide);
+   
     }
-
-    if (allCards[i - 1] != null) {
+    //if there is a previous card
+    if (i > 0) {
+        console.log('there is a prev card');
         let previousCard = allCards[i - 1]
         previousCard.classList.add("previous-card");
         // let cardToHide = previousCard.nextElementSibling != null ? previousCard.nextElementSibling.classList.remove('show') : null;
-        console.log(cardToHide);
+ 
     }
-
-    if ( (i - 2 ) > 0 ) {
+    if ((i - 2 ) > 0) {
         allCards[i - 2].classList.remove('show');
-        
     }
-
     allCards.forEach(card => {
         if (!card.classList.contains("show")) {
             card.classList.add('hidden-card')
@@ -33,11 +34,10 @@ const getVisibleCards = () => {
             card.classList.remove('hidden-card')
         }
     })
+
 }
 
 const getNextCard = () => {
-    allCards[i].classList.remove('current-card')
-    allCards[i + 1].classList.remove('next-card')
     i++
     getVisibleCards();
 }
@@ -56,7 +56,7 @@ const flipCard = () => {
 const handleKey = (event) => {
     switch (event.keyCode) {
         case 39:
-
+            console.log("i: " +  i + "before running");
             getNextCard();
             break;
         case 37:
