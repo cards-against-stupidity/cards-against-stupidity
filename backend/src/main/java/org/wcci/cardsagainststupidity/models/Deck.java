@@ -1,5 +1,10 @@
 package org.wcci.cardsagainststupidity.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +12,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "title")
 public class Deck {
     
     @Id
@@ -14,8 +20,10 @@ public class Deck {
     private Long id;
     private String title;
     @OneToMany(mappedBy = "deck")
+    @JsonIgnoreProperties("deck")
     private Collection<Card> cards = new ArrayList<>();
     @ManyToOne
+    @JsonIgnoreProperties("decks")
     private Topic topic;
     
     public Deck() {
