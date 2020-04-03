@@ -44,6 +44,22 @@
   <main>
     <section class="study-mode">
       <div class="study-mode--card-view">
+
+         <div class="single-card hidden-card">
+           <div class="single-card--header"> </div>
+           <div class="single-card__card-front">
+             <div> this card is hidden</div>
+             <div> here would be the second div with some content that we are all happy
+               and proud about but we are still working on developing.
+             </div>
+           </div>
+           <div class="single-card__card-back">
+             <div> Back of card Here</div>
+             <div> back of the card goes here with everything else
+             </div>
+           </div>
+         </div>
+
         <div class="single-card previous-card">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
@@ -62,12 +78,9 @@
         <div class="single-card current-card">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
-            <div> Here would be first div </div>
-            <div> here would be the second div with some content that we are all happy
-              and proud about but we are still working on developing.
-            </div>
+            <div> Here would be just a term </div>   
+            <div> </div> 
           </div>
-
           <div class="single-card__card-back">
             <div> Back of card Here</div>
             <div> bhere would be the second div with some content that we are all happy
@@ -76,6 +89,7 @@
           </div>
         <div class="single-card--footer"> </div>
         </div>
+
         <div class="single-card next-card">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
@@ -90,6 +104,23 @@
             </div>
           </div>
         </div>
+
+        <div class="single-card hidden-card">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> this card is hidden</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of card Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </section>
   </main>
@@ -97,35 +128,3 @@
     some footer stuff
   </footer>
 </body>
-
-<script>
-  let currentCard = document.querySelector('.current-card')
-
-    const getCurrentCard = () => {
-      currentCard = document.querySelector('.current-card')
-      addEventListener('dblclick', flipIt);
-      return currentCard;
-    }
-
-    const flipIt = (e) => {
-      console.log('card-flip');
-      currentCard.classList.toggle('flip-show')
-      currentCard.querySelector('.single-card__card-front').classList.toggle('flip-hide')
-      currentCard.querySelector('.single-card__card-back').classList.toggle('flip-show')
-    }
-
-    const nextCard = (e) => {
-      if (e.keyCode == 39) {
-        const nextCard = currentCard.nextElementSibling
-        nextCard.classList.remove('next-card')
-        currentCard.classList.remove('current-card');
-        currentCard.classList.add('previous-card');
-        nextCard.classList.add('current-card')
-        getCurrentCard();
-      }
-    }
-
-    window.addEventListener('keyup', nextCard)
-    getCurrentCard();
-
-</script>

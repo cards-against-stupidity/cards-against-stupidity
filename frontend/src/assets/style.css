@@ -12,7 +12,7 @@ body {
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
-  --width: 150px;
+  --nav-width: 150px;
 }
 
 main {
@@ -160,11 +160,9 @@ section {
   user-select: none;
 }
 @media screen and (max-width: 700px) {
-
   .single-card{
     top: 0rem;
     height:100vh;
-
   }
   .study-mode--card-view {
     overflow: visible;
@@ -188,7 +186,6 @@ section {
   width: 100%;
   height: 100%;
   background-color: var(--cas-melon);
-
 }
 
 .current-card {
@@ -204,19 +201,22 @@ section {
 .single-card__card-back div:nth-of-type(1) {
   font-size: 2rem;
   padding: 1.5rem;
-  margin-top: 1.5rem;
   text-align: center;
 }
 
 .single-card__card-front div:nth-of-type(2),
 .single-card__card-back div:nth-of-type(2) {
   font-size: 1.25rem;
+  min-height: 2.5rem;;
   margin-top: 0.5rem;
   padding: 1.5rem;
   text-align: center;
 }
 .single-card__card-front{
   grid-area: middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .single-card__card-back {
@@ -225,7 +225,6 @@ section {
   transition-delay: 2s;
   backface-visibility: hidden;
   opacity: 0;
-
 }
 
 .flip-show {
@@ -238,7 +237,6 @@ section {
  transform: rotateY(-180deg);
 transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
  opacity: 0;
-
 }
 
 .next-card, .previous-card {
@@ -267,4 +265,8 @@ transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
   transition: all 0.2s ease 0s;
   -webkit-transform-origin: center center 0px;
   -webkit-transition: all 0.2s ease 0s;
+}
+
+.hidden-card{
+  display: none;
 }

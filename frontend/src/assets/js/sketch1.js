@@ -27,3 +27,5 @@
    window.addEventListener('keyup', nextCard)
 
    getCurrentCard();
+
+   currentCard.previousElementSibling
