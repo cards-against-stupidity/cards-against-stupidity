@@ -174,8 +174,6 @@ section {
   }
 }
 
-
-
 .single-card--header {
   grid-area: header;
   background-color: var(--cas-brand3);
