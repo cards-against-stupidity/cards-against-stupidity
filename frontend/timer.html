@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <style>
-#myProgress {
+#timer {
   width: 100%;
   background-color: #ddd;
 }
 
-#myBar {
+#bar {
   width: 100%;
   height: 30px;
   background-color: #4CAF50;
@@ -14,19 +14,26 @@
 </style>
 <body>
 
-<div id="myProgress">
-  <div id="myBar"></div>
+<div id="timer">
+  <div id="bar"></div>
 </div>
 
 <br>
-<button onclick="move()">Click me to drain the time bar</button> 
+<button onclick="move()">Click me to drain the time bar</button> <br>
+<input type="radio" id="10" name="time" value="10">
+  <label for="male">10 sec</label>
+  <input type="radio" id="female" name="time" value="30">
+  <label for="female">30 sec</label>
+  <input type="radio" id="other" name="time" value="60">
+  <label for="other">1 minute</label>
+
 
 <script>
 var i = 0;
 function move() {
   if (i == 0) {
     i = 1;
-    var elem = document.getElementById("myBar");
+    var elem = document.getElementById("bar");
     var width = 100;
     var id = setInterval(frame, 100);
     function frame() {
@@ -36,6 +43,12 @@ function move() {
       } else {
         width--;
         elem.style.width = width + "%";
+        if ((width<50) && (width>25)){
+            elem.style.backgroundColor = 'yellow';
+        }
+        if (width < 25){
+            elem.style.backgroundColor = 'red'
+        }
       }
     }
   }
