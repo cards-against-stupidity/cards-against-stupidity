@@ -1,4 +1,13 @@
-package org.wcci.cardsagainststupidity.auth.auth.storage;
+package org.wcci.cardsagainststupidity.auth.storage;
+
+import org.wcci.cardsagainststupidity.auth.models.User;
+
+import java.util.Optional;
 
 public interface UserStorage {
+    
+    Optional<User> findByUsername(String username);
+    
+    Optional<User> findById(Long id);
+    
 }
