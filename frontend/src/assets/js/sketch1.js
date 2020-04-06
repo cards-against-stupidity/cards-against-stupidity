@@ -30,3 +30,23 @@
    getCurrentCard();
 
    currentCard.previousElementSibling
+
+
+
+
+     class VideoCreator {
+         constructor() {
+             this._container = document.createElement('div');
+             this.add.classList.add('col-lg-4 col-md-4 col-sm-6 col-12 mt--30 youtuber')
+             this._titleContainer = document.createElement('div')
+             this._container.appendChild(this._titleContainer);
+
+         }
+         addTitle = (title) => {
+             this._titleContainer.innerText = title;
+            return this;
+
+         } 
+         }
+
+
