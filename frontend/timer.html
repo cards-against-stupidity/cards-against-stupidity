@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<style>
+#timer {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#bar {
+  width: 100%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+</style>
+<body>
+
+<div id="timer">
+  <div id="bar"></div>
+</div>
+
+<br>
+<button onclick="move()">Click me to drain the time bar</button> <br>
+<input type="radio" id="10" name="time" checked value="10">
+  <label for="ten">10 sec</label>
+  <input type="radio" id="30" name="time" value="30">
+  <label for="thirty">30 sec</label>
+  <input type="radio" id="60" name="time" value="60">
+  <label for="minute">1 minute</label>
+
+
+<script>
+var i = 0;
+var time = 100;
+function move() {
+
+  time = setTime();
+
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("bar");
+    var width = 100;
+    var id = setInterval(frame, time);
+    function frame() {
+      if (width <= 0) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        setColor();
+        width--;
+        elem.style.width = width + "%";
+        elem.style.backgroundColor = setColor(width);
+      }
+    }
+  }
+}
+
+function setTime(){
+    if(document.getElementById("10").checked){return 100};
+    if(document.getElementById("30").checked){return 300};
+    if(document.getElementById("60").checked){return 600};
+
+}
+
+function setColor(Width){
+    if (Width > 50){
+        return 'green';
+    }
+
+    if (Width > 25){
+            return 'yellow';
+        }
+    return 'red'; 
+}
+
+</script>
+
+</body>
+</html>
