@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.wcci.cardsagainststupidity.models.Card;
 import org.wcci.cardsagainststupidity.storage.repositories.CardRepository;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,20 @@ public class CardJPA implements CardStorage {
     @Override
     public Iterable<Card> findCardsByDefinitionContaining(String search) {
         return cardRepository.findCardsByDefinitionContaining(search);
+    }
+
+    @Override
+    public Collection<Card> findAllCards() {
+        return (Collection<Card>) cardRepository.findAll();
+    }
+
+    @Override
+    public void save(Card card) {
+        cardRepository.save(card);
+    }
+
+    @Override
+    public void delete(Long id) {
+        cardRepository.deleteById(id);
     }
 }
