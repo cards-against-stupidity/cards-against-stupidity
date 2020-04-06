@@ -1,49 +1,44 @@
 const allCards = document.querySelectorAll(".single-card");
 let i = 0;
-let currentCard = allCards[i];
+
 
 
 const getVisibleCards = () => {
     let currentCard = allCards[i];
-    currentCard.classList.add('current-card', 'show');
-    if(currentCard.classList.contains('next-card')){
+    currentCard.classList.add('current-card');
+
+    if (currentCard.classList.contains('next-card')) {
         currentCard.classList.remove('next-card');
+    }
+    if(currentCard.classList.contains('previous-card')){
+        currentCard.classList.remove('previous-card')
     }
     //if there is a next card
     if (i < allCards.length - 1) {
-        let nextCard = allCards[i + 1]
-        nextCard.classList.add("next-card");
-        // let cardToHide = nextCard.nextElementSibling != null ? nextCard.nextElementSibling.classList.remove('show') : null;
+        allCards[i + 1].classList = "single-card next-card"
     }
     //if there is a previous card
     if (i > 0) {
-        allCards[i].classList.remove('next-card')
-        allCards[i - 1].classList.toggle('current-card')
-        allCards[i - 1].classList.toggle('previous-card');
-        // let cardToHide = previousCard.nextElementSibling != null ? previousCard.nextElementSibling.classList.remove('show') : null;
+        allCards[i - 1].classList = "single-card previous-card"
     }
-    if ((i - 2) >=   0) {
-        allCards[i - 2].classList.remove('show');
+    if(i >= 2){ 
+    allCards[i - 2].classList = 'single-card hidden-card'
     }
-    allCards.forEach(card => {
-        card.classList.add('hidden-card')
-        if (!card.classList.contains("show")) {
-            card.classList.add('hidden-card')
-        }
-        if (card.classList.contains('next-card')) {
-            card.classList.remove('hidden-card')
-        }
-    })
+    if(i + 2 <= allCards.length){
+        for(let nextHidden = i + 2; nextHidden <= allCards.length; nextHidden++)
+        allCards[nextHidden].classList = 'single-card hidden-card'
+    }
 }
 
+
 const getNextCard = () => {
-    console.clear()
-    i++
+    i = (i != allCards.length - 1 ? i + 1 : i)
+    console.log(i)
     getVisibleCards();
 }
 
 const getPreviousCard = () => {
-    i--
+    i = (i != 0 ? i - 1 : i)
     getVisibleCards();
 }
 
@@ -60,7 +55,7 @@ const flipCard = () => {
 
 const handleKey = (event) => {
 
-    console.log(event);
+
     switch (event.keyCode) {
         case 70:
             flipCard();
@@ -75,4 +70,5 @@ const handleKey = (event) => {
     }
 }
 window.addEventListener('keyup', handleKey)
+
 getVisibleCards();
