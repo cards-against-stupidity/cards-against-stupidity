@@ -1,8 +1,8 @@
-package org.wcci.cardsagainststupidity.auth.storage;
+package org.wcci.cardsagainststupidity.storage;
 
 import org.springframework.stereotype.Service;
-import org.wcci.cardsagainststupidity.auth.models.User;
-import org.wcci.cardsagainststupidity.auth.storage.repositories.UserRepository;
+import org.wcci.cardsagainststupidity.models.User;
+import org.wcci.cardsagainststupidity.storage.repositories.UserRepository;
 
 import java.util.Optional;
 

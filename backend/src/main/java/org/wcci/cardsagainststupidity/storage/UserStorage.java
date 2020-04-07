@@ -1,6 +1,6 @@
-package org.wcci.cardsagainststupidity.auth.storage;
+package org.wcci.cardsagainststupidity.storage;
 
-import org.wcci.cardsagainststupidity.auth.models.User;
+import org.wcci.cardsagainststupidity.models.User;
 
 import java.util.Optional;
 

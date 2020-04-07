@@ -1,7 +1,7 @@
-package org.wcci.cardsagainststupidity.auth.storage.repositories;
+package org.wcci.cardsagainststupidity.storage.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import org.wcci.cardsagainststupidity.auth.models.User;
+import org.wcci.cardsagainststupidity.models.User;
 
 import java.util.Optional;
 
