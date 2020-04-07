@@ -3,7 +3,9 @@ package org.wcci.cardsagainststupidity.controllers;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.wcci.cardsagainststupidity.models.Topic;
 import org.wcci.cardsagainststupidity.models.User;
+import org.wcci.cardsagainststupidity.storage.TopicStorage;
 import org.wcci.cardsagainststupidity.storage.UserStorage;
 import org.wcci.cardsagainststupidity.validator.UserValidator;
 
@@ -15,10 +17,12 @@ public class UserController {
     
     private final UserStorage userStorage;
     private final UserValidator userValidator;
+    private final TopicStorage topicStorage;
     
-    public UserController(UserStorage userStorage, UserValidator validator) {
+    public UserController(UserStorage userStorage, UserValidator validator, TopicStorage storage) {
         this.userStorage = userStorage;
         userValidator = validator;
+        topicStorage = storage;
     }
     
     @GetMapping("/users")
@@ -62,6 +66,27 @@ public class UserController {
         userStorage.save(newUser);
         
         return newUser.getUsername();
+    }
+    
+    @PutMapping(value = "/users/{username}/{topicTitle}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String saveDeckToUser(@PathVariable String username,
+                                 @PathVariable String topicTitle) {
+        Optional<User> retUser = userStorage.findByUsername(username);
+        
+        Optional<Topic> retTopic = topicStorage.findTopicByTitle(topicTitle);
+        
+        if (retUser.isPresent()) {
+            
+            if (retTopic.isPresent()) {
+                
+                retUser.get().getTopics().add(retTopic.get());
+                
+                return "success";
+            } else {
+                return topicTitle + " does not exist";
+            }
+        }
+        return "failure";
     }
     
 }
