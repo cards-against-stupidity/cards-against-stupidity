@@ -3,6 +3,11 @@ body {
   padding: 0;
   font-family: "Avenir Next", "Avenir", sans-serif;
   box-sizing: border-box;
+  min-height: 100%;
+}
+
+#wrapper {
+  position: relative;
 }
 
 :root {
@@ -12,27 +17,40 @@ body {
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
-  --nav-width: 150px;
+  --nav-width-open: 250px;
+  --nav-width-closed: 55px;
 }
 
 main {
   min-height: 100vh;
+  left: var(--nav-width-closed);
+  transition-delay: 1s;
+  transition: left 1s;
+  position: relative;
+  transition: width 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  width: 90%;
+
 }
 
+ #wrapper.toggled  main {
+  left: var(--nav-width-open);
+  position: absolute;
+  width: 70%;
+  transition: width 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
 nav {
   top: 0;
   padding: 0;
   float: left;
   position: fixed;
-  overflow-x: hidden;
-  overflow-y: hidden;
   z-index: 100;
 }
 
 section {
-  display: block;
-  position: relative;
   min-height: 100vh;
+  position: relative;
+ 
+
 }
 
 #menuToggle {
@@ -47,8 +65,8 @@ section {
 }
 
 #menuToggle span {
-  top: 50px;
-  left: 5px;
+  top:30px;
+  left: 9px;
   display: block;
   position: relative;
   width: 32px;
@@ -56,13 +74,17 @@ section {
   margin-bottom: 5px;
   background-color: var(--cas-white);
   border-radius: 3px;
-  transform-origin: 4px 0px;
+
   z-index: 2;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease, transform-origin 0.55s ease;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), 
+  background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), 
+  opacity 0.55s ease, 
+  transform-origin 0.55s ease,
+  left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #menuToggle input {
-  top: 50px;
+ 
   left: 5px;
   display: block;
   width: 30px;
@@ -71,6 +93,7 @@ section {
   opacity: 0;
   cursor: pointer;
   z-index: 3;
+
 }
 
 #menuToggle span:first-child {
@@ -78,7 +101,7 @@ section {
 }
 
 #menuToggle span:nth-last-child(2) {
-  transform-origin: 0% 100%;
+  transform-origin: -10% 30%;
 }
 
 #menuToggler:hover~span:nth-last-child(3) {
@@ -89,8 +112,13 @@ section {
 }
 
 #menuToggle input:checked~span {
+  left: var(--nav-width-open);
+  margin-left: -50px;
+  width: 33.3px;
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
+  border-radius: 10px;
+  transform: rotate(45deg) translate(0px, 0px);
+  transition:  left 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   background-color: var(--cas-brand2);
 }
 
@@ -100,23 +128,24 @@ section {
 }
 
 #menuToggle input:checked~span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
+  transform: rotate(-45deg) translate(5px, 0px);
 }
 
+
 #nav-expanded {
-  width: 200px;
+  width: var(--nav-width-closed);
   background-color: var(--cas-brand1);
   height: 150vh;
   margin: -50px 0 0 -50px;
   padding-left: 50px;
   transform-origin: 0% 0%;
-  transform: translate(-153px, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  z-index: 0;
+  transition: width 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #menuToggle input:checked~#nav-expanded {
+  width: var(--nav-width-open);
   transform: translate(0, 0);
+  background-color: var(--cas-brand3);
 }
 
 .timer {
@@ -127,29 +156,26 @@ section {
 }
 
 /* scrunch the nav bar at this width */
-@media screen and (max-width: 1000px) {
 
-}
+@media screen and (max-width: 1000px) {}
 
 @media screen and (max-width: 400px) {}
 
 .study-mode--card-view {
+
   perspective: 1000px;
   min-height: 100vh;
   width: 100%;
   background-color: var(--cas-white);
   z-index: 0;
-  left: 180px;
+
 }
 
 .single-card {
   border-radius: 3px;
   display: grid;
   grid-auto-rows: 60px 1fr 20px;
-  grid-template-areas: 
-  "header"
-  "middle"
-  "footer";
+  grid-template-areas: "header""middle""footer";
   position: absolute;
   height: 25rem;
   width: 30rem;
@@ -159,15 +185,19 @@ section {
   transform-style: preserve-3d;
   user-select: none;
 }
+
 @media screen and (max-width: 700px) {
-  .single-card{
+  .single-card {
     top: 0rem;
-    height:100vh;
+    height: 100vh;
   }
+
   .study-mode--card-view {
-    overflow: visible;
+    overflow: hidden;
   }
-  .next-card, .previous-card{
+
+  .next-card,
+  .previous-card {
     display: none !important;
   }
 }
@@ -207,12 +237,13 @@ section {
 .single-card__card-front div:nth-of-type(2),
 .single-card__card-back div:nth-of-type(2) {
   font-size: 1.25rem;
-  min-height: 2.5rem;;
+  min-height: 2.5rem;
   margin-top: 0.5rem;
   padding: 1.5rem;
   text-align: center;
 }
-.single-card__card-front{
+
+.single-card__card-front {
   grid-area: middle;
   display: flex;
   flex-direction: column;
@@ -228,18 +259,19 @@ section {
 }
 
 .flip-show {
- transform: rotateY(-180deg);
- transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
- opacity: 1;
+  transform: rotateY(-180deg);
+  transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
+  opacity: 1;
 }
 
 .flip-hide {
- transform: rotateY(-180deg);
-transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
- opacity: 0;
+  transform: rotateY(-180deg);
+  transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
+  opacity: 0;
 }
 
-.next-card, .previous-card {
+.next-card,
+.previous-card {
   display: inline-block;
   min-height: 20rem;
   box-shadow: 0px 5px 4px 4px lightgrey;
@@ -248,7 +280,6 @@ transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
 
 .next-card {
   z-index: 98;
-
   transform: matrix3d(0.91, 0.09, 0.42, 0, -0.09, 0.784, -0.17, 0, -0.42, 0.17, 0.8918, 0, 150, 10, 1, 1);
   -webkit-transform: matrix3d(0.91, 0.09, 0.42, 0, -0.09, 0.784, -0.17, 0, -0.42, 0.17, 0.8918, 0, 150, 10, 1, 1);
   transform-origin: center center 0px;
@@ -267,6 +298,24 @@ transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
   -webkit-transition: all 0.2s ease 0s;
 }
 
+.deck-index {
+  padding: 2.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(250px, 250px);
+  grid-row-gap: 60px;
+}
 
+.single-deck {
+  display: relative;
+  width: 250px;
+  height: 250px;
+  background-color: grey;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-
+.single-deck--top-card {
+  display: inline-block;
+}
