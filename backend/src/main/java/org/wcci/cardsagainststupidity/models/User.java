@@ -1,13 +1,17 @@
-package org.wcci.cardsagainststupidity.auth.models;
+package org.wcci.cardsagainststupidity.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.wcci.cardsagainststupidity.models.Topic;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "username")
 public class User {
     
     @Id
@@ -24,6 +28,9 @@ public class User {
     
     @Transient // Ignored by mapping
     private String retypePassword;
+    
+    @ManyToMany
+    private Collection<Topic> topics;
     
     protected User() {
     }
