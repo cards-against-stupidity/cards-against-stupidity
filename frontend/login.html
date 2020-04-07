@@ -41,22 +41,26 @@
 
         <form action="/login" class="box" method="POST">
           <h1>Login</h1>
-          <input type="text" name="" placeholder="Username">
-          <input type="password" name="" placeholder="Password">
-          <input type="submit" name="" value="Login"  
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="retypePassword" placeholder="Retype Password">
+          <button id="btn" type="submit" >Login</button> 
+          <img src="./src/images/RAMlogo.png" height="60%" width="60%">
+
         </form> 
+        
+
 
     </body>
     <style>
         body {
           margin: 0;
           padding: 0;
-          font-family: sans-serif;
+          font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
           background-color: rgba(182, 189, 194, 0.863);
         }
         
-
-        .box{
+        .box {
           width: 300px;
           padding: 40px;
           position: absolute;
@@ -69,12 +73,13 @@
 
         .box h1{
           color: ghostwhite;
-          font-family: app;
+          font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
           text-transform: uppercase;
           font-weight: 500;
         }
 
         .box input[type = "text"],.box input[type = "password"] {
+          font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
           border: 0;
           background: none;
           display: block;
@@ -94,23 +99,24 @@
           border-color: rgb(68, 199, 79);
         }
 
-        .box input[type = "submit"] {
+        #btn  {
+          font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
           border: 0;
-          background: none;
+          background-color: rgb(80, 238, 31);
           display: block;
           margin: 20px auto;
           text-align: center;
-          border: 2px solid rgb(17, 32, 117);
+          border-radius: 2px solid rgb(17, 117, 17);
           padding: 14px 40px;
           outline: none;
-          color: floralwhite;
+          color: rgb(240, 255, 244);
           border-radius: 24px;
           transition: 0.25s;
           cursor: pointer;
         }
 
-        .box input[type = "submit"]:hover {
-          background: rgba(68, 199, 79, 0.589);
+        #btn:hover {
+          background: rgba(15, 224, 32, 0.589);
         }
 
     </style>
