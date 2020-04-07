@@ -1,20 +1,19 @@
-package org.wcci.cardsagainststupidity.auth.validator;
+package org.wcci.cardsagainststupidity.validator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import org.wcci.cardsagainststupidity.auth.models.User;
-import org.wcci.cardsagainststupidity.auth.services.UserService;
+import org.wcci.cardsagainststupidity.models.User;
+import org.wcci.cardsagainststupidity.storage.repositories.UserRepository;
 
 @Component
 public class UserValidator implements Validator {
     
-    private final UserService userService;
+    private final UserRepository userRepository;
     
-    public UserValidator(UserService userService) {
-        this.userService = userService;
+    public UserValidator(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
     
     @Override
@@ -25,7 +24,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         User userToValidate = (User) target;
-    
+        
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,
                 userToValidate.getUsername(), "NotEmpty");
         
@@ -33,7 +32,7 @@ public class UserValidator implements Validator {
             errors.reject("Size.username");
         }
         
-        if (userService.findByUsername(userToValidate.getUsername()).isPresent()) {
+        if (userRepository.findByUsername(userToValidate.getUsername()).isPresent()) {
             errors.reject("Duplicate.username");
         }
         
