@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-          Login
+          Login Page
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport' />
@@ -39,41 +39,78 @@
             </div>
           </nav>
 
-        <form action="/login" class="login-form" method="POST">
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <br>
-                <br>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                <br>
-                <br>
-                <button type="submit" class="btn">Login</button>  
-            </div>
-        </form>  
+        <form action="/login" class="box" method="POST">
+          <h1>Login</h1>
+          <input type="text" name="" placeholder="Username">
+          <input type="password" name="" placeholder="Password">
+          <input type="submit" name="" value="Login"  
+        </form> 
+
     </body>
     <style>
-        
-        .login-form {
-            margin-top: 25%;
-            margin-left: 25%;
-            margin-right:25%;
-            width: 50%;
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+          background-color: rgba(182, 189, 194, 0.863);
         }
         
-        .btn {
-            font-weight: bolder;
-            font-size: larger;
-            width: 250px;
-            height: 35px;
-            transition-duration: 0.4s;
-            border-radius: 12px;
+
+        .box{
+          width: 300px;
+          padding: 40px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgb(75, 73, 73);
+          text-align: center;
         }
-        
-        .btn:hover {
-            background-color: rgb(71, 136, 211);
-            color: white;
+
+        .box h1{
+          color: ghostwhite;
+          font-family: app;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+
+        .box input[type = "text"],.box input[type = "password"] {
+          border: 0;
+          background: none;
+          display: block;
+          margin: 20px auto;
+          text-align: center;
+          border: 2px solid rgba(63, 142, 211, 0.863);
+          padding: 14px 10px;
+          width: 200px;
+          outline: none;
+          color: floralwhite;
+          border-radius: 24px;
+          transition: 0.25s;
+        }
+
+        .box input[type = "text"]:focus,.box input[type = "password"]:focus {
+          width: 250px;
+          border-color: rgb(68, 199, 79);
+        }
+
+        .box input[type = "submit"] {
+          border: 0;
+          background: none;
+          display: block;
+          margin: 20px auto;
+          text-align: center;
+          border: 2px solid rgb(17, 32, 117);
+          padding: 14px 40px;
+          outline: none;
+          color: floralwhite;
+          border-radius: 24px;
+          transition: 0.25s;
+          cursor: pointer;
+        }
+
+        .box input[type = "submit"]:hover {
+          background: rgba(68, 199, 79, 0.589);
         }
 
     </style>

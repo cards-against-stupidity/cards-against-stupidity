@@ -267,9 +267,7 @@ transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
   -webkit-transition: all 0.2s ease 0s;
 }
 
-form {
-  text-align: center;
-}
+
 
 
 
