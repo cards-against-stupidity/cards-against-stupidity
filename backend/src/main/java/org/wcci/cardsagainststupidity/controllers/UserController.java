@@ -7,7 +7,6 @@ import org.wcci.cardsagainststupidity.models.User;
 import org.wcci.cardsagainststupidity.storage.UserStorage;
 import org.wcci.cardsagainststupidity.validator.UserValidator;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -51,12 +50,8 @@ public class UserController {
     
     @PostMapping(value = "auth/register", consumes =
             MediaType.APPLICATION_JSON_VALUE)
-    public String registerUser(/*@RequestParam String username,
-                               @RequestParam String password,
-                             @RequestParam String retypePassword,*/
-            @RequestBody User newUser,
-            BindingResult bindingResult) {
-//        User newUser = new User(username, password, retypePassword);
+    public String registerUser(@RequestBody User newUser,
+                               BindingResult bindingResult) {
         
         userValidator.validate(newUser, bindingResult);
         
