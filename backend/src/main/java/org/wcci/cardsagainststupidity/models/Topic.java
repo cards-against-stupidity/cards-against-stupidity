@@ -29,6 +29,7 @@ public class Topic {
     
     public Topic(String title){
         this.title = title;
+        users = new ArrayList<>();
     }
     
     public String getTitle() {
