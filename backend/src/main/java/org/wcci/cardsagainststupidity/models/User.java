@@ -25,6 +25,15 @@ public class User {
     @Transient // Ignored by mapping
     private String retypePassword;
     
+    protected User() {
+    }
+    
+    public User(String username, String password, String retypePassword){
+        this.username = username;
+        this.password = password;
+        this.retypePassword = retypePassword;
+    }
+    
     public String getUsername() {
         return username;
     }
