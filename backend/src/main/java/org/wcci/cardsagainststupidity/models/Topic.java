@@ -1,14 +1,10 @@
 package org.wcci.cardsagainststupidity.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
@@ -24,12 +20,16 @@ public class Topic {
     @OneToMany(mappedBy = "topic")
     @JsonIgnoreProperties({"topic", "cards"})
     private Collection<Deck> decks = new ArrayList<>();
+    @ManyToMany
+    @JsonIgnoreProperties({"topics", "loggedIn", "password", "retypePassword"})
+    private Collection<User> users;
     
     public Topic() {
     }
     
     public Topic(String title){
         this.title = title;
+        users = new ArrayList<>();
     }
     
     public String getTitle() {
