@@ -133,14 +133,35 @@ section {
 
 
 #nav-expanded {
+  display: flex;
+  flex-direction:  column;
   width: var(--nav-width-closed);
   background-color: var(--cas-brand1);
   height: 150vh;
   margin: -50px 0 0 -50px;
+  padding-top: 150px;
   padding-left: 50px;
   transform-origin: 0% 0%;
   transition: width 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
+
+/* #nav-expanded > div {
+  display: inline;
+
+} */
+
+/* ALL STUFF WITH IT OPEN */
+#wrapper.toggled #nav-expanded > div {
+
+}
+
+
+/* ALL STUFF WITH IT CLOSED */
+#nav-expanded > div {
+
+}
+
+
 
 #menuToggle input:checked~#nav-expanded {
   width: var(--nav-width-open);
@@ -315,7 +336,22 @@ section {
   margin-left: auto;
   margin-right: auto;
 }
+.single-deck > div {
+  background-color: blue;
+  position: absolute;
+}
+
+.single-deck > div:nth-child(1){
+  background-color: red;
+  z-index: 100;
+}
+
+.single-deck>div:nth-child(2) {
+  background-color: blue;
+  z-index: 99;
+}
+
 
 .single-deck--top-card {
-  display: inline-block;
+ 
 }
