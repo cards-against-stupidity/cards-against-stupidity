@@ -1,0 +1,26 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+#nav-checkbox {
+    position: absolute;
+}
+
+nav {
+    height: 100vh;
+    background-color: brown;
+    position: absolute;
+    width: 250px;
+
+}
+
+main {
+    position: absolute;
+    background-color: aliceblue;
+    left: 250px;
+}
