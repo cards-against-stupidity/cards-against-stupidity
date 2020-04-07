@@ -18,24 +18,24 @@ body {
   --cas-green: #00cb30;
   --cas-white: #ffffff;
   --nav-width-open: 250px;
-  --nav-width-closed: 55px;
+  --nav-width-closed: 50px;
+  --card-width: 30rem;
+  --card-height: 30rem;
 }
 
 main {
   min-height: 100vh;
   left: var(--nav-width-closed);
-  transition-delay: 1s;
-  transition: left 1s;
   position: relative;
-  transition: width 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  width: 90%;
+  width: 95%;
+  transition: left 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #wrapper.toggled main {
+  position: relative;
+  width: 85%;
   left: var(--nav-width-open);
-  position: absolute;
-  width: 70%;
-  transition: width 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 nav {
@@ -69,11 +69,11 @@ section {
   position: relative;
   width: 32px;
   height: 4px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   background-color: var(--cas-white);
   border-radius: 3px;
   z-index: 2;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease, transform-origin 0.55s ease, left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease, transform-origin 0.55s ease, left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #menuToggle input {
@@ -98,8 +98,8 @@ section {
 #menuToggler:hover~span:nth-last-child(3) {
   transform-origin: 50% 0%;
   transform: scale(0.8, 1);
-  border-radius: 10px;
-  transition: transform-origin 0.25s ease;
+  border-radius: 30px;
+  transition: transform-origin 0.4s ease;
 }
 
 #menuToggle input:checked~span {
@@ -107,9 +107,9 @@ section {
   margin-left: -50px;
   width: 33.3px;
   opacity: 1;
-  border-radius: 10px;
+  border-radius: 30px;
   transform: rotate(45deg) translate(0px, 0px);
-  transition: left 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   background-color: var(--cas-brand2);
 }
 
@@ -119,7 +119,7 @@ section {
 }
 
 #menuToggle input:checked~span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(5px, 0px);
+  transform: rotate(-45deg) translate(7px, -1px);
 }
 
 #nav-expanded {
@@ -132,7 +132,7 @@ section {
   padding-top: 150px;
   padding-left: 50px;
   transform-origin: 0% 0%;
-  transition: width 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: width 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 /* #nav-expanded > div {
@@ -167,11 +167,20 @@ section {
 
 @media screen and (max-width: 400px) {}
 
+.study-mode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .study-mode--card-view {
-  perspective: 1000px;
-  min-height: 100vh;
-  width: 100%;
-  background-color: var(--cas-white);
+  perspective: 2000px;
+  position: relative;
+  height: var(--card-height);
+  width: var(--card-width);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--cas-melon);
   z-index: 0;
 }
 
@@ -181,10 +190,8 @@ section {
   grid-auto-rows: 60px 1fr 20px;
   grid-template-areas: "header""middle""footer";
   position: absolute;
-  height: 25rem;
-  width: 30rem;
-  top: 15rem;
-  left: 15rem;
+  height: var(--card-height);
+  width: var(--card-width);
   background-color: white;
   transform-style: preserve-3d;
   user-select: none;
@@ -312,16 +319,16 @@ section {
   background-color: grey;
   margin-left: auto;
   margin-right: auto;
-
   transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .single-deck~div {
   position: absolute;
 }
-.single-deck  i {
-color: white;
-font-size: 2.5rem;
+
+.single-deck i {
+  color: white;
+  font-size: 2.5rem;
 }
 
 .single-deck:hover {
@@ -356,7 +363,6 @@ font-size: 2.5rem;
   transform: rotate(10deg)
 }
 
-
 .single-deck--top-card {
   position: absolute;
   font-size: 1.5rem;
@@ -369,7 +375,7 @@ font-size: 2.5rem;
   align-items: center;
   /* transition-delay: 0.5s !important; */
   transition: all 0.2s;
-  overflow-y:auto;
+  overflow-y: auto;
   height: 100%;
   background-color: var(--cas-melon);
 }
@@ -377,7 +383,7 @@ font-size: 2.5rem;
 .single-deck:hover>.single-deck--top-card {
   top: 15%;
   transform: scale(0.98);
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   transition: all 0.5s;
 }
 
@@ -402,7 +408,65 @@ font-size: 2.5rem;
 }
 
 .single-deck--top-card:hover>div:nth-child(2) {
-margin-top: 25%;
-background-color: red;
-transition: margin-top 0.2s;
+  margin-top: 25%;
+  background-color: red;
+  transition: margin-top 0.2s;
+}
+
+.edit-deck {}
+
+.edit-deck--card-index {
+  position: relative;
+  display: grid;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-auto-rows: min-content;
+}
+
+.edit-deck--card-index>div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  text-align: center;
+  padding: 2rem;
+}
+
+.edit-deck--card-index> :first-child {
+  font-size: 2rem;
+  background-color: #181818;
+  color: white;
+}
+
+.edit-deck--card-index> :last-child {
+  background-color: orange;
+  height: auto;
+  padding: 0;
+}
+
+.edit-deck--single-card {
+  height: 150px;
+}
+
+.edit-deck--single-card>div {
+  border: 1px solid rgb(70, 70, 70);
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+.edit-deck--single-card:last-child>div {
+  border: none;
+}
+
+.edit-deck--single-card-add input {
+  height: 50px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 3rem;
+  text-align: center;
+  border: none;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
