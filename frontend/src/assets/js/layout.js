@@ -9,5 +9,5 @@ const navBarExpand = (e) => {
 }
 
 navBar.addEventListener('click', (e) => {
-    navBarExpand();
+    navBarExpand(e);
 })
