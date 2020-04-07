@@ -21,6 +21,7 @@ public class Topic {
     @JsonIgnoreProperties({"topic", "cards"})
     private Collection<Deck> decks = new ArrayList<>();
     @ManyToMany
+    @JsonIgnoreProperties({"topics", "loggedIn", "password", "retypePassword"})
     private Collection<User> users;
     
     public Topic() {

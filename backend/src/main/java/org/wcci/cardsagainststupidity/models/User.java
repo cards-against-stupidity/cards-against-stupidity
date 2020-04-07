@@ -1,12 +1,16 @@
 package org.wcci.cardsagainststupidity.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.wcci.cardsagainststupidity.models.Topic;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -18,19 +22,18 @@ public class User {
     @GeneratedValue
     private Long id;
     
-    @NotEmpty
-    @NotNull
     private String username;
     
-    @NotEmpty
-    @NotNull
     private String password;
     
     @Transient // Ignored by mapping
     private String retypePassword;
     
     @ManyToMany
+    @JsonIgnoreProperties({"decks", "users"})
     private Collection<Topic> topics;
+    
+    private boolean loggedIn;
     
     protected User() {
     }
@@ -39,29 +42,31 @@ public class User {
         this.username = username;
         this.password = password;
         this.retypePassword = retypePassword;
+        topics = new ArrayList<>();
+        loggedIn = false;
+    }
+    
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+    
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+    
+    public Collection<Topic> getTopics() {
+        return topics;
     }
     
     public String getUsername() {
         return username;
     }
     
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    
     public String getPassword() {
         return password;
     }
     
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
     public String getRetypePassword() {
         return retypePassword;
-    }
-    
-    public void setRetypePassword(String retypePassword) {
-        this.retypePassword = retypePassword;
     }
 }
