@@ -139,6 +139,10 @@ section {
 }
 
 #nav-expanded div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 40px;
   min-height: 40px;
   background-color: red;
@@ -149,14 +153,34 @@ section {
   font-size: 0.8em;
 }
 
-/* #nav-expanded > div {
+/* #nav-expanded {
   display: inline;
 
 } */
 
 /* ALL STUFF WITH IT OPEN */
 
-#wrapper.toggled #nav-expanded>div {}
+#wrapper.toggled #nav-expanded{
+  display: flex;
+  flex-direction: column;
+  width: var(--nav-width-closed);
+  background-color: var(--cas-brand1);
+  height: 150vh;
+  margin: -100px 0 0 0px;
+  padding-top: 150px;
+  padding-left: 50px;
+  transform-origin: 0% 0%;
+  transition: width 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#wrapper.toggled #nav-expanded div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
+  min-height: 100px;
+}
 
 /* ALL STUFF WITH IT CLOSED */
 
