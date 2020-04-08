@@ -435,52 +435,61 @@ section {
 .edit-deck {}
 
 .edit-deck--card-index {
+  list-style: none;
+}
+
+.edit-deck--card {
+  list-style: none;
+  width: 350px;
+  text-align: center;
+  min-height: 150px;
+  background-color: aliceblue;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.edit-deck--card ul li {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edit-deck--card li:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.edit-deck--card li:first-child~span {
+  background-color: grey;
   position: relative;
-  display: grid;
-  width: min-content;
-  margin-left: auto;
-  margin-right: auto;
-  grid-auto-rows: min-content;
+  display: inline-block;
+  height: 1px;
+  transform: translateY(-0.25rem);
+  width: 150px;
 }
 
-.edit-deck--card-index>div {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(350px, 550px));
-  text-align: center;
-  padding-top: 1rem;
-}
-
-.edit-deck--card-index> :first-child {
-  font-size: 2rem;
-  background-color: #181818;
-  color: white;
-}
-
-.edit-deck--card-index> :last-child {
-  background-color: orange;
-  height: auto;
-  margin-top: 1rem;
-}
-
-.edit-deck--single-card {
-  height: 80px;
-}
-
-.edit-deck--single-card>div {
-  border: 1px solid rgb(70, 70, 70);
+.edit-deck--card-index ul:last-child {
   background-color: #f7f7f7;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 5px;
 }
 
-.edit-deck--single-card-add input {
+.add-deck-form li:first-child input {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  font-size: 3rem;
+  height: 50px;
+  width: 350px;
+  font-weight: 600;
   text-align: center;
+  font-size: 1.25rem;
   border: none;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+}
+
+.add-deck-form li:last-child input {
+  -webkit-appearance: none;
+  height: 50px;
+  width: 350px;
+  font-weight: 200;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  background-color: #f7f7f7;
 }
