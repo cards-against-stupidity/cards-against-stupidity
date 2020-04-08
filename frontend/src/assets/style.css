@@ -145,7 +145,7 @@ section {
   align-items: center;
   max-width: 40px;
   min-height: 40px;
-  background-color: red;
+  background-color: rgb(255, 136, 0);
   margin-top: 20px;
   border-radius: 5px;
   margin-left: auto;
@@ -180,6 +180,7 @@ section {
   align-items: center;
   max-width: 100px;
   min-height: 100px;
+  font-weight: bolder;
 }
 
 /* ALL STUFF WITH IT CLOSED */
