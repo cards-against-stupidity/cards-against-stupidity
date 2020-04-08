@@ -6,9 +6,11 @@ import org.springframework.stereotype.Component;
 import org.wcci.cardsagainststupidity.models.Card;
 import org.wcci.cardsagainststupidity.models.Deck;
 import org.wcci.cardsagainststupidity.models.Topic;
+import org.wcci.cardsagainststupidity.models.User;
 import org.wcci.cardsagainststupidity.storage.CardStorage;
 import org.wcci.cardsagainststupidity.storage.DeckStorage;
 import org.wcci.cardsagainststupidity.storage.TopicStorage;
+import org.wcci.cardsagainststupidity.storage.UserStorage;
 
 @Component
 public class Populator implements CommandLineRunner {
@@ -20,11 +22,14 @@ public class Populator implements CommandLineRunner {
     
     private TopicStorage topicStorage;
     
-    public Populator(CardStorage cardStorage, DeckStorage deckStorage, TopicStorage topicStorage) {
+    private UserStorage userStorage;
+    
+    public Populator(CardStorage cardStorage, DeckStorage deckStorage,
+                     TopicStorage topicStorage, UserStorage userStorage) {
         this.cardStorage = cardStorage;
         this.deckStorage = deckStorage;
         this.topicStorage = topicStorage;
-        
+        this.userStorage = userStorage;
     }
     
     @Override
@@ -69,5 +74,7 @@ public class Populator implements CommandLineRunner {
         Card method = new Card("Method", "A set of code which is referred to by name and can be called at any point in a program simply by utilizing the method's name", javaDeck);
         cardStorage.save(method);
         
+        User defaultUser = new User("randomuser", "password", "password");
+        userStorage.save(defaultUser);
     }
 }
