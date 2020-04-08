@@ -45,7 +45,10 @@ nav {
   position: fixed;
   z-index: 100;
 }
-
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+}
 section {
   min-height: 100vh;
   position: relative;
@@ -133,6 +136,17 @@ section {
   padding-left: 50px;
   transform-origin: 0% 0%;
   transition: width 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#nav-expanded div {
+  max-width: 40px;
+  min-height: 40px;
+  background-color: red;
+  margin-top: 20px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8em;
 }
 
 /* #nav-expanded > div {
