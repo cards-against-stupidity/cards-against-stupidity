@@ -333,10 +333,7 @@ section {
   background-color: grey;
   margin-left: auto;
   margin-right: auto;
-<<<<<<< HEAD
-=======
   border-radius: 5px;
->>>>>>> frontEnd
   transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
@@ -403,7 +400,7 @@ section {
   background-color: var(--cas-melon);
 }
 
-.single-deck:hover>.single-deck--top-card {
+.single-deck:hover > .single-deck--top-card {
   top: 15%;
   transform: scale(0.98);
   background-color: rgba(0, 0, 0, 0);
@@ -435,7 +432,6 @@ section {
   background-color: red;
   transition: margin-top 0.2s;
 }
-<<<<<<< HEAD
 
 .edit-deck {}
 
@@ -494,5 +490,3 @@ section {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
 }
-=======
->>>>>>> frontEnd
