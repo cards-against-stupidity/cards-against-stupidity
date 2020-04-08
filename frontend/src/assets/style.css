@@ -333,6 +333,10 @@ section {
   background-color: grey;
   margin-left: auto;
   margin-right: auto;
+<<<<<<< HEAD
+=======
+  border-radius: 5px;
+>>>>>>> frontEnd
   transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
@@ -345,13 +349,18 @@ section {
   font-size: 2.5rem;
 }
 
+.single-deck i:hover{
+  color: var(--cas-green);
+  cursor: pointer;
+}
+
 .single-deck:hover {
   /* transform: translate(0.65rem, 0.25rem) scale(0.98); */
   transition: all 0.3s;
 }
 
 .single-deck~div:nth-child(2) {
-  background-color: blue;
+  background-color: var(--cas-brand3);
   z-index: 98;
 }
 
@@ -426,6 +435,7 @@ section {
   background-color: red;
   transition: margin-top 0.2s;
 }
+<<<<<<< HEAD
 
 .edit-deck {}
 
@@ -484,3 +494,5 @@ section {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
 }
+=======
+>>>>>>> frontEnd
