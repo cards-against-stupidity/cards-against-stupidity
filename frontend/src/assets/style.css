@@ -231,7 +231,6 @@ section {
   background-color: var(--cas-brand3);
   width: 100%;
   height: 60px;
-
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
@@ -329,37 +328,36 @@ section {
   row-gap: 3rem;
 }
 
-.single-deck {
+.deck-wrapper {
   position: relative;
+}
+
+.deck-wrapper>div {
   width: 250px;
   height: 250px;
-  background-color: grey;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
+  position: absolute;
   transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.single-deck~div {
-  position: absolute;
-}
-
-.single-deck i {
+.deck-wrapper i {
   color: white;
   font-size: 2.5rem;
 }
 
-.single-deck i:hover {
+.deck-wrapper i:hover {
   color: var(--cas-green);
   cursor: pointer;
 }
 
-.single-deck:hover {
+.deck-wrapper:hover {
   /* transform: translate(0.65rem, 0.25rem) scale(0.98); */
   transition: all 0.3s;
 }
 
-.single-deck~div:nth-child(2) {
+.deck-wrapper div:nth-child(2) {
   background-color: var(--cas-brand3);
   z-index: 98;
 }
@@ -391,7 +389,6 @@ section {
   font-size: 1.5rem;
   text-align: center;
   z-index: 99;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -399,7 +396,6 @@ section {
   /* transition-delay: 0.5s !important; */
   transition: all 0.5s;
   overflow-y: auto;
-  height: 100%;
   background-color: var(--cas-melon);
 }
 
@@ -418,7 +414,7 @@ section {
   justify-self: center;
   display: grid;
   row-gap: 1.5rem;
-  column-gap: 1.5rem;
+  column-gap: 0.5rem;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr 1fr;
@@ -430,7 +426,7 @@ section {
   margin-top: 0px;
 }
 
-.single-deck--top-card:hover>div:nth-child(2) {
+.single-deck--top-card:hover>:nth-child(2) {
   margin-top: 25%;
   background-color: red;
   transition: margin-top 0.2s;
@@ -441,7 +437,7 @@ section {
 .edit-deck--card-index {
   position: relative;
   display: grid;
-  width: 65%;
+  width: min-content;
   margin-left: auto;
   margin-right: auto;
   grid-auto-rows: min-content;
@@ -449,10 +445,9 @@ section {
 
 .edit-deck--card-index>div {
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 1fr;
+  grid-template-columns: repeat(2, minmax(350px, 550px));
   text-align: center;
-  padding: 2rem;
+  padding-top: 1rem;
 }
 
 .edit-deck--card-index> :first-child {
@@ -464,27 +459,23 @@ section {
 .edit-deck--card-index> :last-child {
   background-color: orange;
   height: auto;
-  padding: 0;
+  margin-top: 1rem;
 }
 
 .edit-deck--single-card {
-  height: 150px;
+  height: 80px;
 }
 
 .edit-deck--single-card>div {
   border: 1px solid rgb(70, 70, 70);
+  background-color: #f7f7f7;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
 }
 
-.edit-deck--single-card:last-child>div {
-  border: none;
-}
-
 .edit-deck--single-card-add input {
-  height: 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   font-size: 3rem;
