@@ -353,11 +353,13 @@ section {
 .deck-wrapper i {
   color: white;
   font-size: 2.5rem;
+  transition: color 0.5s ease;
 }
 
 .deck-wrapper i:hover {
   color: var(--cas-green);
   cursor: pointer;
+  transition: color 0.5s ease;
 }
 
 .deck-wrapper:hover {
@@ -403,13 +405,11 @@ section {
   align-items: center;
   /* transition-delay: 0.5s !important; */
   transition: all 0.5s;
-  overflow-y: auto;
   color: white;
   background-color: var(--cas-brand3);
 }
 
 .single-deck:hover>.single-deck--top-card {
-  top: 15%;
   transform: scale(0.98);
   background-color: rgba(0, 0, 0, 0);
   transition: all 0.5s;
@@ -422,10 +422,11 @@ section {
 .single-deck:hover .single-deck--options {
   justify-self: center;
   display: grid;
-  row-gap: 1.5rem;
-  column-gap: 0.5rem;
+  row-gap: 2.5rem;
+  column-gap: 2.5rem;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2.5rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   font-size: 1rem;
@@ -436,7 +437,7 @@ section {
 }
 
 .single-deck--top-card:hover>:nth-child(2) {
-  margin-top: 25%;
+  margin-top: 2.5rem;
   color: black;
   background-color: var(--cas-white);
   transition: margin-top 0.2s;
