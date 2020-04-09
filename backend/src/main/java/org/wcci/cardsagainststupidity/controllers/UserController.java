@@ -68,7 +68,7 @@ public class UserController {
         return newUser.getUsername();
     }
     
-    @PutMapping(value = "/users/{username}/{topicTitle}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/users/{username}/{topicTitle}")
     public String saveDeckToUser(@PathVariable String username,
                                  @PathVariable String topicTitle) {
         Optional<User> retUser = userStorage.findByUsername(username);
