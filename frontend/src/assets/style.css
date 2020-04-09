@@ -1,3 +1,11 @@
+/* default */
+
+/* *, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
 body {
   margin: 0;
   padding: 0;
@@ -381,11 +389,13 @@ section {
 .deck-wrapper i {
   color: white;
   font-size: 2.5rem;
+  transition: color 0.5s ease;
 }
 
 .deck-wrapper i:hover {
   color: var(--cas-green);
   cursor: pointer;
+  transition: color 0.5s ease;
 }
 
 .deck-wrapper:hover {
@@ -394,11 +404,11 @@ section {
 }
 
 .deck-wrapper div:nth-child(2) {
-  background-color: var(--cas-brand3);
   z-index: 98;
 }
 
 .single-deck:hover~div:nth-child(2) {
+  background-color: var(--cas-brand3);
   transform: scale(0.95)
 }
 
@@ -431,12 +441,11 @@ section {
   align-items: center;
   /* transition-delay: 0.5s !important; */
   transition: all 0.5s;
-  overflow-y: auto;
-  background-color: var(--cas-melon);
+  color: white;
+  background-color: var(--cas-brand3);
 }
 
 .single-deck:hover>.single-deck--top-card {
-  top: 15%;
   transform: scale(0.98);
   background-color: rgba(0, 0, 0, 0);
   transition: all 0.5s;
@@ -449,10 +458,11 @@ section {
 .single-deck:hover .single-deck--options {
   justify-self: center;
   display: grid;
-  row-gap: 1.5rem;
-  column-gap: 0.5rem;
+  row-gap: 2.5rem;
+  column-gap: 2.5rem;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2.5rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   font-size: 1rem;
@@ -463,13 +473,72 @@ section {
 }
 
 .single-deck--top-card:hover>:nth-child(2) {
-  margin-top: 25%;
-  background-color: red;
+  margin-top: 2.5rem;
+  color: black;
+  background-color: var(--cas-white);
   transition: margin-top 0.2s;
+}
+
+.add-deck input::before {
+  opacity: 0;
+}
+
+.add-deck input {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 200px;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  border: none;
+  background-color: #181818;
+  position: relative;
+  z-index: -1;
+  transition: all 0.2s ease;
+}
+
+.add-deck input:focus {
+  border: none;
+}
+
+.add-deck:hover input {
+  opacity: 1;
+  display: block;
+  transition: all 0.6s ease;
+  position: absolute;
+}
+
+.add-deck button {
+  opacity: 0;
+}
+
+.add-deck:hover button {
+  opacity: 1;
+  position: absolute;
+  top: 12rem;
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
+  border: 1px solid green;
+  color: green;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.add-deck :first-child {
+  position: absolute;
+  transition: all 0.6s ease;
+}
+
+.add-deck:hover :first-child {
+  opacity: 1;
+  transform: translateY(-0.5rem);
+  transition: all 0.6s ease;
+  position: absolute;
 }
 
 .edit-deck {
   position: relative;
+  transition: all 0.6s ease;
 }
 
 .edit-deck--card-index {
