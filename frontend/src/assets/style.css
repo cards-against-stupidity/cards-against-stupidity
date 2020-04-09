@@ -45,10 +45,12 @@ nav {
   position: fixed;
   z-index: 100;
 }
+
 nav a {
   text-decoration: none;
   font-weight: 600;
 }
+
 section {
   min-height: 100vh;
   position: relative;
@@ -268,7 +270,7 @@ section {
 .current-card {
   box-shadow: 0px 0px 10px 0px grey;
   z-index: 99;
-  transition: all 2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   transform-origin: center center 0px;
   -webkit-transform-origin: center center 0px;
   -webkit-transition: all 0.2s ease 0s;
@@ -298,20 +300,20 @@ section {
 .single-card__card-back {
   grid-area: middle;
   transform: rotateY(180deg);
-  transition-delay: 2s;
+  transition-delay: 0.2s !important;
   backface-visibility: hidden;
   opacity: 0;
 }
 
 .flip-show {
   transform: rotateY(-180deg);
-  transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
+  transition: all 0.2s cubic-bezier(0.24, 0.94, 0, 1.15);
   opacity: 1;
 }
 
 .flip-hide {
   transform: rotateY(-180deg);
-  transition: all 0.5s cubic-bezier(0.24, 0.94, 0, 1.15);
+  transition: all 0.2s cubic-bezier(0.24, 0.94, 0, 1.15);
   opacity: 0;
 }
 
@@ -351,37 +353,36 @@ section {
   row-gap: 3rem;
 }
 
-.single-deck {
+.deck-wrapper {
   position: relative;
+}
+
+.deck-wrapper>div {
   width: 250px;
   height: 250px;
-  background-color: grey;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
+  position: absolute;
   transition: all 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.single-deck~div {
-  position: absolute;
-}
-
-.single-deck i {
+.deck-wrapper i {
   color: white;
   font-size: 2.5rem;
 }
 
-.single-deck i:hover{
+.deck-wrapper i:hover {
   color: var(--cas-green);
   cursor: pointer;
 }
 
-.single-deck:hover {
+.deck-wrapper:hover {
   /* transform: translate(0.65rem, 0.25rem) scale(0.98); */
   transition: all 0.3s;
 }
 
-.single-deck~div:nth-child(2) {
+.deck-wrapper div:nth-child(2) {
   background-color: var(--cas-brand3);
   z-index: 98;
 }
@@ -413,19 +414,17 @@ section {
   font-size: 1.5rem;
   text-align: center;
   z-index: 99;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   /* transition-delay: 0.5s !important; */
-  transition: all 0.2s;
+  transition: all 0.5s;
   overflow-y: auto;
-  height: 100%;
   background-color: var(--cas-melon);
 }
 
-.single-deck:hover > .single-deck--top-card {
+.single-deck:hover>.single-deck--top-card {
   top: 15%;
   transform: scale(0.98);
   background-color: rgba(0, 0, 0, 0);
@@ -440,7 +439,7 @@ section {
   justify-self: center;
   display: grid;
   row-gap: 1.5rem;
-  column-gap: 1.5rem;
+  column-gap: 0.5rem;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr 1fr;
@@ -452,66 +451,95 @@ section {
   margin-top: 0px;
 }
 
-.single-deck--top-card:hover>div:nth-child(2) {
+.single-deck--top-card:hover>:nth-child(2) {
   margin-top: 25%;
   background-color: red;
   transition: margin-top 0.2s;
 }
 
-.edit-deck {}
+.edit-deck {
+  position: relative;
+}
 
 .edit-deck--card-index {
-  position: relative;
+  list-style: none;
   display: grid;
-  width: 65%;
+  grid-auto-flow: column;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: repeat(4, 20vh);
+}
+
+.edit-deck--card {
+  list-style: none;
+  width: 350px;
+  text-align: center;
+  min-height: 150px;
+  background-color: aliceblue;
   margin-left: auto;
   margin-right: auto;
-  grid-auto-rows: min-content;
+  padding: 1rem;
 }
 
-.edit-deck--card-index>div {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 1fr;
+.edit-deck--card ul li {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edit-deck--card li:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.edit-deck--card li:first-child~span {
+  background-color: grey;
+  position: relative;
+  display: inline-block;
+  height: 1px;
+  transform: translateY(-0.25rem);
+  width: 150px;
+}
+
+.edit-deck--card-index ul:last-child {
+  background-color: #f7f7f7;
+}
+
+.add-deck-form li:first-child input {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 300px;
+  font-weight: 600;
   text-align: center;
-  padding: 2rem;
+  font-size: 1.25rem;
+  border: none;
+  background-color: #f7f7f7;
 }
 
-.edit-deck--card-index> :first-child {
-  font-size: 2rem;
-  background-color: #181818;
+.add-deck-form li:last-child input {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 300px;
+  font-weight: 200;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.submit-button {
+  opacity: 0;
+  position: relative;
+  /* transform: translateX(22rem); */
+  background-color: midnightblue;
+  bottom: -1.85rem;  
+  margin-left: auto;
+margin-right: auto;
+left:-1rem;
+width: 107%;
+transform: translateY(2.25rem);
+  padding: 0.25rem;
   color: white;
 }
 
-.edit-deck--card-index> :last-child {
-  background-color: orange;
-  height: auto;
-  padding: 0;
-}
-
-.edit-deck--single-card {
-  height: 150px;
-}
-
-.edit-deck--single-card>div {
-  border: 1px solid rgb(70, 70, 70);
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 5px;
-}
-
-.edit-deck--single-card:last-child>div {
-  border: none;
-}
-
-.edit-deck--single-card-add input {
-  height: 50px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  font-size: 3rem;
-  text-align: center;
-  border: none;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+.add-deck-form > input:focus~ .submit-button{
+  opacity: 1;
 }
