@@ -39,6 +39,10 @@ public class Deck {
         topic.getDecks().add(this);
     }
     
+    public Long getId() {
+        return id;
+    }
+    
     public String getTitle() {
         return title;
     }
