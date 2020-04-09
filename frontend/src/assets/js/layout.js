@@ -11,3 +11,16 @@ const navBarExpand = (e) => {
 navBar.addEventListener('click', (e) => {
     navBarExpand(e);
 })
+
+const newDeckInputs = document.querySelectorAll(`.add-deck-form input, textarea`)
+const submitButton = document.querySelector('.submit-button');
+newDeckInputs.forEach(input => {
+    input.addEventListener('focus', ()=>{
+
+        submitButton.classList.add('focused');
+    })
+    input.addEventListener('blur', ()=>{
+         submitButton.classList.remove('focused');
+    })
+})
+
