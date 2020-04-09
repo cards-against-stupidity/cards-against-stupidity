@@ -1,3 +1,11 @@
+/* default */
+
+/* *, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
 body {
   margin: 0;
   padding: 0;
@@ -358,11 +366,11 @@ section {
 }
 
 .deck-wrapper div:nth-child(2) {
-  background-color: var(--cas-brand3);
   z-index: 98;
 }
 
 .single-deck:hover~div:nth-child(2) {
+  background-color: var(--cas-brand3);
   transform: scale(0.95)
 }
 
@@ -396,7 +404,8 @@ section {
   /* transition-delay: 0.5s !important; */
   transition: all 0.5s;
   overflow-y: auto;
-  background-color: var(--cas-melon);
+  color: white;
+  background-color: var(--cas-brand3);
 }
 
 .single-deck:hover>.single-deck--top-card {
@@ -428,7 +437,8 @@ section {
 
 .single-deck--top-card:hover>:nth-child(2) {
   margin-top: 25%;
-  background-color: red;
+  color: black;
+  background-color: var(--cas-white);
   transition: margin-top 0.2s;
 }
 
@@ -505,16 +515,16 @@ section {
   position: relative;
   /* transform: translateX(22rem); */
   background-color: midnightblue;
-  bottom: -1.85rem;  
+  bottom: -1.85rem;
   margin-left: auto;
-margin-right: auto;
-left:-1rem;
-width: 107%;
-transform: translateY(2.25rem);
+  margin-right: auto;
+  left: -1rem;
+  width: 107%;
+  transform: translateY(2.25rem);
   padding: 0.25rem;
   color: white;
 }
 
-.add-deck-form > input:focus~ .submit-button{
+.add-deck-form>input:focus~.submit-button {
   opacity: 1;
 }
