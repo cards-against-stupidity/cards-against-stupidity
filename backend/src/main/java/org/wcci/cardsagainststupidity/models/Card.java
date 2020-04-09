@@ -39,6 +39,10 @@ public class Card {
         deck.addCard(this);
     }
     
+    public Long getId() {
+        return id;
+    }
+    
     public String getTerm() {
         return term;
     }
