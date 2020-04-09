@@ -22,32 +22,43 @@
 
 <body>
 
+<div id="wrapper"> 
+        <nav role="navigation" id="mainNav">
+          <div id="menuToggle">
+            <input type="checkbox" id="menuToggler" />
+            <!-- hamburger-->
+            <span></span>
+            <span></span>
+            <span></span>
+            <div id="nav-expanded" class="nav-items">
 
-  <nav role="navigation">
-    <div id="menuToggle">
-      <input type="checkbox" id="menuToggler" />
-      <!-- hamburger-->
-      <span></span>
-      <span></span>
-      <span></span>
-
-      <div id="nav-expanded" class="nav-items">
-        <div class="nav-brand">
-
-        </div>
-        <div>Some Stuff</div>
-        <div>Some Stuff</div>
-        <div>Some Stuff</div>
-      </div>
-    </div>
-  </nav>
+              <a href="study-view.html">
+                <div>study mode</div>
+              </a>
+              <a href="edit-deck.html">
+                <div>edit deck</div>
+              </a>
+              <a href="login.html">
+                <div>user login</div>
+              </a>
+              <a href="decks-view.html">
+                <div>all decks</div>
+              </a>
+              <a href="all-topics.html">
+                <div>all topics</div>
+              </a>
+            </div>
+          </div>
+        </nav>
   <main>
+    
     <section class="study-mode">
       <div class="study-mode--card-view">
-        <div class="single-card previous-card">
+
+        <div class="single-card ">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
-            <div> Here would be first div</div>
+            <div> First Card</div>
             <div> here would be the second div with some content that we are all happy
               and proud about but we are still working on developing.
             </div>
@@ -59,35 +70,80 @@
           </div>
         </div>
 
-        <div class="single-card current-card">
+        <div class="single-card ">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
-            <div> Here would be first div </div>
+            <div> Second Card </div>
             <div> here would be the second div with some content that we are all happy
               and proud about but we are still working on developing.
             </div>
           </div>
 
           <div class="single-card__card-back">
-            <div> Back of card Here</div>
+            <div> Back of second Here</div>
             <div> bhere would be the second div with some content that we are all happy
               and proud about but we are still working on developing.
             </div>
           </div>
-        <div class="single-card--footer"> </div>
+          <div class="single-card--footer"> </div>
         </div>
 
 
-        <div class="single-card next-card">
+        <div class="single-card ">
           <div class="single-card--header"> </div>
           <div class="single-card__card-front">
-            <div> Front of card Here</div>
+            <div> Third Card</div>
             <div> here would be the second div with some content that we are all happy
               and proud about but we are still working on developing.
             </div>
           </div>
           <div class="single-card__card-back">
-            <div> Back of card Here</div>
+            <div> Back of third Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
+
+        <div class="single-card ">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> Fourth Card</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of fourth Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
+
+        <div class="single-card ">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> Fifth Card</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of fifth Here</div>
+            <div> back of the card goes here with everything else
+            </div>
+          </div>
+        </div>
+
+        <div class="single-card ">
+          <div class="single-card--header"> </div>
+          <div class="single-card__card-front">
+            <div> sixth Card</div>
+            <div> here would be the second div with some content that we are all happy
+              and proud about but we are still working on developing.
+            </div>
+          </div>
+          <div class="single-card__card-back">
+            <div> Back of sixth Here</div>
             <div> back of the card goes here with everything else
             </div>
           </div>
@@ -100,8 +156,7 @@
   <footer>
     some footer stuff
   </footer>
+</div>
 </body>
-
-<script src="src/assets/js/single-card.js"></script>
-  
-
+<script src="src/assets/js/layout.js"></script>
+<script src="src/assets/js/study-mode.js"></script>
