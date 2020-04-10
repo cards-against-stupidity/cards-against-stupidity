@@ -94,35 +94,7 @@
         </footer>
     </div>
 </body>
-<script type="module">
-import { DeckCreator } from './src/assets/js/deck-creator.js';
-
-    const renderAllDecks = (jsonData) => {
-        const anchor = document.querySelector('.deck-index');
-        jsonData.forEach(deck => {
-            
-           const newDeck = new DeckCreator()
-            .addOptions()
-            .setTopCardTitle(deck.title)
-            // .setFirstCardTitle(deck.cards[0].term)
-            .render()
-        
-            anchor.appendChild(newDeck);
-        });
-    }
-
-    const fetchAllDecks = () => {
-        fetch('http://localhost:8080/decks')
-            .then(results => results.json())
-            .then(renderAllDecks)
-    }
-
-    window.addEventListener('load', () => {
-        fetchAllDecks();
-    })
-
-
-</script>
+<script type="module" src="src/assets/js/renderViews.js"></script>
 
 <script src="src/assets/js/layout.js"></script>
 <script src="src/assets/js/post-requests.js"></script>
