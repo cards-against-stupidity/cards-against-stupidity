@@ -52,7 +52,7 @@
         <table id="t1" style="margin-left: auto;margin-right: auto;margin-top: 10%;margin-bottom: auto">
             <tr>
                 <td>
-                   <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                   <form autocomplete="off">
                        <div>
                             <label>Topic</label>
                             <input type="text" name="topic" id="topic">
@@ -65,6 +65,7 @@
                             <label>CRUD</label>
                             <input type="text" name="crud" id="crud">
                         </div>
+                      
                         <div class="form-action-button">
                             <input type="submit" value="Submit">
                         </div>
@@ -77,7 +78,6 @@
                                 <th>Topic</th>
                                 <th># of Decks</th>
                                 <th>CRUD</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +87,7 @@
                 </td>
             </tr>
 
-        <script src="./src/assets/js/data-table.js"></script>
+        <script type="module" src="./src/assets/js/data-table.js"></script>
 
         <style>
             body > table {
