@@ -61,12 +61,11 @@ public class Card {
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
         return Objects.equals(term, card.term) &&
-                Objects.equals(definition, card.definition) &&
-                Objects.equals(deck, card.deck);
+                Objects.equals(definition, card.definition);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(term, definition, deck);
+        return Objects.hash(term, definition);
     }
 }

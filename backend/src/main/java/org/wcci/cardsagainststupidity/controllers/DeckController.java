@@ -3,6 +3,7 @@ package org.wcci.cardsagainststupidity.controllers;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.cardsagainststupidity.models.Card;
 import org.wcci.cardsagainststupidity.models.Deck;
+import org.wcci.cardsagainststupidity.storage.CardStorage;
 import org.wcci.cardsagainststupidity.storage.DeckStorage;
 
 import java.util.Collection;
@@ -14,8 +15,11 @@ public class DeckController {
     
     private DeckStorage deckStorage;
     
-    public DeckController(DeckStorage deckStorage) {
+    private CardStorage cardStorage;
+    
+    public DeckController(DeckStorage deckStorage, CardStorage cardStorage) {
         this.deckStorage = deckStorage;
+        this.cardStorage = cardStorage;
     }
     
     @GetMapping
@@ -50,7 +54,15 @@ public class DeckController {
     public Collection<Deck> addCardToDeck(@PathVariable Long id, @RequestBody Card card) {
         Optional<Deck> deckOptional = deckStorage.findById(id);
         
-        deckOptional.ifPresent(deck -> deck.addCard(card));
+        if (deckOptional.isPresent()) {
+        
+            Card newCard = new Card(card.getTerm(), card.getDefinition(),
+                    deckOptional.get());
+                    
+            cardStorage.save(newCard);
+        }
+        
+        
         
         return deckStorage.findAllDecks();
     }
