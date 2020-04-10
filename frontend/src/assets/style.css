@@ -529,6 +529,10 @@ section {
   transition: all 0.6s ease;
 }
 
+form#add-deck{
+  display: grid;
+}
+
 .add-deck:hover :first-child {
   opacity: 1;
   transform: translateY(-0.5rem);

@@ -54,7 +54,7 @@
                 <div class="deck-index">
 
 
-                    <div class=" deck-wrapper">
+                    <div class="deck-wrapper">
                         <div class="single-deck single-deck--top-card">
                             <div class="single-deck--options">
                                 <i class="fas fa-edit"></i>
@@ -75,30 +75,16 @@
                         </div>
                     </div>
 
+                   
                     <div class=" deck-wrapper">
-                        <div class="single-deck single-deck--top-card">
-                            <div class="single-deck--options">
-                                <i class="fas fa-edit"></i>
-                                <i class="fas fa-eye"></i>
-                                <i class="fas fa-trash"></i>
-                                <i class="fas fa-share"></i>
-                            </div>
-                            <div>This is the sdgwjgsljlk name! </div>
-                        </div>
-                        <div class="single-deck single-deck--first-card">
-                            first card
-                        </div>
-                        <div class="single-deck single-deck--second-card">
-                            second card
-                        </div>
-                        <div class="single-deck single-deck--third-card">
-                            third card
+                        <div class="single-deck single-deck--top-card add-deck">
+                            <div>Add A Deck </div>
+                          
+                                <input id="new-deck-name" name="title" type="text">
+                                <button id="submit-new-deck"  >Submit</button>
+                  
                         </div>
                     </div>
-
-
-
-
 
                 </div>
             </section>
@@ -108,4 +94,35 @@
         </footer>
     </div>
 </body>
+<script type="module">
+import { DeckCreator } from './src/assets/js/deck-creator.js';
+
+    const renderAllDecks = (jsonData) => {
+        const anchor = document.querySelector('.deck-index');
+        jsonData.forEach(deck => {
+            
+           const newDeck = new DeckCreator()
+            .addOptions()
+            .setTopCardTitle(deck.title)
+            // .setFirstCardTitle(deck.cards[0].term)
+            .render()
+        
+            anchor.appendChild(newDeck);
+        });
+    }
+
+    const fetchAllDecks = () => {
+        fetch('http://localhost:8080/decks')
+            .then(results => results.json())
+            .then(renderAllDecks)
+    }
+
+    window.addEventListener('load', () => {
+        fetchAllDecks();
+    })
+
+
+</script>
+
 <script src="src/assets/js/layout.js"></script>
+<script src="src/assets/js/post-requests.js"></script>
