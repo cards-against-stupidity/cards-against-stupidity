@@ -26,26 +26,17 @@
             <div id="menuToggle">
                 <input type="checkbox" id="menuToggler" />
                 <!-- hamburger-->
-                <span></span>
-                <span></span>
-                <span></span>
-                <div id="nav-expanded" class="nav-items">
 
-                    <a href="study-view.html">
-                        <div>study mode</div>
-                    </a>
-                    <a href="edit-deck.html">
-                        <div>edit deck</div>
-                    </a>
-                    <a href="login.html">
-                        <div>user login</div>
-                    </a>
-                    <a href="decks-view.html">
-                        <div>all decks</div>
-                    </a>
-                    <a href="all-topics.html">
-                        <div>all topics</div>
-                    </a>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <div id="nav-expanded" class="nav-items">
+                    <a href="study-view.html"> <div> study mode</div> </a>
+                    <a href="edit-deck.html"> <div> edit deck</div> </a>
+                    <a href="login.html"> <div> user login</div> </a>
+                    <a href="decks-view.html"><div> all decks</div> </a>
+                    <a href="all-topics.html"><div> all topics</div> </a>
                 </div>
             </div>
         </nav>
@@ -53,8 +44,7 @@
             <section class="deck-mode">
                 <div class="deck-index">
 
-
-                    <!-- <div class="deck-wrapper">
+                <!--<div class="deck-wrapper">             
                         <div class="single-deck single-deck--top-card">
                             <div class="single-deck--options">
                                 <i class="fas fa-edit"></i>
@@ -62,30 +52,20 @@
                                 <i class="fas fa-trash"></i>
                                 <i class="fas fa-share"></i>
                             </div>
-                            <div>This is the deck name! </div>
+                        <div>This is the deck name! </div>     
                         </div>
-                        <div class="single-deck single-deck--first-card">
-                            first card
-                        </div>
-                        <div class="single-deck single-deck--second-card">
-                            second card
-                        </div>
-                        <div class="single-deck single-deck--third-card">
-                            third card
-                        </div>
-                    </div> -->
+                            <div class="single-deck single-deck--first-card">first card</div>
+                            <div class="single-deck single-deck--second-card">second card</div>
+                            <div class="single-deck single-deck--third-card">third card</div>
+                    </div>   -->
 
-                   
                     <div class=" deck-wrapper">
                         <div class="single-deck single-deck--top-card add-deck">
                             <div>Add A Deck </div>
-                          
-                                <input id="new-deck-name" name="title" type="text">
+                                <input id="new-deck-name" name="title" type="text" autocomplete="off"> 
                                 <button id="submit-new-deck"  >Submit</button>
-                  
                         </div>
                     </div>
-
                 </div>
             </section>
         </main>
@@ -95,6 +75,5 @@
     </div>
 </body>
 <script type="module" src="src/assets/js/renderViews.js"></script>
-
 <script src="src/assets/js/layout.js"></script>
 <!-- <script src="src/assets/js/post-requests.js"></script> -->
