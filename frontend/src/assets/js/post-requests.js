@@ -18,6 +18,5 @@ submitNewDeck.addEventListener('click', ()=>{
     let jsonObject = {
         'title' : document.querySelector('#new-deck-name').value
     }
-    console.log(jsonObject)
     addDeckToDb(jsonObject);
 })
