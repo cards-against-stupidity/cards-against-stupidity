@@ -17,12 +17,11 @@ class DeckCreator {
         this._topCardTitle = document.createElement('div')
       
     }
-
     addOptions(deckId) {
         let optionsWrapper = document.createElement('div');
         optionsWrapper.classList.add('single-deck--options');
         let edit = document.createElement('i');
-        edit.addEventListener('click', ()=>{renderEditDeck(editId)})
+        edit.addEventListener('click', ()=>{renderEditDeck(deckId)})
         edit.classList.add('fas', 'fa-edit')
         let eye = document.createElement('i');
         eye.classList.add('fas', 'fa-eye')
@@ -70,7 +69,6 @@ class DeckCreator {
         this._container.appendChild(this._thirdCard);
         return this._container;
     }
-
 }
 
 export {

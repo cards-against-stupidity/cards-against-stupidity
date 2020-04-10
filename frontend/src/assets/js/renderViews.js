@@ -1,35 +1,53 @@
 import {
     DeckCreator
 } from './deck-creator.js';
+import {
+    addDeckToDb
+} from './allCrud.js'
 
-const renderEditDeck = () => {
-     console.log('yes')}
 
+const renderEditDeck = (id) => {
+    console.log('yes')
 
+}
 
-const renderAllDecks = (jsonData) => {
-    const anchor = document.querySelector('.deck-index');
+const renderAllDecks = () => {
+    const anchor = document.querySelector('.deck-mode')
+    const deckIndex = document.querySelector('.deck-index');
+
+    const buildAllDecks = (jsonData) => {
     jsonData.forEach(deck => {
         const newDeck = new DeckCreator()
             .addOptions(deck.id)
             .setTopCardTitle(deck.title)
             // .setFirstCardTitle(deck.cards[0].term)
             .render()
-
-        anchor.appendChild(newDeck);
+        deckIndex.appendChild(newDeck);
     });
+
+    anchor.append(deckIndex);
+}
+fetch('http://localhost:8080/decks')
+    .then(results => results.json())
+    .then(buildAllDecks)
 }
 
-const fetchAllDecks = () => {
-    fetch('http://localhost:8080/decks')
-        .then(results => results.json())
-        .then(renderAllDecks)
-}
 
 window.addEventListener('load', () => {
-    fetchAllDecks();
+    renderAllDecks();
+})
+
+const submitNewDeck = document.querySelector('#submit-new-deck');
+submitNewDeck.addEventListener('click', () => {
+    let jsonObject = {
+        'title': document.querySelector('#new-deck-name').value
+    }
+    addDeckToDb(jsonObject);
+    renderAllDecks();
 })
 
 
-export{ renderEditDeck,
-renderAllDecks }
+export {
+    renderEditDeck,
+    renderAllDecks
+}
