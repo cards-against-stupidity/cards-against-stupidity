@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.cardsagainststupidity.models.Deck;
 import org.wcci.cardsagainststupidity.models.Topic;
+import org.wcci.cardsagainststupidity.storage.DeckStorage;
 import org.wcci.cardsagainststupidity.storage.TopicStorage;
 
 import java.util.Optional;
@@ -20,13 +21,15 @@ public class TopicControllerTests {
     
     private TopicController underTest;
     private TopicStorage mockStorage;
+    private DeckStorage mockDeckStorage;
     private MockMvc mockMvc;
     private Topic testTopic;
     
     @BeforeEach
     void setUp() {
         mockStorage = mock(TopicStorage.class);
-        underTest = new TopicController(mockStorage);
+        mockDeckStorage = mock(DeckStorage.class);
+        underTest = new TopicController(mockStorage, mockDeckStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         testTopic = new Topic("Test");
     }
