@@ -16,7 +16,11 @@ const newDeckInputs = document.querySelectorAll(`.add-deck-form input, textarea`
 const submitButton = document.querySelector('.submit-button');
 newDeckInputs.forEach(input => {
     input.addEventListener('focus', ()=>{
-
+        submitButton.addEventListener('keyup' ,(event)=>{
+            if(event.keyCode == 13){
+                console.log('enter')
+            }
+        })
         submitButton.classList.add('focused');
     })
     input.addEventListener('blur', ()=>{

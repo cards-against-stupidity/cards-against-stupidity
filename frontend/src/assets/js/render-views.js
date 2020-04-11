@@ -5,7 +5,6 @@ import {
     addDeckToDb
 } from './all-crud.js'
 
-
 const renderEditDeck = (id) => {
     console.log('yes')
 
@@ -13,8 +12,9 @@ const renderEditDeck = (id) => {
 const renderAllDecks = () => {
     const anchor = document.querySelector('.deck-mode')
     const deckIndex = document.querySelector('.deck-index');
-    anchor.removeChild(deckIndex);
+    // anchor.removeChild(anchor.firstChild)
     const buildAllDecks = (jsonData) => {
+
         jsonData.forEach(deck => {
             const newDeck = new DeckCreator()
                 .addOptions(deck.id)
@@ -23,12 +23,11 @@ const renderAllDecks = () => {
                 .render()
             deckIndex.appendChild(newDeck);
         });
-       
         anchor.appendChild(deckIndex);
     }
     fetch('http://localhost:8080/decks')
         .then(results => results.json())
-        .then(buildAllDecks)
+        .then(json => buildAllDecks(json))
 }
 
 window.addEventListener('load', () => {
@@ -36,11 +35,17 @@ window.addEventListener('load', () => {
 })
 
 const submitNewDeck = document.querySelector('#submit-new-deck');
+
+const input = document.querySelector('#new-deck-name')
+input.addEventListener('keyup', (e) => {
+        if(e.keyCode == 13){
+            addDeckToDb(input.value)
+        }
+})
+
 submitNewDeck.addEventListener('click', () => {
-    let jsonObject = {
-        'title': document.querySelector('#new-deck-name').value
-    }
-    addDeckToDb(jsonObject);
+    let newTitle = input.value
+    addDeckToDb(newTitle);
     renderAllDecks();
 })
 

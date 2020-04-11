@@ -617,6 +617,11 @@ form#add-deck{
   background-color: #f7f7f7;
 }
 
+.add-deck--form{
+  position: absolute;
+  display: inherit;
+}
+
 .submit-button {
   opacity: 0.2;
   position: relative;

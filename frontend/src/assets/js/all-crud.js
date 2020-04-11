@@ -4,15 +4,19 @@ const deleteDeck = (id) => {
     fetch ('http://localhost:8080/decks/delete?id=' + id, {
         method : 'DELETE'
     }).then(renderAllDecks)
+    location.reload();
 }
 
-const addDeckToDb = (deck) => {
+const addDeckToDb = (deckTitle) => {
+        let jsonObject = {
+            'title': deckTitle
+        }
     fetch('http://localhost:8080/decks/create', {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(deck)
+        body: JSON.stringify(jsonObject)
     })
 }
 
