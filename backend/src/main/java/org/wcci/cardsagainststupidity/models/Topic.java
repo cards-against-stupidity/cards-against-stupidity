@@ -17,7 +17,7 @@ public class Topic {
     @GeneratedValue
     private Long id;
     private String title;
-    @OneToMany(mappedBy = "topic")
+    @OneToMany(mappedBy = "topic", orphanRemoval = true)
     @JsonIgnoreProperties({"topic", "cards"})
     private Collection<Deck> decks = new ArrayList<>();
     @ManyToMany

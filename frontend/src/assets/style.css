@@ -28,11 +28,11 @@ h2{
 :root {
   --cas-brand1: #39363c;
   --cas-brand2: #dedede;
-  --cas-brand3: #272731;
+  --cas-brand3: #39363c;
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
-  --nav-width-open: 250px;
+  --nav-width-open: 200px;
   --nav-width-closed: 50px;
   --card-width: 30rem;
   --card-height: 30rem;
@@ -155,6 +155,7 @@ section {
   transition: width 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
+
 #nav-expanded div {
   display: flex;
   flex-direction: column;
@@ -169,6 +170,7 @@ section {
   margin-right: auto;
   font-size: 0.8em;
 }
+
 
 /* #nav-expanded {
   display: inline;
@@ -188,6 +190,7 @@ section {
   padding-left: 0px;
   transform-origin: 0% 0%;
   transition: width 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  
 }
 
 #wrapper.toggled #nav-expanded div {
@@ -634,3 +637,43 @@ form#add-deck{
   opacity: 1;
   transition: all 0.2s;
 }
+
+
+.topnav {
+  list-style-type: none;
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--cas-white);
+  font-weight: bolder;
+  background-color: #39363c;
+  overflow: hidden;
+  z-index: 97;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+}
+
+#wrapper.toggled .topnav {
+  list-style-type: none;
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 100px;
+  color: var(--cas-white);
+  font-weight: bolder;
+  background-color: #39363c;
+  overflow: hidden;
+  z-index: 97;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+}
+
+
