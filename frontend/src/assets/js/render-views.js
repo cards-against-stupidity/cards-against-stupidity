@@ -4,6 +4,7 @@ import {
 import {
     addDeckToDb
 } from './all-crud.js'
+import { CardCreator } from './builders/card-creator.js';
 
 const renderEditDeck = (id) => {
     console.log('yes')
@@ -46,18 +47,25 @@ submitNewDeck.addEventListener('click', () => {
 })
 
 const renderStudyMode = (deck) => {
+    anchor.removeChild(anchor.firstChild)
+    const deckIndex = document.createElement('div')
+    deckIndex.classList.add('study-mode--card-view')
 
- const studyMode = document.querySelector('.study-mode')
- const deckIndex = document.querySelector('.study-mode--card-view');
-    const buildStudyMode = (decks) => { 
-        deck.cards.forEach(card => {
-        console.log(card);
+    const studyMode = document.createElement('section')
+    studyMode.classList.add('study-mode')
+ 
+
+    deck.cards.forEach(card => {
+        console.log(card)
+       const newCard = new CardCreator()
+        .setFront('div', card.term)
+        .setBack('div', card.definition)
+        .render()
+    deckIndex.appendChild(newCard) 
     })
-    }
-
-    fetch('http://localhost:8080/decks')
-        .then(results => results.json())
-        .then(deck => buildStudyMode(deck))
+    
+ studyMode.appendChild(deckIndex)
+ anchor.append(studyMode)
 
 }
 
