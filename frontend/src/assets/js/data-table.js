@@ -1,7 +1,6 @@
 function onFormSubmit() {
   var formData = readFormData();
   insertNewRecord(formData);
-  
 
   resetForm();
 }
@@ -14,10 +13,22 @@ function readFormData() {
   return formData;
 }
 
+const deleteTopic= (topicId) => {
+  let id = {
+    id: parseInt(topicId)
+  }
+  fetch('http://localhost:8080/topics/delete', {
+      method: 'DELETE',
+      headers: {
+          "content-type": "application/json"
+      },
+      body: JSON.stringify(id)
+  })
+}
+
 function renderAllTopics(data) {
-  var table = document
-    .getElementById("dataTable")
-    .getElementsByTagName("tbody")[0];
+  var table = document.getElementById("dataTable");
+  // .getElementsByTagName("tbody")[0];
   data.forEach((topic) => {
     var newRow = table.insertRow(table.length);
     let cell1 = newRow.insertCell(0);
@@ -25,7 +36,10 @@ function renderAllTopics(data) {
     let cell2 = newRow.insertCell(1);
     cell2.innerHTML = topic.decks.length;
     let cell3 = newRow.insertCell(2);
-    cell3.innerHTML = `<a>Hi</a>`;
+    cell3.innerHTML = `<a>Delete</a>`;
+    cell3.addEventListener("click", () => {
+      deleteTopic(topic.id);
+    });
   });
 }
 
@@ -38,5 +52,3 @@ const fetchAllTopics = () => {
 window.addEventListener("load", () => {
   fetchAllTopics();
 });
-
-
