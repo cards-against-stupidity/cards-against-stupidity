@@ -14,15 +14,10 @@ function readFormData() {
 }
 
 const deleteTopic= (topicId) => {
-  let id = {
-    id: parseInt(topicId)
-  }
-  fetch('http://localhost:8080/topics/delete', {
+
+  fetch('http://localhost:8080/topics/delete?id=' + topicId, {
       method: 'DELETE',
-      headers: {
-          "content-type": "application/json"
-      },
-      body: JSON.stringify(id)
+      
   })
 }
 
