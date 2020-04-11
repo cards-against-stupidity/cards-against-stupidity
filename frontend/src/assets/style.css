@@ -646,7 +646,7 @@ form#add-deck{
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  color: white;
+  color: var(--cas-white);
   font-weight: bolder;
   background-color: #39363c;
   overflow: hidden;
@@ -665,7 +665,7 @@ form#add-deck{
   justify-content: space-evenly;
   align-items: center;
   padding-left: 100px;
-  color: white;
+  color: var(--cas-white);
   font-weight: bolder;
   background-color: #39363c;
   overflow: hidden;
