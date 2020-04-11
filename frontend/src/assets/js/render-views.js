@@ -1,9 +1,9 @@
 import {
     DeckCreator
-} from './deck-creator.js';
+} from './builders/deck-creator.js';
 import {
     addDeckToDb
-} from './allCrud.js'
+} from './all-crud.js'
 
 
 const renderEditDeck = (id) => {

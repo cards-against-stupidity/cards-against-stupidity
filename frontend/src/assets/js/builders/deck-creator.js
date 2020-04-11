@@ -1,5 +1,5 @@
-import {renderEditDeck} from './renderViews.js'
-import {deleteDeck} from './allCrud.js'
+import {renderEditDeck} from '../render-views.js'
+import {deleteDeck} from '../all-crud.js'
 
 class DeckCreator {
 

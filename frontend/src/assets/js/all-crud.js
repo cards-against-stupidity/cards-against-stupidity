@@ -1,4 +1,4 @@
-import {renderAllDecks } from './renderViews.js'
+import {renderAllDecks } from './render-views.js'
 
 const deleteDeck = (id) => {
     fetch ('http://localhost:8080/decks/delete?id=' + id, {
@@ -15,7 +15,5 @@ const addDeckToDb = (deck) => {
         body: JSON.stringify(deck)
     })
 }
-
-
 
 export {deleteDeck, addDeckToDb}
