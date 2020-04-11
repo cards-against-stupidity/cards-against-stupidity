@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Deck View
+        Topic View
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -49,14 +49,101 @@
                 </div>
             </div>
         </nav>
-        <main>
-      
-      
-        </main>
-        <footer>
-            some footer stuff
-        </footer>
-    </div>
-</body>
+        <table id="t1" style="margin-left: auto;margin-right: auto;margin-top: 10%;margin-bottom: auto">
+            <tr>
+                <td>
+                   <form autocomplete="off">
+                       <div>
+                            <label>Topic</label>
+                            <input type="text" name="topic" id="topic">
+                        </div>
+                        <!-- <div>
+                            <label># of Decks</label>
+                            <input type="text" name="#decks" id="numOfDecks">
+                        </div> -->
+                        <div class="form-action-button">
+                            <input type="submit" value="Submit">
+                        </div>
+                        
+                   </form> 
+                </td>
+                <td>
+                    <table class="list" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th># of Decks</th>
+                                <th></th>
 
-<script src="src/assets/js/layout.js"></script>
+                            </tr>
+                        </thead>
+                        
+                    </table>
+                </td>
+            </tr>
+
+        <script type="module" src="./src/assets/js/data-table.js"></script>
+
+        <style>
+            body > table {
+                width: 80%;
+            }
+
+            table {
+                padding: 20%;                
+                border: 3px;
+                border-collapse: collapse;
+                background-color:  rgb(75, 73, 73);
+            }
+
+            table.list {
+                width: 100%;
+            }
+
+            td, th {
+                font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+                color: white;
+                border: 1px solid #1d1c1c;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even), table.list thead>tr {
+                background-color: rgba(127, 131, 136, 0.836);
+            }
+
+            input[type=text], input[type=number] {
+                
+                background-color: rgba(127, 131, 136, 0.836);
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 2px solid rgba(63, 142, 211, 0.863);
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type=submit] {
+                background-color: rgb(80, 238, 31);
+                font-weight: bolder;
+                font-size: medium;
+                width: 40%;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            form div.form-action-buttons {
+                text-align: right;
+            }
+
+           
+
+            
+        </style>
+    </body>
+</html>
