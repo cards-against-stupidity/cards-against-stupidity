@@ -10,9 +10,9 @@ const renderEditDeck = (id) => {
 
 }
 const renderAllDecks = () => {
+    // location.reload();
     const anchor = document.querySelector('.deck-mode')
     const deckIndex = document.querySelector('.deck-index');
-    // anchor.removeChild(anchor.firstChild)
     const buildAllDecks = (jsonData) => {
 
         jsonData.forEach(deck => {
@@ -30,25 +30,22 @@ const renderAllDecks = () => {
         .then(json => buildAllDecks(json))
 }
 
-window.addEventListener('load', () => {
-    renderAllDecks();
-})
 
 const submitNewDeck = document.querySelector('#submit-new-deck');
 
 const input = document.querySelector('#new-deck-name')
 input.addEventListener('keyup', (e) => {
-        if(e.keyCode == 13){
-            addDeckToDb(input.value)
-        }
+    if (e.keyCode == 13) {
+        addDeckToDb(input.value)
+    }
 })
 
 submitNewDeck.addEventListener('click', () => {
-    let newTitle = input.value
+    let newTitle = input.value;
     addDeckToDb(newTitle);
-    renderAllDecks();
-})
 
+})
+renderAllDecks();
 export {
     renderEditDeck,
     renderAllDecks
