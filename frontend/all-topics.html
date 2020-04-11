@@ -63,16 +63,5 @@
         </footer>
     </div>
 </body>
-<script>
-    const fetchAllTopics = () => {
-        fetch('https://rickandmortyapi.com/api/character/') 
-        .then(results => results.json())
-        .then(data => console.log(data))
-        
-    }
 
-    window.addEventListener('load' , () =>{
-        fetchAllTopics();
-    })
-</script>
 <script src="src/assets/js/layout.js"></script>
