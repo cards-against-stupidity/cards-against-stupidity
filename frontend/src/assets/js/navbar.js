@@ -1,5 +1,5 @@
-window.onload = function setpageinnavbar() {
+window.onload = function setbarvalues() {
     document.getElementById('currentpage').innerHTML = document.title;
-    this.console.log('loaded');
+    document.getElementById('currentdeck').innerHTML = "Current Deck";
+    document.getElementById('username').innerHTML = "Username";
 }
- 
