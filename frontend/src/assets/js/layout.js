@@ -20,6 +20,9 @@ const mouseOverExpand = () => {
 }
 
 
+navBar.addEventListener('click', (e) => {
+    navBarExpand(e);
+
 navBar.addEventListener('mouseover', () => {
     mouseOverExpand();
 })
@@ -40,4 +43,3 @@ newDeckInputs.forEach(input => {
          submitButton.classList.remove('focused');
     })
 })
-

@@ -1,13 +1,69 @@
-import {login} from "./login.js";
+import {
+    login
+} from "./login.js";
+import * as rend from "./render-views.js"
 
-const addEventListener = (query, functionToRun) => {
+
+const clearView = () => {
+    anchor.removeChild(anchor.firstElementChild);
+}
+
+// window.addEventListener('load', () => {
+//     rend.renderAllDecks(anchor);
+// })
+
+const goToStudyMode = (deck) => {
+    clearView();
+    rend.renderStudyMode(deck);
+}
+
+const goToAllDecks = () => {
+    location.reload();
+    clearView();
+    rend.renderAllDecks(anchor);
+}
+
+const goToEditDeck = (deck) => {
+    // location.reload();
+    clearView();
+    rend.renderEditDeck(deck);
+}
+
+const goToAllTopics = () => {
+
+
+
+
+
+}
+
+const goToLogin = () => {
+
+
+
+
+
+}
+
+const addEventListener = (query, functionToRun, event) => {
     document.querySelectorAll(query).forEach(element => {
-        element.addEventListener('click', event => {
-            event.preventDefault();
+        element.addEventListener(event, e => {
+            e.preventDefault();
             // clearView();
             functionToRun();
         });
     });
 };
 
-addEventListener('#btn', login);
+
+const anchor = document.querySelector("#main-element")
+
+addEventListener('#btn', login, 'click');
+addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
+
+
+export {
+    goToStudyMode,
+    goToAllDecks,
+    goToEditDeck
+}

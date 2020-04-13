@@ -1,8 +1,13 @@
 import {renderStudyMode } from './render-views.js';
-const getVisibleCardsss = (allCards) =>{ 
+
+const createStudyMode = () =>{ 
+
+const allCards = document.querySelectorAll('.single-card')
 let i = 0;
+let currentCard = allCards[i];
+
 const getVisibleCards = () => { 
-    let currentCard = allCards[i];
+   
     currentCard.classList.add('current-card');
 
     if (currentCard.classList.contains('next-card')) {
@@ -65,9 +70,10 @@ const handleKey = (event) => {
     }
 }
 window.addEventListener('keyup', handleKey)
+
 getVisibleCards();
 };
 
 export {
-    getVisibleCardsss
+    createStudyMode
 };

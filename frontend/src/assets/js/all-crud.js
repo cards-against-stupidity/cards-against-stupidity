@@ -7,7 +7,7 @@ import {
 const deleteDeck = (id) => {
     fetch('http://localhost:8080/decks/delete?id=' + id, {
         method: 'DELETE'
-    }).then(renderAllDecks)
+    })
 }
 
 const addDeckToDb = (deck) => {
@@ -18,6 +18,7 @@ const addDeckToDb = (deck) => {
         },
         body: JSON.stringify(deck)
     })
+    location.reload();
 }
 
 const addCardToDb = (card) => {
