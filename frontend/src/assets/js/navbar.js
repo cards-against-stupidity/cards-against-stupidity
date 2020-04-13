@@ -4,3 +4,4 @@ window.onload = function setbarvalues() {
     document.getElementById('username').innerHTML = "Username";
     
 }
+
