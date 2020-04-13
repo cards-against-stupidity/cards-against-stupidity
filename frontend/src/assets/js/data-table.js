@@ -14,9 +14,10 @@ function readFormData() {
 }
 
 const deleteTopic= (topicId) => {
-  fetch('http://localhost:8080/topics/delete?id=' + topicId, {
+  fetch('http://localhost:8080/topics/delete?=id' + topicId, {
       method: 'DELETE',    
-  })
+  }).then(result => result.json())
+  .then(json => renderAllTopics(json))
 }
 
 
@@ -29,6 +30,9 @@ const addTopicToDb = (title) => {
   }
   fetch('http://localhost:8080/topics/create-topic', {
     method: 'PUT',
+    headers: {
+      "content-type": "application/json"
+    },
     body: JSON.stringify(jsonObject)
   })
 }
@@ -39,7 +43,7 @@ const input = document.querySelector('#topic');
 submitNewTopic.addEventListener('click', () => {
   console.log("ran")
   let newTopic = input.value;
-  addTopicToDb(newTopic);
+  addTopicToDb(newTopic)
 })
 
 // sunWork end ***
