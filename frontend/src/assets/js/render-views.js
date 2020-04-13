@@ -2,81 +2,98 @@ import {
     DeckCreator
 } from './builders/deck-creator.js';
 import {
-    addDeckToDb
-} from './all-crud.js'
-import { CardCreator } from './builders/card-creator.js';
-import{ getVisibleCardsss } from './study-mode.js';
+    addDeckToDb,
+    addCardToDb
+} from './all-crud.js';
+import {
+    CardCreator
+} from './builders/card-creator.js';
+
+
 
 const renderEditDeck = (id) => {
     console.log('yes')
 
 }
 const renderAllDecks = () => {
-    // location.reload();
-    const deckMode = document.querySelector('.deck-mode')
+    const anchor = document.querySelector('.deck-mode')
     const deckIndex = document.querySelector('.deck-index');
+    anchor.removeChild(deckIndex);
     const buildAllDecks = (jsonData) => {
-
         jsonData.forEach(deck => {
             const newDeck = new DeckCreator()
-                .addOptions(deck)
+                .addOptions(deck.id)
                 .setTopCardTitle(deck.title)
                 // .setFirstCardTitle(deck.cards[0].term)
                 .render()
             deckIndex.appendChild(newDeck);
         });
-        deckMode.appendChild(deckIndex);
-        anchor.appendChild(deckMode)
+
+        anchor.appendChild(deckIndex);
     }
     fetch('http://localhost:8080/decks')
         .then(results => results.json())
-        .then(json => buildAllDecks(json))
+        .then(buildAllDecks)
 }
 
-const submitNewDeck = document.querySelector('#submit-new-deck');
-const input = document.querySelector('#new-deck-name')
-input.addEventListener('keyup', (e) => {
-    if (e.keyCode == 13) {
-        addDeckToDb(input.value)
+// window.addEventListener('load', () => {
+//     renderAllDecks();
+// })
+
+// const submitNewDeck = document.querySelector('#submit-new-deck');
+// submitNewDeck.addEventListener('click', () => {
+//     let jsonObject = {
+//         'title': document.querySelector('#new-deck-name').value
+//     }
+//     addDeckToDb(jsonObject);
+//     renderAllDecks();
+// })
+
+const renderEditCard = (id) => {
+    console.log('yes')
+
+}
+
+const renderAllCards = () => {
+    const anchor = document.querySelector('.card-mode')
+    const cardIndex = document.querySelector('.card-index');
+    anchor.removeChild(cardIndex);
+    const buildAllCards = (jsonData) => {
+        jsonData.forEach(card => {
+            const newCard = new CardCreator()
+                .setFront(elementType.value)
+                .setBack(elementType.value)
+                .render()
+            cardIndex.appendChild(newCard);
+        });
+
+        anchor.appendChild(cardIndex);
     }
-})
-
-submitNewDeck.addEventListener('click', () => {
-    let newTitle = input.value;
-    addDeckToDb(newTitle);
-
-})
-
-const renderStudyMode = (deck) => {
-    const studyMode = document.createElement('section')
-    studyMode.classList.add('study-mode')
-
-    anchor.removeChild(anchor.firstElementChild)
-    const deckIndex = document.createElement('div')
-    deckIndex.classList.add('study-mode--card-view')
-
-    deck.cards.forEach(card => {
-
-       const newCard = new CardCreator()
-        .setFront('div')
-        .setFront('div', card.term)
-        .setBack('div', card.definition)
-        .render()
-    deckIndex.appendChild(newCard) 
-    })
-
- studyMode.appendChild(deckIndex)
- anchor.append(studyMode)
-   const allCards = document.querySelectorAll(".single-card");
- getVisibleCardsss(allCards);
+    fetch('http://localhost:8080/cards')
+        .then(results => results.json())
+        .then(buildAllCards)
 }
 
+window.addEventListener('load', () => {
+    renderAllCards();
+})
 
-const anchor = document.querySelector('#main-element')
-renderAllDecks();
+const submitNewCard = document.querySelector('#add-new-card');
+submitNewCard.addEventListener('click', () => {
+    let jsonObject = {
+        'term': document.querySelector('#new-card-title').value,
+        'definition': document.querySelector('#new-card-definition').value
+    }
+
+    addCardToDb(jsonObject);
+    renderAllCards();
+})
+
 
 export {
-    renderEditDeck,
+    renderEditCard,
+    renderAllCards,
+    addCardToDb,
     renderAllDecks,
-    renderStudyMode
+    renderEditDeck
 }
