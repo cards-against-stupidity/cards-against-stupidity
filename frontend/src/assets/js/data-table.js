@@ -14,12 +14,36 @@ function readFormData() {
 }
 
 const deleteTopic= (topicId) => {
-
   fetch('http://localhost:8080/topics/delete?id=' + topicId, {
-      method: 'DELETE',
-      
+      method: 'DELETE',    
   })
 }
+
+
+// sunWork start trying to wire up submit button ***
+
+const addTopicToDb = (title) => {
+  console.log("ran")
+  let jsonObject = {
+    title: title
+  }
+  fetch('http://localhost:8080/topics/create-topic', {
+    method: 'PUT',
+    body: JSON.stringify(jsonObject)
+  })
+}
+
+const submitNewTopic = document.querySelector('.form-action-button');
+const input = document.querySelector('#topic');
+
+submitNewTopic.addEventListener('click', () => {
+  console.log("ran")
+  let newTopic = input.value;
+  addTopicToDb(newTopic);
+})
+
+// sunWork end ***
+
 
 function renderAllTopics(data) {
   var table = document.getElementById("dataTable");
