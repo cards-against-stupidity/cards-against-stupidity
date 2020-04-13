@@ -49,35 +49,29 @@
                 </div>
             </div>
         </nav>
-        <table id="t1" style="margin-left: auto;margin-right: auto;margin-top: 10%;margin-bottom: auto">
+        <table id="t1">
             <tr>
-                <td>
-                   <form autocomplete="off">
+                <td id="1">
+                   <form  autocomplete="off">
                        <div>
                             <label>Topic</label>
-                            <input type="text" name="topic" id="topic">
+                            <input type="text" name="topic" id="topic" />
                         </div>
-                        <!-- <div>
-                            <label># of Decks</label>
-                            <input type="text" name="#decks" id="numOfDecks">
-                        </div> -->
                         <div class="form-action-button">
-                            <input type="submit" value="Submit">
+                            <input id="new-topic-name" type="submit" value="submit" />
                         </div>
                         
                    </form> 
                 </td>
-                <td>
+                <td id="2">
                     <table class="list" id="dataTable">
                         <thead>
                             <tr>
                                 <th>Topic</th>
                                 <th># of Decks</th>
                                 <th></th>
-
                             </tr>
-                        </thead>
-                        
+                        </thead>  
                     </table>
                 </td>
             </tr>
@@ -87,6 +81,16 @@
         <style>
             body > table {
                 width: 80%;
+            
+            }
+
+            #td1 {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            #td2 {
+                vertical-align: bottom;
             }
 
             table {
@@ -94,6 +98,10 @@
                 border: 3px;
                 border-collapse: collapse;
                 background-color:  rgb(75, 73, 73);
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 10%;
+                margin-bottom: auto;
             }
 
             table.list {
@@ -112,7 +120,7 @@
                 background-color: rgba(127, 131, 136, 0.836);
             }
 
-            input[type=text], input[type=number] {
+            input[type=text] {
                 
                 background-color: rgba(127, 131, 136, 0.836);
                 width: 100%;
@@ -140,10 +148,7 @@
             form div.form-action-buttons {
                 text-align: right;
             }
-
-           
-
-            
+   
         </style>
     </body>
 </html>
