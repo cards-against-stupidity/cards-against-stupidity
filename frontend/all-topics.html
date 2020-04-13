@@ -51,7 +51,7 @@
         </nav>
         <table id="t1">
             <tr>
-                <td>
+                <td id="1">
                    <form  autocomplete="off">
                        <div>
                             <label>Topic</label>
@@ -63,7 +63,7 @@
                         
                    </form> 
                 </td>
-                <td>
+                <td id="2">
                     <table class="list" id="dataTable">
                         <thead>
                             <tr>
@@ -81,6 +81,16 @@
         <style>
             body > table {
                 width: 80%;
+            
+            }
+
+            #td1 {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            #td2 {
+                vertical-align: bottom;
             }
 
             table {

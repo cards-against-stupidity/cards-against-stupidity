@@ -14,11 +14,12 @@ function readFormData() {
 }
 
 const deleteTopic= (topicId) => {
-  fetch('http://localhost:8080/topics/delete?=id' + topicId, {
+  fetch('http://localhost:8080/topics/delete?id=' + topicId, {
       method: 'DELETE',    
   }).then(result => result.json())
   .then(json => renderAllTopics(json))
 }
+
 
 
 // sunWork start trying to wire up submit button ***
@@ -46,12 +47,16 @@ submitNewTopic.addEventListener('click', () => {
   addTopicToDb(newTopic)
 })
 
+
 // sunWork end ***
 
 
 function renderAllTopics(data) {
   var table = document.getElementById("dataTable");
-  // .getElementsByTagName("tbody")[0];
+  for (let i = table.rows.length - 1; i > 0; i--) {
+    table.deleteRow(i)
+  }
+
   data.forEach((topic) => {
     var newRow = table.insertRow(table.length);
     let cell1 = newRow.insertCell(0);
