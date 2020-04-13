@@ -92,7 +92,7 @@ const renderStudyMode = (deck) => {
 }
 
 const renderEditCard = (id) => {
-    console.log('yes')
+  
 
 }
 
