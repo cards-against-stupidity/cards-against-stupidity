@@ -23,6 +23,12 @@ const goToAllDecks = () => {
     rend.renderAllDecks(anchor);
 }
 
+const goToEditDeck = (deck) => {
+    // location.reload();
+    clearView();
+    rend.renderEditDeck(deck);
+}
+
 const goToAllTopics = () => {
 
 
@@ -58,5 +64,6 @@ addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
 
 export {
     goToStudyMode,
-    goToAllDecks
+    goToAllDecks,
+    goToEditDeck
 }

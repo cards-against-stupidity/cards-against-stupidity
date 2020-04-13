@@ -1,12 +1,11 @@
-import {
-    renderEditDeck
-} from '../render-views.js'
+
 import {
     deleteDeck
 } from '../all-crud.js'
 import {
     goToStudyMode,
     goToAllDecks,
+    goToEditDeck
 } from '../app.js'
 
 
@@ -31,7 +30,7 @@ class DeckCreator {
         optionsWrapper.classList.add('single-deck--options');
         let edit = document.createElement('i');
         edit.addEventListener('click', () => {
-            renderEditDeck(deck.id)
+            goToEditDeck(deck)
         })
         edit.classList.add('fas', 'fa-edit')
         let eye = document.createElement('i');

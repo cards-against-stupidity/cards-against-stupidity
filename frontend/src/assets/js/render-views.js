@@ -2,12 +2,16 @@ import {
     DeckCreator
 } from './builders/deck-creator.js';
 import {
+    CardCreator
+} from './builders/card-creator.js';
+import {
+    EditDeckBuilder
+} from './builders/edit-deck-builder.js';
+import {
     addDeckToDb,
     addCardToDb
 } from './all-crud.js';
-import {
-    CardCreator
-} from './builders/card-creator.js';
+
 import {
     createStudyMode
 } from "./study-mode.js"
@@ -15,8 +19,12 @@ import {
     goToStudyMode
 } from "./app.js"
 
-const renderEditDeck = (id) => {
-    console.log(id)
+const renderEditDeck = (deck) => {
+    deck.cards.forEach(card => {
+        console.log(card.term)
+        let newCard = new EditDeckBuilder ()
+    })
+
 }
 
 const renderAllDecks = (anchor) => {
