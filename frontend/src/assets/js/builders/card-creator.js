@@ -1,3 +1,5 @@
+import {renderStudyMode} from '../render-views.js';
+
 class CardCreator {
 
     constructor() {

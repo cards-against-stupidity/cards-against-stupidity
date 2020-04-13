@@ -1,10 +1,14 @@
 import {
-    renderEditDeck,
-    renderStudyMode
+    renderEditDeck
 } from '../render-views.js'
 import {
     deleteDeck
 } from '../all-crud.js'
+import {
+    goToStudyMode,
+    goToAllDecks,
+} from '../app.js'
+
 
 class DeckCreator {
 
@@ -33,11 +37,12 @@ class DeckCreator {
         let eye = document.createElement('i');
         eye.classList.add('fas', 'fa-eye')
         eye.addEventListener('click', () => {
-            renderStudyMode(deck)
+            goToStudyMode(deck)
         })
         let trash = document.createElement('i');
         trash.addEventListener('click', () => {
             deleteDeck(deck.id)
+            goToAllDecks();
         })
         trash.classList.add('fas', 'fa-trash')
         let share = document.createElement('i');
@@ -56,6 +61,32 @@ class DeckCreator {
         return this;
     }
 
+    makeIntoAddDeck(){
+        this._topCard.classList.add('add-deck')
+        // const addDiv = document.createElement('div')
+        const input = document.createElement('input')
+        const button = document.createElement('button')
+        this._topCardTitle.innerText = 'Add A Deck'
+
+        input.id = 'new-deck-name'
+        input.name = 'title'
+        input.type = 'text'
+        input.autocomplete = 'off'
+
+        button.id = 'submit-new-deck'
+        button.name = 'submit-new-deck'
+        button.type = 'submit'
+        button.innerText = "Submit"
+
+        this._topCard.appendChild(this._topCardTitle);
+        this._topCard.appendChild(input);
+
+        this._topCard.appendChild(button);
+        
+        this._container.appendChild(this._topCard);
+        return this._container;
+    }
+
     setFirstCardTitle(title) {
         this._firstCard.innerText = title;
         return this;
@@ -71,12 +102,19 @@ class DeckCreator {
         return this;
     }
 
+    renderSubCards(){
+
+          return this._container;
+
+    }
     render() {
         this._topCard.appendChild(this._topCardTitle);
         this._container.appendChild(this._topCard);
         this._container.appendChild(this._firstCard);
         this._container.appendChild(this._secondCard);
         this._container.appendChild(this._thirdCard);
+       
+      
         return this._container;
     }
 }
