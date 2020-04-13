@@ -21,7 +21,7 @@ const addDeckToDb = (deck) => {
 }
 
 const addCardToDb = (card) => {
-    fetch('http://localhost:8080/desks/2/add-card', {
+    fetch('http://localhost:8080/decks/2/add-card', {
         method: 'PUT',
         headers: {
             "content-type": "application/json"

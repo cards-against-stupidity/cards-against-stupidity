@@ -2,14 +2,12 @@ import {
     DeckCreator
 } from './builders/deck-creator.js';
 import {
-    addDeckToDb
-} from './all-crud.js'
+    addDeckToDb,
+    addCardToDb
+} from './all-crud.js';
 import {
     CardCreator
 } from './builders/card-creator.js';
-import {
-    addCardToDb
-} from './all-crud.js'
 
 
 
@@ -38,18 +36,18 @@ const renderAllDecks = () => {
         .then(buildAllDecks)
 }
 
-window.addEventListener('load', () => {
-    renderAllDecks();
-})
+// window.addEventListener('load', () => {
+//     renderAllDecks();
+// })
 
-const submitNewDeck = document.querySelector('#submit-new-deck');
-submitNewDeck.addEventListener('click', () => {
-    let jsonObject = {
-        'title': document.querySelector('#new-deck-name').value
-    }
-    addDeckToDb(jsonObject);
-    renderAllDecks();
-})
+// const submitNewDeck = document.querySelector('#submit-new-deck');
+// submitNewDeck.addEventListener('click', () => {
+//     let jsonObject = {
+//         'title': document.querySelector('#new-deck-name').value
+//     }
+//     addDeckToDb(jsonObject);
+//     renderAllDecks();
+// })
 
 const renderEditCard = (id) => {
     console.log('yes')
@@ -83,18 +81,19 @@ window.addEventListener('load', () => {
 const submitNewCard = document.querySelector('#add-new-card');
 submitNewCard.addEventListener('click', () => {
     let jsonObject = {
-        'term': document.querySelector('#new-card').value
+        'term': document.querySelector('#new-card-title').value,
+        'definition': document.querySelector('#new-card-definition').value
     }
+
     addCardToDb(jsonObject);
     renderAllCards();
 })
 
-export {
-    renderEditDeck,
-    renderAllDecks
-}
 
 export {
     renderEditCard,
-    renderAllCards
+    renderAllCards,
+    addCardToDb,
+    renderAllDecks,
+    renderEditDeck
 }
