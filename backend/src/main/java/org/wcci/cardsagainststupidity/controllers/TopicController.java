@@ -43,12 +43,11 @@ public class TopicController {
         
         if (topicOptional.isPresent()) {
             Deck newDeck = new Deck(deckToAdd.getTitle(), topicOptional.get());
-            
-            
+
+            deckStorage.save(newDeck);
         }
     
-        topicOptional.ifPresent(topic -> topic.getDecks().add(deckToAdd));
-        
+
         return topicStorage.findAllTopics();
     }
 

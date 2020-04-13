@@ -8,19 +8,15 @@ const clearView = () => {
     anchor.removeChild(anchor.firstElementChild);
 }
 
-// window.addEventListener('load', () => {
-//     rend.renderAllDecks(anchor);
-// })
-
 const goToStudyMode = (deck) => {
     clearView();
     rend.renderStudyMode(deck);
 }
 
-const goToAllDecks = () => {
-    location.reload();
+const goToAllDecks = (topic) => {
+    // location.reload();
     clearView();
-    rend.renderAllDecks(anchor);
+    rend.renderAllDecks(anchor, topic);
 }
 
 const goToEditDeck = (deck) => {
@@ -30,11 +26,7 @@ const goToEditDeck = (deck) => {
 }
 
 const goToAllTopics = () => {
-
-
-
-
-
+    anchor.appendChild(rend.renderAllTopics())
 }
 
 const goToLogin = () => {
@@ -58,12 +50,16 @@ const addEventListener = (query, functionToRun, event) => {
 
 const anchor = document.querySelector("#main-element")
 
+// window.addEventListener('load', ()=> goToAllTopics())
+
 addEventListener('#btn', login, 'click');
 addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
+addEventListener('#all-topics', () => goToAllTopics(), 'click');
 
 
 export {
     goToStudyMode,
     goToAllDecks,
-    goToEditDeck
+    goToEditDeck,
+    goToAllTopics
 }

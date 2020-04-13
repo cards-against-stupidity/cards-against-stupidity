@@ -8,26 +8,80 @@ import {
     EditDeckBuilder
 } from './builders/edit-deck-builder.js';
 import {
+    TopicCreator
+} from './builders/topic-creator.js';
+import {
     addDeckToDb,
-    addCardToDb
+    addCardToDb,
+    deleteTopic
 } from './all-crud.js';
 
 import {
     createStudyMode
-} from "./study-mode.js"
-import { 
-    goToStudyMode
-} from "./app.js"
+} from "./study-mode.js";
+import { goToAllDecks } from './app.js';
 
 const renderEditDeck = (deck) => {
+
+
     deck.cards.forEach(card => {
         console.log(card.term)
-        let newCard = new EditDeckBuilder ()
+        let newCard = new EditDeckBuilder()
+
     })
 
 }
 
-const renderAllDecks = (anchor) => {
+const renderAllTopics = (anchor) => {
+    const topicSection = document.createElement('section')
+    topicSection.classList.add('all-topics')
+
+    const topicIndex = document.createElement('div')
+    topicIndex.classList.add('topics-display');
+
+    let header = new TopicCreator()
+        .newElement('div', "Topic Title")
+        .newElement('div', "# Decks")
+        .newElement('div', "")
+        .render();
+    topicIndex.appendChild(header)
+
+    const createFooter = () => {
+        let footer = new TopicCreator()
+            .newElement('input', " ")
+            .newElement('div', "")
+            .newElement('button', "Add New")
+        return footer.render();
+    }
+
+
+    const buildAllTopics = (topics) => {
+     
+        topics.forEach((topic) => {
+            let newTopic = new TopicCreator()
+            .setTitle(topic.title)
+            .newElement('div', topic.decks.length)
+                .addCrud(topic)
+                .render();
+            topicIndex.appendChild(newTopic)
+        })
+        topicIndex.appendChild(createFooter());
+        topicSection.appendChild(topicIndex);
+      
+
+        topics.forEach((topic) => {
+            let title = document.querySelector(`#${topic.title}`)
+            title.addEventListener('click', ()=>goToAllDecks(topic))
+        })
+    }
+    fetch('http://localhost:8080/topics')
+        .then(results => results.json())
+        .then(allTopics => buildAllTopics(allTopics))
+
+    return topicSection;
+}
+
+const renderAllDecks = (anchor, topic) => {
     const deckMode = document.createElement('Section');
     const deckIndex = document.createElement('div')
     deckMode.classList.add('deck-mode')
@@ -41,22 +95,26 @@ const renderAllDecks = (anchor) => {
         const input = newDeckElement.querySelector(`input`);
         submitNewDeck.addEventListener('click', () => {
             let newDeckJSON = {
-                title : input.value
+                title: input.value
             }
-            addDeckToDb(newDeckJSON);
+   
+            addDeckToDb(topic, newDeckJSON);
+            // buildAllDecks();
         })
+
         input.addEventListener('keyup', (e) => {
             if (e.keyCode == 13) {
-                       let newDeckJSON = {
-                           title: input.value
-                       }
+                let newDeckJSON = {
+                    title: input.value
+                }
                 addDeckToDb(newDeckJSON)
+
             }
         })
     }
 
     const buildAllDecks = (jsonData) => {
-        jsonData.forEach(deck => {
+        jsonData.decks.forEach(deck => {
             const newDeck = new DeckCreator()
                 .addOptions(deck)
                 .setTopCardTitle(deck.title)
@@ -69,7 +127,7 @@ const renderAllDecks = (anchor) => {
         anchor.appendChild(deckMode)
 
     }
-    fetch('http://localhost:8080/decks')
+    fetch('http://localhost:8080/topics/Tech')
         .then(results => results.json())
         .then(json => buildAllDecks(json))
 }
@@ -100,7 +158,7 @@ const renderStudyMode = (deck) => {
 }
 
 const renderEditCard = (id) => {
-  
+
 
 }
 
@@ -135,16 +193,12 @@ const renderAllCards = () => {
     })
 }
 
-
-
-
-
-
 export {
     renderEditCard,
     renderAllCards,
     addCardToDb,
     renderAllDecks,
     renderEditDeck,
-    renderStudyMode
+    renderStudyMode,
+    renderAllTopics
 }

@@ -21,7 +21,8 @@ const mouseOverExpand = () => {
 
 
 navBar.addEventListener('click', (e) => {
-    navBarExpand(e);})
+    navBarExpand(e);
+})
 
 navBar.addEventListener('mouseover', () => {
     mouseOverExpand();
@@ -32,7 +33,7 @@ navBar.addEventListener('mouseleave', () => {
 })
 
 
-const newDeckInputs = document.querySelectorAll(`.add-deck-form input, textarea`);
+const newDeckInputs = document.querySelectorAll(`.add-deck-form input, textarea`)
 const submitButton = document.querySelector('.submit-button');
 newDeckInputs.forEach(input => {
     input.addEventListener('focus', ()=>{

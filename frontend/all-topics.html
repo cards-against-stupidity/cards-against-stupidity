@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div id="wrapper"> 
+    <div id="wrapper">
         <nav role="navigation" id="mainNav">
             <div id="menuToggle">
                 <input type="checkbox" id="menuToggler" />
@@ -49,106 +49,143 @@
                 </div>
             </div>
         </nav>
-        <table id="t1">
+        <main>
+            <section class="all-topics">
+                <div class="topics-display">
+
+                    <div class="single-topic">
+                        <div> Title</div>
+                        <div> Numcards</div>
+                        <div> Crud </div>
+                    </div>
+
+                    <div class="single-topic">
+                        <div>Topic Title</div>
+                        <div>Topic NumCards </div>
+                        <div>
+                            <button>Create</button>
+                            <button>Read</button>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                    </div>
+
+
+
+                    
+                </div>
+                
+
+                <!-- <table id="t1">
             <tr>
                 <td id="1">
-                   <form  autocomplete="off">
-                       <div>
+                    <form autocomplete="off">
+                        <div>
                             <label>Topic</label>
                             <input type="text" name="topic" id="topic" />
                         </div>
                         <div class="form-action-button">
                             <input id="new-topic-name" type="submit" value="submit" />
                         </div>
-                        
-                   </form> 
-                </td>
-                <td id="2">
-                    <table class="list" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>Topic</th>
-                                <th># of Decks</th>
-                                <th></th>
-                            </tr>
-                        </thead>  
-                    </table>
+                    </form>
                 </td>
             </tr>
+        </table>
 
-        <script type="module" src="./src/assets/js/data-table.js"></script>
 
-        <style>
-            body > table {
-                width: 80%;
-            
-            }
+        <table class="list" id="dataTable">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th># of Decks</th>
+                    <th></th>
+                </tr>
+            </thead>
+           <tr>
+               <td>hello</td>
+                  <td>hello</td>
+                     <td>hello</td>
+           </tr>
+        </table> -->
+    </div>
+    </section>
+    </main>
 
-            #td1 {
-                display: table-cell;
-                vertical-align: top;
-            }
+    <script type="module" src="./src/assets/js/data-table.js"></script>
 
-            #td2 {
-                vertical-align: bottom;
-            }
+    <style>
+        body>table {
+            width: 80%;
 
-            table {
-                padding: 20%;                
-                border: 3px;
-                border-collapse: collapse;
-                background-color:  rgb(75, 73, 73);
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 10%;
-                margin-bottom: auto;
-            }
+        }
 
-            table.list {
-                width: 100%;
-            }
+        #td1 {
+            display: table-cell;
+            vertical-align: top;
+        }
 
-            td, th {
-                font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
-                color: white;
-                border: 1px solid #1d1c1c;
-                text-align: left;
-                padding: 8px;
-            }
+        #td2 {
+            vertical-align: bottom;
+        }
 
-            tr:nth-child(even), table.list thead>tr {
-                background-color: rgba(127, 131, 136, 0.836);
-            }
+        table {
+            padding: 20%;
+            border: 3px;
+            border-collapse: collapse;
+            background-color: rgb(75, 73, 73);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+            margin-bottom: auto;
+        }
 
-            input[type=text] {
-                
-                background-color: rgba(127, 131, 136, 0.836);
-                width: 100%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                display: inline-block;
-                border: 2px solid rgba(63, 142, 211, 0.863);
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
+        table.list {
+            width: 80%;
+        }
 
-            input[type=submit] {
-                background-color: rgb(80, 238, 31);
-                font-weight: bolder;
-                font-size: medium;
-                width: 40%;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
+        td,
+        th {
+            font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+            color: white;
+            border: 1px solid #1d1c1c;
+            text-align: left;
+            padding: 8px;
+        }
 
-            form div.form-action-buttons {
-                text-align: right;
-            }
-   
-        </style>
-    </body>
+        tr:nth-child(even),
+        table.list thead>tr {
+            background-color: rgba(127, 131, 136, 0.836);
+        }
+
+        input[type=text] {
+
+            background-color: rgba(127, 131, 136, 0.836);
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 2px solid rgba(63, 142, 211, 0.863);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            background-color: rgb(80, 238, 31);
+            font-weight: bolder;
+            font-size: medium;
+            width: 40%;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form div.form-action-buttons {
+            text-align: right;
+        }
+    </style>
+</body>
+
 </html>

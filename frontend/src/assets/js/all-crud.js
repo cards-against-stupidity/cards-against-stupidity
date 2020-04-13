@@ -1,7 +1,15 @@
 import {
-    renderAllDecks,
     renderAllCards
 } from './render-views.js'
+import { goToAllDecks } from './app.js'
+
+
+const deleteTopic = (topicId) => {
+    fetch('http://localhost:8080/topics/delete?id=' + topicId, {
+            method: 'DELETE',
+        }).then(result => result.json())
+     
+}
 
 
 const deleteDeck = (id) => {
@@ -10,15 +18,15 @@ const deleteDeck = (id) => {
     })
 }
 
-const addDeckToDb = (deck) => {
-    fetch('http://localhost:8080/decks/create', {
+const addDeckToDb = (id, deck) => {
+    console.log(id.id);
+    fetch(`http://localhost:8080/topics/${id.id}/add-deck`, {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
         },
         body: JSON.stringify(deck)
     })
-    location.reload();
 }
 
 const addCardToDb = (card) => {
@@ -41,5 +49,6 @@ export {
     deleteDeck,
     addDeckToDb,
     deleteCard,
-    addCardToDb
+    addCardToDb,
+    deleteTopic
 }
