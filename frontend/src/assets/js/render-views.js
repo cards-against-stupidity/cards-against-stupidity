@@ -5,6 +5,7 @@ import {
     addDeckToDb
 } from './all-crud.js'
 import { CardCreator } from './builders/card-creator.js';
+import{ getVisibleCardsss } from './study-mode.js';
 
 const renderEditDeck = (id) => {
     console.log('yes')
@@ -47,31 +48,33 @@ submitNewDeck.addEventListener('click', () => {
 })
 
 const renderStudyMode = (deck) => {
-    anchor.removeChild(anchor.firstChild)
+    const studyMode = document.createElement('section')
+    studyMode.classList.add('study-mode')
+
+    anchor.removeChild(anchor.firstElementChild)
     const deckIndex = document.createElement('div')
     deckIndex.classList.add('study-mode--card-view')
 
-    const studyMode = document.createElement('section')
-    studyMode.classList.add('study-mode')
- 
-
     deck.cards.forEach(card => {
-        console.log(card)
+
        const newCard = new CardCreator()
+        .setFront('div')
         .setFront('div', card.term)
         .setBack('div', card.definition)
         .render()
     deckIndex.appendChild(newCard) 
     })
-    
+
  studyMode.appendChild(deckIndex)
  anchor.append(studyMode)
-
+   const allCards = document.querySelectorAll(".single-card");
+ getVisibleCardsss(allCards);
 }
 
 
 const anchor = document.querySelector('#main-element')
 renderAllDecks();
+
 export {
     renderEditDeck,
     renderAllDecks,
