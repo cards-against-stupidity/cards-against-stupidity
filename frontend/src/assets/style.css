@@ -617,6 +617,11 @@ form#add-deck{
   background-color: #f7f7f7;
 }
 
+.add-deck--form{
+  position: absolute;
+  display: inherit;
+}
+
 .submit-button {
   opacity: 0.2;
   position: relative;
@@ -648,9 +653,9 @@ form#add-deck{
   align-items: center;
   color: var(--cas-white);
   font-weight: bolder;
-  background-color: #39363c;
+  background-color: var(--cas-brand1);
   overflow: hidden;
-  z-index: 97;
+  z-index: 100;
   position: fixed;
   top: 0;
   width: 100%;
@@ -667,7 +672,7 @@ form#add-deck{
   padding-left: 100px;
   color: var(--cas-white);
   font-weight: bolder;
-  background-color: #39363c;
+  background-color: var(--cas-brand1);
   overflow: hidden;
   z-index: 97;
   position: fixed;
@@ -676,4 +681,21 @@ form#add-deck{
   height: 50px;
 }
 
+.dropdown {
+  display: inline-block;
+  position: fixed;
+  margin: -8px;
+}
 
+.dropdown-content {
+  display: none;
+  background-color: var(--cas-brand1);
+  min-width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

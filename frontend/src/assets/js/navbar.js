@@ -1,5 +1,6 @@
-window.onload = function setpageinnavbar() {
+window.onload = function setbarvalues() {
+    console.log('whatwhatinthe');
     document.getElementById('currentpage').innerHTML = document.title;
-    this.console.log('loaded');
+    document.getElementById('username').innerHTML = "Username";
+    
 }
- 

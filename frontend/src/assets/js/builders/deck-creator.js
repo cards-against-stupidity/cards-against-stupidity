@@ -1,5 +1,10 @@
-import {renderEditDeck} from '../render-views.js'
-import {deleteDeck} from '../all-crud.js'
+import {
+    renderEditDeck,
+    renderStudyMode
+} from '../render-views.js'
+import {
+    deleteDeck
+} from '../all-crud.js'
 
 class DeckCreator {
 
@@ -15,20 +20,25 @@ class DeckCreator {
         this._topCard = document.createElement('div');
         this._topCard.classList = ('single-deck single-deck--top-card')
         this._topCardTitle = document.createElement('div')
-      
+
     }
-    addOptions(deckId) {
+    addOptions(deck) {
         let optionsWrapper = document.createElement('div');
         optionsWrapper.classList.add('single-deck--options');
         let edit = document.createElement('i');
-        edit.addEventListener('click', ()=>{renderEditDeck(deckId)})
+        edit.addEventListener('click', () => {
+            renderEditDeck(deck.id)
+        })
         edit.classList.add('fas', 'fa-edit')
         let eye = document.createElement('i');
         eye.classList.add('fas', 'fa-eye')
+        eye.addEventListener('click', () => {
+            renderStudyMode(deck)
+        })
         let trash = document.createElement('i');
-         trash.addEventListener('click', () => {
-             deleteDeck(deckId)
-         })
+        trash.addEventListener('click', () => {
+            deleteDeck(deck.id)
+        })
         trash.classList.add('fas', 'fa-trash')
         let share = document.createElement('i');
         share.classList.add('fas', 'fa-share')
