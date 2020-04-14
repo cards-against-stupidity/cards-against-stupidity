@@ -41,7 +41,6 @@ class DeckCreator {
         let trash = document.createElement('i');
         trash.addEventListener('click', () => {
             deleteDeck(deck.id)
-            goToAllDecks();
         })
         trash.classList.add('fas', 'fa-trash')
         let share = document.createElement('i');

@@ -7,6 +7,8 @@ let i = 0;
 let currentCard = allCards[i];
 
 const getVisibleCards = () => { 
+
+    currentCard = allCards[i];
    
     currentCard.classList.add('current-card');
 

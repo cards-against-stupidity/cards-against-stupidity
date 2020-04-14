@@ -173,14 +173,25 @@ const renderStudyMode = (deck) => {
     deckIndex.classList.add('study-mode--card-view');
 
     const buildStudyMode = (deckResult) => {
-        deckResult.cards.forEach((card) => {
+        // deckResult.cards.forEach((card) => {
+        //     let newCard = new CardCreator()
+        //         .setFront('div', card.term)
+        //         .setBack('div', card.definition)
+        //         .render();
+        //     deckIndex.appendChild(newCard)
+        // })
+        for (let i = 0; i < deckResult.cards.length - 1; i++) {
             let newCard = new CardCreator()
-                .setFront('div', card.term)
-                .setBack('div', card.definition)
-                .render();
-            deckIndex.appendChild(newCard)
-        })
-        studyMode.appendChild(deckIndex)
+            .setFront('div', deckResult.cards[i].term)
+            .setBack('div', deckResult.cards[i].definition)
+            .render();
+
+            if (i === 0) {
+                newCard.classList.add('current-card');
+            }
+            deckIndex.appendChild(newCard);
+        }
+        studyMode.appendChild(deckIndex);
         anchor.appendChild(studyMode);
         createStudyMode();
     }
