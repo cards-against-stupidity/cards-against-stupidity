@@ -37,7 +37,7 @@ class EditDeckBuilder {
         this._button.id = 'add-new-card';
         this._container.append(this._button);
         this._button.addEventListener('click', ()=>{
-            addCardToDb(inputTerm.value, inputDef.value)
+            addCardToDb(deck.id, inputTerm.value, inputDef.value)
             
         })
         return this;
