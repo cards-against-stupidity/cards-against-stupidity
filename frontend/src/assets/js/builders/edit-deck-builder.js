@@ -43,6 +43,7 @@ class EditDeckBuilder {
 
         this._button.innerText = 'submit';
         this._button.id = 'add-new-card';
+
         // this._container.append(this._button);
         this._container.addEventListener('keyup', (e)=>{
             if(e.keyCode == 13){ 
