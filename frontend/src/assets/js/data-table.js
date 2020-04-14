@@ -48,7 +48,6 @@ submitNewTopic.addEventListener('click', () => {
 })
 
 
-// sunWork end ***
 
 
 function renderAllTopics(data) {

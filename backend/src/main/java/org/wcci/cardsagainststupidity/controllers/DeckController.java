@@ -51,21 +51,16 @@ public class DeckController {
     
     
     @PutMapping("/{id}/add-card")
-    public Collection<Deck> addCardToDeck(@PathVariable Long id, @RequestBody Card card) {
+    public Deck addCardToDeck(@PathVariable Long id, @RequestBody Card card) {
         Optional<Deck> deckOptional = deckStorage.findById(id);
-        
         if (deckOptional.isPresent()) {
-        
+            Deck returnTo = deckOptional.get();
             Card newCard = new Card(card.getTerm(), card.getDefinition(),
                     deckOptional.get());
-                    
             cardStorage.save(newCard);
+            return returnTo;
+        } else {
+            return null;
         }
-        
-        
-        
-        return deckStorage.findAllDecks();
     }
-    
-    
 }

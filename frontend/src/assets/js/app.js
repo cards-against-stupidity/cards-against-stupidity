@@ -5,36 +5,33 @@ import * as rend from "./render-views.js"
 
 
 const clearView = () => {
-    anchor.removeChild(anchor.firstElementChild);
+    if(anchor.firstElementChild != null){ 
+    anchor.removeChild(anchor.firstElementChild)
+    }
 }
 
-// window.addEventListener('load', () => {
-//     rend.renderAllDecks(anchor);
-// })
-
 const goToStudyMode = (deck) => {
+    // console.log(deck)
     clearView();
     rend.renderStudyMode(deck);
 }
 
-const goToAllDecks = () => {
-    location.reload();
+const goToAllDecks = (topic) => {
+    // location.reload();
     clearView();
-    rend.renderAllDecks(anchor);
+    anchor.appendChild(rend.renderAllDecks(topic));
 }
 
 const goToEditDeck = (deck) => {
     // location.reload();
     clearView();
-    rend.renderEditDeck(deck);
+    anchor.appendChild(rend.renderEditDeck(deck));
 }
 
 const goToAllTopics = () => {
-
-
-
-
-
+    //  location.reload();
+    clearView();
+    anchor.appendChild(rend.renderAllTopics())
 }
 
 const goToLogin = () => {
@@ -58,12 +55,16 @@ const addEventListener = (query, functionToRun, event) => {
 
 const anchor = document.querySelector("#main-element")
 
+// window.addEventListener('load', ()=> goToAllTopics())
+
 addEventListener('#btn', login, 'click');
 addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
+addEventListener('#all-topics', () => goToAllTopics(), 'click');
 
 
 export {
     goToStudyMode,
     goToAllDecks,
-    goToEditDeck
+    goToEditDeck,
+    goToAllTopics
 }
