@@ -47,12 +47,12 @@ const addDeckToDb = (topic, deck) => {
 
 
 // CARDS // 
-const addCardToDb = (term, def) => {
+const addCardToDb = (id, term, def) => {
     let card = {
-        "term" : term,
-        "definition" : def
+        term : term,
+        definition : def
     }
-    fetch('http://localhost:8080/decks/2/add-card', {
+    fetch(`http://localhost:8080/decks/${id}/add-card`, {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
