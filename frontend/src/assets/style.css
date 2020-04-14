@@ -328,7 +328,6 @@ section {
 .single-card__card-back {
   grid-area: middle;
   transform: rotateY(90deg);
-  /* transition-delay: 2s; */
   backface-visibility: hidden;
   overflow: hidden;
   opacity: 0;
