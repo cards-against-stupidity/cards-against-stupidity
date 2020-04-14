@@ -2,7 +2,7 @@ class DeckCreator {
 
     constructor() {
         this._container = document.createElement('div');
-        this._container.className = 'single-deck'
+        this._container.className = 'deck-wrapper'
         this._firstCard = document.createElement('div');
         this._firstCard.classList.add('single-deck', 'single-deck--first-card')
         this._secondCard = document.createElement('div');
@@ -10,24 +10,28 @@ class DeckCreator {
         this._thirdCard = document.createElement('div');
         this._thirdCard.classList.add('single-deck', 'single-deck--third-card')
         this._topCard = document.createElement('div');
+        this._topCard.classList = ('single-deck single-deck--top-card')
         this._topCardTitle = document.createElement('div')
+      
     }
 
     addOptions() {
+        let optionsWrapper = document.createElement('div');
+        optionsWrapper.classList.add('single-deck--options');
         let edit = document.createElement('i');
-        edit.classList.add('fas', 'fas-edit')
+        edit.classList.add('fas', 'fa-edit')
         let eye = document.createElement('i');
-        eye.classList.add('fas', 'fas-eye')
+        eye.classList.add('fas', 'fa-eye')
         let trash = document.createElement('i');
-        trash.classList.add('fas', 'fas-trash')
+        trash.classList.add('fas', 'fa-trash')
         let share = document.createElement('i');
-        share.classList.add('fas', 'fas-share')
+        share.classList.add('fas', 'fa-share')
 
-        this._topCard.appendChild(edit);
-        this._topCard.appendChild(eye);
-        this._topCard.appendChild(trash);
-        this._topCard.appendChild(share);
-
+        optionsWrapper.appendChild(edit);
+        optionsWrapper.appendChild(eye);
+        optionsWrapper.appendChild(trash);
+        optionsWrapper.appendChild(share);
+        this._topCard.appendChild(optionsWrapper)
         return this;
     }
 

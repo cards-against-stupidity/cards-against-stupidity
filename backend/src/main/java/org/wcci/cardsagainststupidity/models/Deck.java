@@ -19,7 +19,7 @@ public class Deck {
     @GeneratedValue
     private Long id;
     private String title;
-    @OneToMany(mappedBy = "deck")
+    @OneToMany(mappedBy = "deck", orphanRemoval = true)
     @JsonIgnoreProperties("deck")
     private Collection<Card> cards = new ArrayList<>();
     @ManyToOne
