@@ -56,7 +56,7 @@ public class DeckController {
         if (deckOptional.isPresent()) {
             Deck returnTo = deckOptional.get();
             Card newCard = new Card(card.getTerm(), card.getDefinition(),
-                    deckOptional.get());
+                    returnTo);
             cardStorage.save(newCard);
             return returnTo;
         } else {
