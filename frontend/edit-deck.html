@@ -55,6 +55,7 @@
                 <div class="edit-deck--header">
                     <h2>Deck Name </h2>
                 </div>
+
                 <div class="edit-deck--card-index">
 
                     <ul class="edit-deck--card">
@@ -68,62 +69,21 @@
                         <li>Specification of how a programmer writing an application accesses the behavior and
                             state of classes and objects</li>
                     </ul>
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces</li>
-                    </ul>
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces</li>
-                    </ul>
 
                     <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces</li>
-                    </ul>
-
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces</li>
-                    </ul>
-
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces
+                        <!-- <form class="add-deck-form" > -->
+                        <li>
+                            <input type="text" id="new-card-title" name="term" placeholder="Card Title...">
                         </li>
-                    </ul>
-
-
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
                         <span></span>
-                        <li>Any code between matching braces</li>
+                        <li>
+                            <textarea type="text" name="definition" id="new-card-definition"
+                                placeholder="Card Description..."></textarea>
+                        </li>
+                        <button id="add-new-card">ADD</button>
+                        <!-- </form> -->
+                        <!-- <div class="submit-button add-deck-button" action="submit" name="submit"> Enter To Submit </div> -->
                     </ul>
-
-                    <ul class="edit-deck--card">
-                        <li>Block</li>
-                        <span></span>
-                        <li>Any code between matching braces</li>
-                    </ul>
-
-                    <ul class="edit-deck--card">
-                        <form class="add-deck-form" method="POST">
-                            <li>
-                                <input type="text" name="term" placeholder="Card Title...">
-                            </li>
-                            <span></span>
-                            <li>
-                                <textarea type="text" name="definition" placeholder="Card Description..."></textarea>
-                            </li>
-                        </form>
-                        <div class="submit-button add-deck-button" action="submit" name="submit"> Enter To Submit </div>
-                    </ul>
-
                 </div>
             </section>
         </main>
@@ -133,3 +93,4 @@
     </div>
 </body>
 <script src="src/assets/js/layout.js"></script>
+<script type='module' src='src/assets/js/render-views.js'></script>

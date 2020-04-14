@@ -1,10 +1,13 @@
-const allCards = document.querySelectorAll(".single-card");
+import {renderStudyMode } from './render-views.js';
+
+const createStudyMode = () =>{ 
+
+const allCards = document.querySelectorAll('.single-card')
 let i = 0;
+let currentCard = allCards[i];
 
-
-
-const getVisibleCards = () => {
-    let currentCard = allCards[i];
+const getVisibleCards = () => { 
+   
     currentCard.classList.add('current-card');
 
     if (currentCard.classList.contains('next-card')) {
@@ -33,7 +36,6 @@ const getVisibleCards = () => {
 
 const getNextCard = () => {
     i = (i != allCards.length - 1 ? i + 1 : i)
-    console.log(i)
     getVisibleCards();
 }
 
@@ -54,8 +56,6 @@ const flipCard = () => {
 };
 
 const handleKey = (event) => {
-
-
     switch (event.keyCode) {
         case 70:
             flipCard();
@@ -72,3 +72,8 @@ const handleKey = (event) => {
 window.addEventListener('keyup', handleKey)
 
 getVisibleCards();
+};
+
+export {
+    createStudyMode
+};
