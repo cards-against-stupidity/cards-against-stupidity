@@ -34,7 +34,7 @@ const renderEditDeck = (deck) => {
     const editDeckHeader = document.createElement('div');
     editDeckHeader.classList.add('edit-deck--header');
 
-    editDeckHeader.innerHTML= `<h2> ${deck.title}</h2>`;
+    editDeckHeader.innerHTML= `<h2>Editing Deck:  ${deck.title}</h2>`;
     editDeckSection.appendChild(editDeckHeader)
     const enableEditing = ()=> {
         let allCards = document.querySelectorAll(".edit-deck--card");
@@ -67,10 +67,11 @@ const renderEditDeck = (deck) => {
             const cardContent = card;
             // const editButton = card.querySelector('.edit')
             cardContent.addEventListener('click', () => {
+                console.log(deck.id)
                 const newCard = new EditDeckBuilder()
                 let term = card.firstElementChild;
                 let definition = card.firstElementChild.nextElementSibling.nextElementSibling
-                newCard.addCreateNewCard(term.textContent, definition.textContent)
+                newCard.addCreateNewCard(deck, term.textContent, definition.textContent)
                     .addClass('editing')
                 card = card.replaceWith(newCard.render())
                 clickOut();
@@ -85,6 +86,7 @@ const renderEditDeck = (deck) => {
     editDeckIndex.appendChild(addCard);
     }
     const buildEditDeck = (deckJson) => {
+        createAddCard();
         deckJson.cards.forEach(card => {
            let newDeck = new EditDeckBuilder()
            .setTerm(card.term)
@@ -93,7 +95,7 @@ const renderEditDeck = (deck) => {
           editDeckIndex.appendChild(newDeck);
         })
     
-      createAddCard();
+   
     editDeckSection.appendChild(editDeckIndex)
     enableEditing();
     }
@@ -185,7 +187,7 @@ const renderAllDecks = (topic) => {
                 let newDeckJSON = {
                     title: input.value
                 }
-                addDeckToDb(newDeckJSON)
+                addDeckToDb(topic, newDeckJSON)
             }
         })
     }
@@ -274,12 +276,11 @@ const renderAllCards = () => {
 
     const submitNewCard = document.querySelector('#add-new-card');
     submitNewCard.addEventListener('click', () => {
-        let jsonObject = {
-            'term': document.querySelector('#new-card-title').value,
-            'definition': document.querySelector('#new-card-definition').value
-        }
+        let newTerm = document.querySelector('#new-card-title').value
+        let newDef = document.querySelector('#new-card-definition').value
+        
 
-        addCardToDb(jsonObject);
+        addCardToDb(id, newTerm, newDef);
         buildAllCards();
     })
 }
