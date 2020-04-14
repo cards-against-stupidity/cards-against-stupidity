@@ -1,6 +1,7 @@
 import {
     deleteTopic
 } from '../all-crud.js';
+import { goToAllDecks } from '../app.js';
 
 class TopicCreator {
 
@@ -10,10 +11,11 @@ class TopicCreator {
         this._title = document.createElement('div');
     }
 
-    setTitle(value) {
-        this._title.innerHTML = value;
-        this._title.id = value;
-        this._title.name = value;
+    setTitle(topic) {
+        this._title.innerHTML = topic.title;
+        this._title.id = topic.title;
+        this._title.name = topic.title;
+        this._title.addEventListener('click', ()=>goToAllDecks(topic))
         this._container.appendChild(this._title);
         return this;
     }
@@ -23,7 +25,22 @@ class TopicCreator {
         this._container.appendChild(newElement)
         return this;
     }
-
+    newInput(){
+        let input = document.createElement('input');
+        input.name = 'title';
+        input.id = 'new-topic-title';
+        this._container.appendChild(input)
+        return this;
+    
+    
+    }
+    newButton(text) {
+         let button = document.createElement('button');
+         button.id = 'submit-new-topic';
+         button.innerText = text;
+          this._container.appendChild(button);
+          return this;
+    }
     addCrud(topic) {
         let crudNode = document.createElement('div');
         let crud = ['Edit', 'Delete']

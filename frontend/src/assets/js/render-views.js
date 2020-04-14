@@ -13,23 +13,51 @@ import {
 import {
     addDeckToDb,
     addCardToDb,
-    deleteTopic
+    addTopicToDb
 } from './all-crud.js';
 
 import {
     createStudyMode
 } from "./study-mode.js";
-import { goToAllDecks } from './app.js';
+import {
+    goToAllTopics
+} from './app.js';
 
 const renderEditDeck = (deck) => {
+    const editDeckSection = document.createElement('section')
+    editDeckSection.classList.add('edit-deck')
+    const editDeckIndex = document.createElement('div')
+    editDeckIndex.classList.add('edit-deck--card-index')
 
+    const editDeckHeader = document.createElement('div');
+    editDeckHeader.classList.add('edit-deck--header');
 
-    deck.cards.forEach(card => {
-        console.log(card.term)
-        let newCard = new EditDeckBuilder()
+    editDeckHeader.innerHTML= `<h2> ${deck.title}</h2>`;
+    editDeckSection.appendChild(editDeckHeader)
 
-    })
+    const createAddCard = () =>{
+        let addCard = new EditDeckBuilder()
+        .addCreateNewCard(deck)
+        .render();
+    editDeckIndex.appendChild(addCard);
+    }
+    const buildEditDeck = (deckJson) => {
+        deckJson.cards.forEach(card => {
+           let newDeck = new EditDeckBuilder()
+           .setTerm(card.term)
+           .setDefinition(card.definition)
+           .render();
+          editDeckIndex.appendChild(newDeck);
+        })
+    
+      createAddCard();
+        editDeckSection.appendChild(editDeckIndex);
+    }
+fetch('http://localhost:8080/decks/id/' + deck.id)
+    .then(results => results.json())
+    .then(deckJson => buildEditDeck(deckJson))
 
+    return editDeckSection;
 }
 
 const renderAllTopics = (anchor) => {
@@ -48,31 +76,40 @@ const renderAllTopics = (anchor) => {
 
     const createFooter = () => {
         let footer = new TopicCreator()
-            .newElement('input', " ")
+            .newInput()
             .newElement('div', "")
-            .newElement('button', "Add New")
+            .newButton("Add New")
         return footer.render();
     }
 
-
     const buildAllTopics = (topics) => {
-     
         topics.forEach((topic) => {
             let newTopic = new TopicCreator()
-            .setTitle(topic.title)
-            .newElement('div', topic.decks.length)
+                .setTitle(topic)
+                .newElement('div', topic.decks.length)
                 .addCrud(topic)
                 .render();
             topicIndex.appendChild(newTopic)
         })
         topicIndex.appendChild(createFooter());
         topicSection.appendChild(topicIndex);
-      
 
-        topics.forEach((topic) => {
-            let title = document.querySelector(`#${topic.title}`)
-            title.addEventListener('click', ()=>goToAllDecks(topic))
+        let submit = topicSection.querySelector('#submit-new-topic');
+        let input = topicSection.querySelector('#new-topic-title')
+        submit.addEventListener('click', () => {
+            addTopicToDb(input.value)
+            goToAllTopics();
         })
+
+        // let allTopics = document.querySelectorAll('.single-topic')
+        // allTopics.forEach(topicElement => { 
+        //     // const link = topicSection.querySelector(`[id=${topic.title}]`)
+        //     topicElement.addEventListener('click', () => {
+        //         console.log(topicElement.innerText);
+        //         // goToAllDecks(topic);
+        //     })
+        // })
+
     }
     fetch('http://localhost:8080/topics')
         .then(results => results.json())
@@ -81,7 +118,7 @@ const renderAllTopics = (anchor) => {
     return topicSection;
 }
 
-const renderAllDecks = (anchor, topic) => {
+const renderAllDecks = (topic) => {
     const deckMode = document.createElement('Section');
     const deckIndex = document.createElement('div')
     deckMode.classList.add('deck-mode')
@@ -97,22 +134,17 @@ const renderAllDecks = (anchor, topic) => {
             let newDeckJSON = {
                 title: input.value
             }
-   
             addDeckToDb(topic, newDeckJSON);
-            // buildAllDecks();
         })
-
         input.addEventListener('keyup', (e) => {
             if (e.keyCode == 13) {
                 let newDeckJSON = {
                     title: input.value
                 }
                 addDeckToDb(newDeckJSON)
-
             }
         })
     }
-
     const buildAllDecks = (jsonData) => {
         jsonData.decks.forEach(deck => {
             const newDeck = new DeckCreator()
@@ -124,12 +156,13 @@ const renderAllDecks = (anchor, topic) => {
         });
         deckMode.appendChild(deckIndex);
         buildAddDeck();
-        anchor.appendChild(deckMode)
-
+  
     }
-    fetch('http://localhost:8080/topics/Tech')
+    fetch('http://localhost:8080/topics/' + topic.title)
         .then(results => results.json())
         .then(json => buildAllDecks(json))
+
+return deckMode;
 }
 
 const renderStudyMode = (deck) => {
@@ -155,6 +188,7 @@ const renderStudyMode = (deck) => {
     fetch('http://localhost:8080/decks/id/' + deck.id)
         .then(results => results.json())
         .then(deckResult => buildStudyMode(deckResult))
+
 }
 
 const renderEditCard = (id) => {

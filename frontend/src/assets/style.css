@@ -547,7 +547,7 @@ form#add-deck {
 .edit-deck--card-index {
   list-style: none;
   display: grid;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   width: max-content;
   grid-template-columns: 33.3% 33.3% 33.3%;
   column-gap: 0.5rem;
@@ -708,25 +708,29 @@ form#add-deck {
 .topics-display>div:first-child {
   background-color: var(--cas-melon);
   border: 1px solid black;
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 .topics-display>div:last-child {
   background-color: var(--cas-brand3);
   border: 1px solid black;
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 .single-topic {
   padding: 1rem;
   font-size: 2rem;
-  height: 100px;
+  height: 3rem;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
 }
 
 .single-topic button {
-  font-size: 2rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: none;
+
 }
 
 .single-topic:nth-child(odd) {

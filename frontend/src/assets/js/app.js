@@ -5,10 +5,13 @@ import * as rend from "./render-views.js"
 
 
 const clearView = () => {
-    anchor.removeChild(anchor.firstElementChild);
+    if(anchor.firstElementChild != null){ 
+    anchor.removeChild(anchor.firstElementChild)
+    }
 }
 
 const goToStudyMode = (deck) => {
+    // console.log(deck)
     clearView();
     rend.renderStudyMode(deck);
 }
@@ -16,16 +19,18 @@ const goToStudyMode = (deck) => {
 const goToAllDecks = (topic) => {
     // location.reload();
     clearView();
-    rend.renderAllDecks(anchor, topic);
+    anchor.appendChild(rend.renderAllDecks(topic));
 }
 
 const goToEditDeck = (deck) => {
     // location.reload();
     clearView();
-    rend.renderEditDeck(deck);
+    anchor.appendChild(rend.renderEditDeck(deck));
 }
 
 const goToAllTopics = () => {
+    //  location.reload();
+    clearView();
     anchor.appendChild(rend.renderAllTopics())
 }
 
