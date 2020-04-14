@@ -22,6 +22,7 @@ import {
 import {
     goToAllTopics
 } from './app.js';
+import { TimerBuilder } from './builders/timer-builder.js';
 
 const renderEditDeck = (deck) => {
     const editDeckSection = document.createElement('section')
@@ -200,6 +201,8 @@ const renderStudyMode = (deck) => {
         .then(results => results.json())
         .then(deckResult => buildStudyMode(deckResult))
 
+        new TimerBuilder();
+        
 }
 
 const renderEditCard = (id) => {
