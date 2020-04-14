@@ -1,5 +1,5 @@
 import {
-    renderAllCards
+    renderAllCards, renderEditDeck
 } from './render-views.js'
 import { goToAllDecks, goToAllTopics, goToEditDeck } from './app.js';
 
@@ -85,11 +85,19 @@ const deleteCard = (id) => {
     }).then(renderAllCards)
 }
 
+const updateCardOnDeck = (deck, cardForm) => {
+    fetch(`http://localhost:8080/decks/${deck.id}/edit-card`, { 
+        method: 'PATCH',
+        body : cardForm
+    }).then(() => goToEditDeck(deck))
+}
+
 export {
     deleteDeck,
     addDeckToDb,
     deleteCard,
     addCardToDb,
     deleteTopic,
-    addTopicToDb
+    addTopicToDb,
+    updateCardOnDeck
 }

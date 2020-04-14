@@ -68,4 +68,12 @@ public class Card {
     public int hashCode() {
         return Objects.hash(term, definition);
     }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
 }

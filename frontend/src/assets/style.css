@@ -597,6 +597,60 @@ form#add-deck {
   width: 150px;
 }
 
+.edit-deck--card li.edit {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-weight: 800;
+  position: relative;
+  float: left;
+  bottom: -1rem;
+  color: var(--cas-white);
+  background-color: var(--cas-brand3);
+  padding: 0.25rem;
+  opacity: 0;
+}
+
+.edit-deck--card.editing li input {
+  font-size: 1.25rem;
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 90%;
+}
+
+.edit-deck--card.editing li span {
+  background-color: grey;
+  position: relative;
+  display: inline-block;
+  height: 1px;
+  transform: translateY(-0.25rem);
+  width: 150px;
+}
+
+.edit-deck--card.editing li textarea {
+  font-size: 1.25rem;
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 90%;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.edit-deck--card li.cancel {
+  transition: all 0.2s ease;
+  position: relative;
+  color: var(--cas-white);
+  background-color: var(--cas-brand3);
+  padding: 0.25rem;
+  opacity: 0;
+}
+
+.edit-deck--card:hover li.edit, .edit-deck--card:hover li.cancel {
+  font-weight: 800;
+  opacity: 1;
+}
+
 .edit-deck--card-index ul:last-child {
   background-color: #f7f7f7;
 }
@@ -741,7 +795,6 @@ form#add-deck {
   padding: 0.5rem;
   margin-right: 1rem;
   border: none;
-
 }
 
 .single-topic:nth-child(odd) {
