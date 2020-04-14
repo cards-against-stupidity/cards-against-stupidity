@@ -32,16 +32,17 @@ const deleteDeck = (id) => {
     .then(allDecks => goToAllDecks(allDecks))
 }
 
-const addDeckToDb = (id, deck) => {
-    console.log(id.id);
-    fetch(`http://localhost:8080/topics/${id.id}/add-deck`, {
+const addDeckToDb = (topic, deck) => {
+
+    fetch(`http://localhost:8080/topics/${topic.id}/add-deck`, {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
         },
         body: JSON.stringify(deck)
     })
-    .then(updatedTopic => goToAllDecks(updatedTopic))
+    .then(results => goToAllDecks(topic))
+  
 }
 
 

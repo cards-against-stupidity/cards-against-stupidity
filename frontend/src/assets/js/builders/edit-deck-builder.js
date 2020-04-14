@@ -33,7 +33,6 @@ class EditDeckBuilder {
         inputDef.placeholder = "Card Definition ...";
         this._cardDefinition.appendChild(inputDef);
 
-     
         this._button.innerText = 'submit';
         this._button.id = 'add-new-card';
         this._container.append(this._button);
