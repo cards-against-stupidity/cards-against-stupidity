@@ -62,12 +62,14 @@
                         <li>Abstract</li>
                         <span></span>
                         <li>Specifies that a class is not to be instantiated but rather inherited by other classes</li>
+                        <li class="edit">edit</li>
                     </ul>
                     <ul class="edit-deck--card">
                         <li>Application Programming Interface</li>
                         <span></span>
                         <li>Specification of how a programmer writing an application accesses the behavior and
                             state of classes and objects</li>
+                        <li class="edit">edit</li>
                     </ul>
 
                     <ul class="edit-deck--card">
@@ -80,6 +82,7 @@
                             <textarea type="text" name="definition" id="new-card-definition"
                                 placeholder="Card Description..."></textarea>
                         </li>
+                        <li class="edit">edit</li>
                         <button id="add-new-card">ADD</button>
                         <!-- </form> -->
                         <!-- <div class="submit-button add-deck-button" action="submit" name="submit"> Enter To Submit </div> -->
@@ -92,5 +95,11 @@
         </footer>
     </div>
 </body>
+
+<script type="module">
+    import { EditDeckBuilder }
+    from './src/assets/js/builders/edit-deck-builder.js'
+    
+</script>
 <script src="src/assets/js/layout.js"></script>
 <script type='module' src='src/assets/js/render-views.js'></script>

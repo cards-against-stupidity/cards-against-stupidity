@@ -7,6 +7,8 @@ let i = 0;
 let currentCard = allCards[i];
 
 const getVisibleCards = () => { 
+
+    currentCard = allCards[i];
    
     currentCard.classList.add('current-card');
 
@@ -35,20 +37,20 @@ const getVisibleCards = () => {
 
 
 const getNextCard = () => {
-    i = (i != allCards.length - 1 ? i + 1 : i)
+    i = (i !== allCards.length - 1 ? i + 1 : i)
     getVisibleCards();
 }
 
 const getPreviousCard = () => {
-    i = (i != 0 ? i - 1 : i)
+    i = (i !== 0 ? i - 1 : i)
     getVisibleCards();
 }
 
 const flipCard = () => {
     //switch them
     currentCard = allCards[i];
-    cardFront = currentCard.querySelector('.single-card__card-front');
-    cardBack = currentCard.querySelector('.single-card__card-back');
+    let cardFront = currentCard.querySelector('.single-card__card-front');
+    let cardBack = currentCard.querySelector('.single-card__card-back');
     //ternary
     currentCard.classList.toggle("flip-show");
     cardFront.classList.toggle("flip-hide");
