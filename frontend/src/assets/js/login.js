@@ -13,7 +13,8 @@ const login = () => {
         .then(res => res.json())
         .then(user => {
             if (user.username != null) {
-                document.querySelector('#username').innerText = user.username;
+                document.querySelector('#topbar-user').innerText = user.username;
+                document.querySelector('#sidebar-user').innerText = user.username;
                 return user.username;
             }
         });
