@@ -18,7 +18,7 @@ public class Topic {
     private Long id;
     private String title;
     @OneToMany(mappedBy = "topic", orphanRemoval = true)
-    @JsonIgnoreProperties({"topic", "cards"})
+    @JsonIgnoreProperties({ "cards"})
     private Collection<Deck> decks = new ArrayList<>();
     @ManyToMany
     @JsonIgnoreProperties({"topics", "loggedIn", "password", "retypePassword"})

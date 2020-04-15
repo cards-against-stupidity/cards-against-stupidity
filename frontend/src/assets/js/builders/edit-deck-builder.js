@@ -27,7 +27,7 @@ class EditDeckBuilder {
         this._container.classList.add(classlist);
         return this;
     }
-    addCreateNewCard(termPlacehold, defPlacehold){
+    addCreateNewCard(deck, termPlacehold, defPlacehold){
         let inputTerm = document.createElement('input')
         inputTerm.type = "text";
         inputTerm.name = "term";
@@ -41,13 +41,14 @@ class EditDeckBuilder {
         inputDef.placeholder = defPlacehold;
         this._cardDefinition.appendChild(inputDef);
 
-        this._button.innerText = 'submit';
-        this._button.id = 'add-new-card';
+        // this._button.innerText = 'submit';
+        // this._button.id = 'add-new-card';
 
         // this._container.append(this._button);
         this._container.addEventListener('keyup', (e)=>{
             if(e.keyCode == 13){ 
-            addCardToDb(inputTerm.value, inputDef.value)
+                console.log('added')
+            addCardToDb(deck.id, inputTerm.value, inputDef.value)
             }
         })
         return this;

@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface TopicRepository extends CrudRepository<Topic, Long> {
     
     Optional<Topic> findTopicByTitle(String title);
+
     
 }

@@ -11,9 +11,8 @@ const clearView = () => {
 }
 
 const goToStudyMode = (deck) => {
-    // console.log(deck)
     clearView();
-    rend.renderStudyMode(deck);
+    anchor.appendChild(rend.renderStudyMode(deck));
 }
 
 const goToAllDecks = (topic) => {
