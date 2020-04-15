@@ -899,6 +899,17 @@ form#add-deck {
 }
 
 .single-topic:nth-child(odd) {
+<<<<<<< HEAD
   background-color: #bdb6b66c;
   border-radius: 12px;
+=======
+  background-color: #f7f7f7;
+}
+
+.backbutton {
+  font-weight: bolder;
+  font-size: xx-large;
+  padding-bottom: 7px;
+  cursor: pointer;
+>>>>>>> add navbar + arrow
 }
