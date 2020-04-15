@@ -17,14 +17,8 @@ const clearView = () => {
 }
 
 const goToStudyMode = (deck) => {
-<<<<<<< HEAD
-=======
     // console.log(deck)
     history.pushState({},`goToStudyMode()`,"");
-<<<<<<< HEAD
->>>>>>> add navbar + arrow
-=======
->>>>>>> c0c17901f78c7e24d44dc374f5eced4244e8f0ba
     clearView();
     anchor.appendChild(rend.renderStudyMode(deck));
 }
