@@ -3,6 +3,12 @@ import {
 } from "./login.js";
 import * as rend from "./render-views.js"
 
+import {
+    setbarvalues,
+} from "./navbar.js"; //add to app.js at beginning
+
+history.pushState({},`goToLogin()`);
+
 
 const clearView = () => {
     if(anchor.firstElementChild != null){ 
@@ -12,24 +18,28 @@ const clearView = () => {
 
 const goToStudyMode = (deck) => {
     // console.log(deck)
+    history.pushState({},`goToStudyMode()`,"");
     clearView();
     rend.renderStudyMode(deck);
 }
 
 const goToAllDecks = (topic) => {
     // location.reload();
+    history.pushState({},`goToAllDecks()`,"");
     clearView();
     anchor.appendChild(rend.renderAllDecks(topic));
 }
 
 const goToEditDeck = (deck) => {
     // location.reload();
+    history.pushState({},`goToEditDeck()`,"");
     clearView();
     anchor.appendChild(rend.renderEditDeck(deck));
 }
 
 const goToAllTopics = () => {
     //  location.reload();
+    history.pushState({},`goToAllTopics()`,"");
     clearView();
     anchor.appendChild(rend.renderAllTopics())
 }
@@ -55,12 +65,18 @@ const addEventListener = (query, functionToRun, event) => {
 
 const anchor = document.querySelector("#main-element")
 
+
 // window.addEventListener('load', ()=> goToAllTopics())
 
 addEventListener('#btn', login, 'click');
 addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
 addEventListener('#all-topics', () => goToAllTopics(), 'click');
 
+document.getElementById('backarrow').addEventListener("click", () => {
+    console.log('you clicked the arrow');
+    history.go(-1);
+
+});
 
 export {
     goToStudyMode,
