@@ -13,6 +13,7 @@ body {
   box-sizing: border-box;
   min-height: 100%;
   color: var(--cas-brand3);
+  
 }
 
 h2 {
@@ -45,11 +46,14 @@ h2 {
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
+  --top-nav-color: #cfcfcf;
+  --top-nav-font-color: #181818;
   --cas-card-edit: #c6ebf9;
   --nav-width-open: 200px;
   --nav-width-closed: 50px;
   --card-width: 30rem;
   --card-height: 30rem;
+  --top-nav-height: 50px;
 }
 
 main {
@@ -57,6 +61,7 @@ main {
   left: var(--nav-width-closed);
   position: relative;
   width: 95%;
+  margin-top: var(--top-nav-height);
   transition: left 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
@@ -97,7 +102,7 @@ section {
 }
 
 #menuToggle span#x {
-  top: 30px;
+  top: 15px;
   left: 9px;
   display: block;
   position: relative;
@@ -142,7 +147,7 @@ section {
   width: 33.3px;
   opacity: 1;
   border-radius: 30px;
-  transform: rotate(45deg) translate(0px, 0px);
+  transform: rotate(45deg) translate(7px, 5px);
   transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   background-color: var(--cas-brand2);
 }
@@ -153,7 +158,7 @@ section {
 }
 
 #menuToggle input:checked~span#x:nth-last-child(2) {
-  transform: rotate(-45deg) translate(7px, -1px);
+  transform: rotate(-45deg) translate(2px, 5px);
 }
 
 #nav-expanded {
@@ -201,7 +206,7 @@ section {
   margin-right: 10px;
   display: inline;
   transition: font-size 0.3s ease;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* #nav-expanded {
@@ -313,9 +318,14 @@ section {
   position: absolute;
   height: var(--card-height);
   width: var(--card-width);
-  background-color: white;
+ background-color: #fff;
+ background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+ linear-gradient(#eee .1em, transparent .1em);
+ background-size: 100% 1.2em;
   transform-style: preserve-3d;
   user-select: none;
+
+
 }
 
 @media screen and (max-width: 700px) {
@@ -795,18 +805,35 @@ form#add-deck {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
-  color: var(--cas-white);
-  font-weight: bolder;
-  background-color: var(--cas-brand1);
+  color: var(--top-nav-font-color);
+  font-weight: thin;
+  background-color: var(--top-nav-color);
   overflow: hidden;
-  z-index: 100;
+  z-index: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: var(--top-nav-height);
 }
+
+.topnav li{
+  padding-left: 6px;
+  padding-right: 6px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.topnav li:last-child {
+  margin-right: 20px;
+  background-color: var(--cas-melon);
+  margin-left: 20px;
+}
+
 
 #wrapper.toggled .topnav {
   list-style-type: none;
