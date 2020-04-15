@@ -42,4 +42,9 @@ public class TopicJPA implements TopicStorage {
         topicRepository.deleteById(id);
 
     }
+
+    @Override
+    public Optional<Topic> findByDeckId (Long id){
+        return topicRepository.findById(id);
+    }
 }

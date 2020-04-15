@@ -11,7 +11,6 @@ const clearView = () => {
 }
 
 const goToStudyMode = (deck) => {
-    // console.log(deck)
     clearView();
     rend.renderStudyMode(deck);
 }

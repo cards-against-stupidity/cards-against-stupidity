@@ -40,6 +40,8 @@ h2 {
   --cas-brand1: #39363c;
   --cas-brand2: #dedede;
   --cas-brand3: #39363c;
+  --cas-brand4: #fa235b;
+  --cas-brand5: brown;
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
@@ -238,7 +240,26 @@ section {
 .study-mode {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+}
+
+#study-mode-header {
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 4rem !important;
+}
+
+#study-mode-header span {
+  color: var(--cas-brand5);
+}
+
+#study-mode-header span:hover {
+  background-color: var(--cas-brand1);
+  transition: all 0.2s ease;
+  color: white;
+  cursor: pointer;
 }
 
 .study-mode--card-view {
@@ -372,6 +393,19 @@ section {
   transition: all 0.2s ease 0s;
   -webkit-transform-origin: center center 0px;
   -webkit-transition: all 0.2s ease 0s;
+}
+
+.all-decks-header {
+  font-size: 5rem;
+  margin-left: 2.5rem;
+  margin-top: 0.5rem;
+  font-weight: 200;
+}
+
+.all-decks-header span {
+  font-weight: 500;
+  color: var(--cas-brand5);
+  padding: 0.25rem;
 }
 
 .deck-index {
@@ -554,6 +588,24 @@ form#add-deck {
 .edit-deck {
   position: relative;
   transition: all 0.6s ease;
+}
+
+.edit-deck--header {
+  margin-left: 2rem;
+  display: flex;
+  display: inline-block;
+}
+
+.go-to-study {
+  display: inline-block;
+  position: relative;
+  transform: translateY(-0.5rem);
+  margin-left: 2rem;
+  font-weight: 900;
+  background-color: var(--cas-melon);
+  color: white;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 .edit-deck--card-index {
@@ -785,6 +837,7 @@ form#add-deck {
 
 .single-topic {
   padding: 1rem;
+  cursor: pointer;
   font-size: 2rem;
   height: 3rem;
   display: grid;

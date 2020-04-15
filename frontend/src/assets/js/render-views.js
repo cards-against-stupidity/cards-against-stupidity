@@ -14,14 +14,17 @@ import {
     addDeckToDb,
     addCardToDb,
     addTopicToDb,
-    updateCardOnDeck
+    updateCardOnDeck,
+    findTopicByDeckId
 } from './all-crud.js';
 
 import {
     createStudyMode
 } from "./study-mode.js";
 import {
-    goToAllTopics
+    goToAllTopics,
+    goToStudyMode,
+    goToAllDecks
 } from './app.js';
 import { TimerBuilder } from './builders/timer-builder.js';
 
@@ -33,9 +36,15 @@ const renderEditDeck = (deck) => {
 
     const editDeckHeader = document.createElement('div');
     editDeckHeader.classList.add('edit-deck--header');
-
-    editDeckHeader.innerHTML= `<h2>Editing Deck:  ${deck.title}</h2>`;
+  
+    const studyButton = document.createElement('div');
+    studyButton.innerText = 'Go To Study Mode';
+    studyButton.classList.add('go-to-study')
+    studyButton.addEventListener('click', ()=>goToStudyMode(deck));
+    
+    editDeckHeader.innerHTML= `<h2>Edit Deck:  ${deck.title}</h2>`;
     editDeckSection.appendChild(editDeckHeader)
+    editDeckSection.append(studyButton);
     const enableEditing = ()=> {
         let allCards = document.querySelectorAll(".edit-deck--card");
         const clickOut = () => {
@@ -167,6 +176,10 @@ const renderAllTopics = (anchor) => {
 const renderAllDecks = (topic) => {
     const deckMode = document.createElement('Section');
     const deckIndex = document.createElement('div')
+    const decksHeader = document.createElement('div')
+    decksHeader.classList.add('all-decks-header')
+    decksHeader.innerHTML = `All Decks in <span> ${topic.title}</span>`;
+    deckMode.appendChild(decksHeader)
     deckMode.classList.add('deck-mode')
     deckIndex.classList.add('deck-index');
 
@@ -212,12 +225,21 @@ return deckMode;
 }
 
 const renderStudyMode = (deck) => {
+    console.log(deck)
     const anchor = document.querySelector('#main-element')
     const studyMode = document.createElement('section');
+    const header = document.createElement('div')
+    header.innerHTML = `Studying <span>${deck.title}</span>`
+    header.addEventListener('click', ()=>{
+        console.log(deck)
+        goToAllDecks(findTopicByDeckId(deck))
+    })
     const deckIndex = document.createElement('div')
     studyMode.classList.add('study-mode')
+    studyMode.appendChild(header);
+    header.id = 'study-mode-header';
     deckIndex.classList.add('study-mode--card-view');
-
+    
     const buildStudyMode = (deckResult) => {
         // deckResult.cards.forEach((card) => {
         //     let newCard = new CardCreator()
