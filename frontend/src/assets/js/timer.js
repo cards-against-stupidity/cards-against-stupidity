@@ -32,9 +32,11 @@ function move() {
         i = 1;
         let elem = document.getElementById("bar");
         let width = 100;
+        setColor(width)
         let id = setInterval(frame, time);
 
         function frame() {
+           
             if (width <= 0) {
                 clearInterval(id);
                 i = 0;
