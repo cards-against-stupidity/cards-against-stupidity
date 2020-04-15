@@ -61,7 +61,6 @@ const addDeckToDb = (topic, deck) => {
   
 }
 
-
 // CARDS // 
 const addCardToDb = (id, term, def) => {
     let card = {
@@ -96,8 +95,6 @@ const fetchTopicFromTitle = (title) => {
     fetch('http://localhost:8080/topics/' + title)
         .then(results => results.json())
         .then(topic => goToAllDecks(topic))
-        
-  
 }
 export {
     deleteDeck,

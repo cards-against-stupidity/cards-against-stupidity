@@ -17,9 +17,9 @@ const mouseOverExpand = () => {
         navBarExpand();
     }
 }
-navBar.addEventListener('click', (e) => {
-    navBarExpand(e);
-})
+// navBar.addEventListener('click', (e) => {
+//     navBarExpand(e);
+// })
 navBar.addEventListener('mouseover', () => {
     mouseOverExpand();
 })
