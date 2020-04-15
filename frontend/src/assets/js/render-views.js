@@ -15,7 +15,7 @@ import {
     addCardToDb,
     addTopicToDb,
     updateCardOnDeck,
-    findTopicByDeckId
+    fetchTopicFromTitle
 } from './all-crud.js';
 
 import {
@@ -225,14 +225,12 @@ return deckMode;
 }
 
 const renderStudyMode = (deck) => {
-    console.log(deck)
-    const anchor = document.querySelector('#main-element')
+
     const studyMode = document.createElement('section');
     const header = document.createElement('div')
     header.innerHTML = `Studying <span>${deck.title}</span>`
     header.addEventListener('click', ()=>{
-        console.log(deck)
-        goToAllDecks(findTopicByDeckId(deck))
+        fetchTopicFromTitle(deck.topic);
     })
     const deckIndex = document.createElement('div')
     studyMode.classList.add('study-mode')
@@ -259,8 +257,9 @@ const renderStudyMode = (deck) => {
             }
             deckIndex.appendChild(newCard);
         }
+        new TimerBuilder();
         studyMode.appendChild(deckIndex);
-        anchor.appendChild(studyMode);
+        // anchor.appendChild(studyMode);
         createStudyMode();
     }
 
@@ -268,8 +267,8 @@ const renderStudyMode = (deck) => {
         .then(results => results.json())
         .then(deckResult => buildStudyMode(deckResult))
 
-        new TimerBuilder();
-        
+ 
+ return studyMode;       
 }
 
 const renderEditCard = (id) => {

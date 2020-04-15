@@ -92,11 +92,12 @@ const updateCardOnDeck = (deck, cardForm) => {
     }).then(() => goToEditDeck(deck))
 }
 
-const findTopicByDeckId = (deck) =>{
-    fetch('http://localhost:8080/deck/' + deck.id ) 
-    .then(response => response.json())
-    .then(topic => console.log(topic));
-    return this;
+const fetchTopicFromTitle = (title) => {
+    fetch('http://localhost:8080/topics/' + title)
+        .then(results => results.json())
+        .then(topic => goToAllDecks(topic))
+        
+  
 }
 export {
     deleteDeck,
@@ -106,5 +107,5 @@ export {
     deleteTopic,
     addTopicToDb,
     updateCardOnDeck,
-    findTopicByDeckId
+    fetchTopicFromTitle
 }

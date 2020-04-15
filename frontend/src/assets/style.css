@@ -231,6 +231,10 @@ section {
   position: fixed;
 }
 
+#timer-container{
+  margin-bottom: 3rem;
+}
+
 /* scrunch the nav bar at this width */
 
 @media screen and (max-width: 1000px) {}
