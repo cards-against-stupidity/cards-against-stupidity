@@ -43,7 +43,7 @@ class TopicCreator {
     }
     addCrud(topic) {
         let crudNode = document.createElement('div');
-        let crud = ['Edit', 'Delete']
+        let crud = ['Delete']
         crud.forEach(element => {
             let button = document.createElement('button');
             button.classList.add(`topic-${element.toLowerCase()}`)
