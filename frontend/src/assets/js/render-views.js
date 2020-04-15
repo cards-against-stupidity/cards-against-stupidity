@@ -28,6 +28,10 @@ import {
 } from './app.js';
 import { TimerBuilder } from './builders/timer-builder.js';
 
+const renderNav = () ={
+
+}
+
 const renderEditDeck = (deck) => {
     const editDeckSection = document.createElement('section')
     editDeckSection.classList.add('edit-deck')
@@ -115,7 +119,7 @@ fetch('http://localhost:8080/decks/id/' + deck.id)
     return editDeckSection;
 }
 
-const renderAllTopics = (anchor) => {
+const renderAllTopics = () => {
     const topicSection = document.createElement('section')
     topicSection.classList.add('all-topics')
 

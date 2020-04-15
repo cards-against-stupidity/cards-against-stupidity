@@ -53,11 +53,12 @@ const addEventListener = (query, functionToRun, event) => {
 
 
 const anchor = document.querySelector("#main-element")
+const wrapper = document.querySelector("#wrapper")
 
 // window.addEventListener('load', ()=> goToAllTopics())
 
 addEventListener('#btn', login, 'click');
-addEventListener('#all-decks', () => rend.renderAllDecks(anchor), 'click');
+
 addEventListener('#all-topics', () => goToAllTopics(), 'click');
 
 
