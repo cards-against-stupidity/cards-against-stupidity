@@ -13,6 +13,7 @@ body {
   box-sizing: border-box;
   min-height: 100%;
   color: var(--cas-brand3);
+  
 }
 
 h2 {
@@ -317,9 +318,14 @@ section {
   position: absolute;
   height: var(--card-height);
   width: var(--card-width);
-  background-color: white;
+ background-color: #fff;
+ background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+ linear-gradient(#eee .1em, transparent .1em);
+ background-size: 100% 1.2em;
   transform-style: preserve-3d;
   user-select: none;
+
+
 }
 
 @media screen and (max-width: 700px) {
@@ -811,10 +817,24 @@ form#add-deck {
   width: 100%;
   height: var(--top-nav-height);
 }
-.topnav div{
-  margin-right: 20px;
 
+.topnav li{
+  padding-left: 6px;
+  padding-right: 6px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
 }
+.topnav li:last-child {
+  margin-right: 20px;
+  background-color: var(--cas-melon);
+  margin-left: 20px;
+}
+
+
 #wrapper.toggled .topnav {
   list-style-type: none;
   display: flex;

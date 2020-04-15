@@ -34,7 +34,7 @@ import { TimerBuilder } from './builders/timer-builder.js';
 const renderNav = (object) => {
     const nav = new NavBar()
         .createLi('currentpage', 'Current Page')
-        .createLi('username', 'Username');
+        .createLi('topbar-user', 'Username');
      
     return nav.render();
 }
