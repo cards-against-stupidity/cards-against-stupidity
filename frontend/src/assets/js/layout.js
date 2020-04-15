@@ -13,7 +13,7 @@ const navBarCollapse = () => {
     // console.log('close!');
 }
 const mouseOverExpand = () => {
-    if(navButton.checked == false){
+    if (navButton.checked == false) {
         navBarExpand();
     }
 }
@@ -29,10 +29,19 @@ navBar.addEventListener('mouseleave', () => {
 const newDeckInputs = document.querySelectorAll(`.add-deck-form input, textarea`)
 const submitButton = document.querySelector('.submit-button');
 newDeckInputs.forEach(input => {
-    input.addEventListener('focus', ()=>{
+    input.addEventListener('focus', () => {
         submitButton.classList.add('focused');
     })
-    input.addEventListener('blur', ()=>{
-         submitButton.classList.remove('focused');
+    input.addEventListener('blur', () => {
+        submitButton.classList.remove('focused');
     })
 })
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}

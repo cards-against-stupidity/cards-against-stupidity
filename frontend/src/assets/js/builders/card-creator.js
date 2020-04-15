@@ -1,4 +1,6 @@
-import {renderStudyMode} from '../render-views.js';
+import {
+    renderStudyMode
+} from '../render-views.js';
 
 class CardCreator {
 
@@ -12,14 +14,17 @@ class CardCreator {
         this._front.className = 'single-card__card-front';
         this._back.className = 'single-card__card-back';
         this._header.className = 'single-card--header';
-        this._footer.className = 'single-card--footer'
+        this._footer.style.backgroundColor = getRandomColor();
+        this._footer.className = 'single-card--footer';
         this._container.appendChild(this._header);
         this._container.appendChild(this._front);
-        this._container.appendChild(this._footer);
         this._container.appendChild(this._back);
-        
+        this._container.appendChild(this._footer);
+
     }
-    
+
+
+
     setFront(elementType, value) {
         let frontElem = document.createElement(elementType);
         frontElem.innerText = value;
@@ -36,7 +41,7 @@ class CardCreator {
 
     render() {
         return this._container;
-    
+
     }
 }
 
