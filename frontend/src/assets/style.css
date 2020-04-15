@@ -328,7 +328,6 @@ section {
 .single-card__card-back {
   grid-area: middle;
   transform: rotateY(90deg);
-  /* transition-delay: 2s; */
   backface-visibility: hidden;
   overflow: hidden;
   opacity: 0;
@@ -337,17 +336,20 @@ section {
 .flip-show {
   transform: rotateY(180deg);
   transition: all 0.5s ease;
+  justify-content: center;
   opacity: 1;
 }
 
 .flip-hide {
   /* transform: rotateY(90deg); */
   /* transition: all 0.5s ease; */
+  justify-content: center;
   opacity: 0;
 }
 
 .next-card, .previous-card {
   display: inline-block;
+  justify-content: center;
   min-height: 20rem;
   box-shadow: 0px 5px 4px 4px lightgrey;
   background-color: white;
