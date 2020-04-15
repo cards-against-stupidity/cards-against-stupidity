@@ -51,6 +51,20 @@ class FormBuilder {
     return this;
   }
 
+  addImage(src = './src/images/RAMlogo.png', height = '60%', width = '60%') {
+      let image = document.createElement('img');
+
+      image.src = src;
+
+      image.height = height;
+
+      image.width = width;
+
+      this._form.appendChild(image);
+
+      return this;
+  }
+
   render() {
     return this._form;
   }
