@@ -11,6 +11,9 @@ import {
     TopicCreator
 } from './builders/topic-creator.js';
 import {
+    NavBar
+} from './builders/nav-builder.js';
+import {
     addDeckToDb,
     addCardToDb,
     addTopicToDb,
@@ -28,10 +31,13 @@ import {
 } from './app.js';
 import { TimerBuilder } from './builders/timer-builder.js';
 
-const renderNav = () ={
+const renderNav = (object) => {
+    const nav = new NavBar()
+        .createLi('username', 'Username')
+        .createLi('currentpage', 'current page');
 
+    return nav.render();
 }
-
 const renderEditDeck = (deck) => {
     const editDeckSection = document.createElement('section')
     editDeckSection.classList.add('edit-deck')
@@ -317,5 +323,6 @@ export {
     renderAllDecks,
     renderEditDeck,
     renderStudyMode,
-    renderAllTopics
+    renderAllTopics,
+    renderNav
 }

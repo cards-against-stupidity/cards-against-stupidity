@@ -4,10 +4,12 @@ import {
 import * as rend from "./render-views.js"
 
 
+
 const clearView = () => {
     if(anchor.firstElementChild != null){ 
     anchor.removeChild(anchor.firstElementChild)
     }
+
 }
 
 const goToStudyMode = (deck) => {
@@ -30,6 +32,7 @@ const goToEditDeck = (deck) => {
 const goToAllTopics = () => {
     //  location.reload();
     clearView();
+    body.append(rend.renderNav())
     anchor.appendChild(rend.renderAllTopics())
 }
 
@@ -53,7 +56,7 @@ const addEventListener = (query, functionToRun, event) => {
 
 
 const anchor = document.querySelector("#main-element")
-const wrapper = document.querySelector("#wrapper")
+const body = document.querySelector('body')
 
 // window.addEventListener('load', ()=> goToAllTopics())
 

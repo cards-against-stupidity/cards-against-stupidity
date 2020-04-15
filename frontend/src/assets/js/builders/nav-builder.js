@@ -21,3 +21,6 @@ class NavBar {
 
     }
 }
+export{
+    NavBar
+}
