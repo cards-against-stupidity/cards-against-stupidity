@@ -33,9 +33,9 @@ import { TimerBuilder } from './builders/timer-builder.js';
 
 const renderNav = (object) => {
     const nav = new NavBar()
-        .createLi('username', 'Username')
-        .createLi('currentpage', 'current page');
-
+        .createLi('currentpage', 'Current Page')
+        .createLi('username', 'Username');
+     
     return nav.render();
 }
 const renderEditDeck = (deck) => {

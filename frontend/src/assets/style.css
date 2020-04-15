@@ -45,7 +45,8 @@ h2 {
   --cas-melon: #ff204b;
   --cas-green: #00cb30;
   --cas-white: #ffffff;
-  --top-nav-color: rgba(0,0,0,5);
+  --top-nav-color: #cfcfcf;
+  --top-nav-font-color: #181818;
   --cas-card-edit: #c6ebf9;
   --nav-width-open: 200px;
   --nav-width-closed: 50px;
@@ -100,7 +101,7 @@ section {
 }
 
 #menuToggle span#x {
-  top: 30px;
+  top: 15px;
   left: 9px;
   display: block;
   position: relative;
@@ -145,7 +146,7 @@ section {
   width: 33.3px;
   opacity: 1;
   border-radius: 30px;
-  transform: rotate(45deg) translate(0px, 0px);
+  transform: rotate(45deg) translate(7px, 5px);
   transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   background-color: var(--cas-brand2);
 }
@@ -156,7 +157,7 @@ section {
 }
 
 #menuToggle input:checked~span#x:nth-last-child(2) {
-  transform: rotate(-45deg) translate(7px, -1px);
+  transform: rotate(-45deg) translate(2px, 5px);
 }
 
 #nav-expanded {
@@ -204,7 +205,7 @@ section {
   margin-right: 10px;
   display: inline;
   transition: font-size 0.3s ease;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* #nav-expanded {
@@ -798,10 +799,10 @@ form#add-deck {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
-  color: var(--cas-white);
-  font-weight: bolder;
+  color: var(--top-nav-font-color);
+  font-weight: thin;
   background-color: var(--top-nav-color);
   overflow: hidden;
   z-index: 0;
@@ -810,7 +811,10 @@ form#add-deck {
   width: 100%;
   height: var(--top-nav-height);
 }
+.topnav div{
+  margin-right: 20px;
 
+}
 #wrapper.toggled .topnav {
   list-style-type: none;
   display: flex;
