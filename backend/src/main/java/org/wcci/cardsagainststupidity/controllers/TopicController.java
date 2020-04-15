@@ -50,10 +50,6 @@ public class TopicController {
 
         return topicStorage.findAllTopics();
     }
-    @GetMapping("/deck/{id}")
-    public Topic topicByDeckId(@PathVariable Long id) {
-        return topicStorage.findByDeckId(id).orElse(null);
-    }
 
     @PutMapping("/create-topic")
     public Collection<Topic> createTopic(@RequestBody Topic topicToAdd) {
