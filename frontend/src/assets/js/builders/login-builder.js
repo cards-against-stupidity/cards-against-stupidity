@@ -5,6 +5,7 @@ class LoginBuilder {
       .addInput('text', 'usernameField', 'username', 'Username')
       .addInput('password', 'passwordField', 'password', 'Password')
       .addButton('btn')
+      .addImage()
       .render();
 
     return this._form;
