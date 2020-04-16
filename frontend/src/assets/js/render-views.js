@@ -14,11 +14,19 @@ import {
     NavBar
 } from './builders/nav-builder.js';
 import {
+    LoginBuilder
+} from './builders/login-builder.js';
+import {
+    AboutSection
+} from './builders/about.js';
+
+import {
     addDeckToDb,
     addCardToDb,
     addTopicToDb,
     updateCardOnDeck,
-    fetchTopicFromTitle
+    fetchTopicFromTitle,
+    getDeckFromDeckTitleOnly
 } from './all-crud.js';
 
 import {
@@ -27,17 +35,28 @@ import {
 import {
     goToAllTopics,
     goToStudyMode,
-    goToAllDecks
+    goToAllDecks,
+    goToAbout
 } from './app.js';
-import { TimerBuilder } from './builders/timer-builder.js';
+import {
+    TimerBuilder
+} from './builders/timer-builder.js';
 
 const renderNav = (object) => {
     const nav = new NavBar()
         .createLi('currentpage', 'Current Page')
         .createLi('topbar-user', 'Username');
-     
+
     return nav.render();
 }
+const renderLogin = () => {
+    return new LoginBuilder();
+}
+
+const renderAbout = () => {
+    return new AboutSection();
+}
+
 const renderEditDeck = (deck) => {
     const editDeckSection = document.createElement('section')
     editDeckSection.classList.add('edit-deck')
@@ -46,16 +65,22 @@ const renderEditDeck = (deck) => {
 
     const editDeckHeader = document.createElement('div');
     editDeckHeader.classList.add('edit-deck--header');
-  
+
     const studyButton = document.createElement('div');
     studyButton.innerText = 'Go To Study Mode';
     studyButton.classList.add('go-to-study')
-    studyButton.addEventListener('click', ()=>goToStudyMode(deck));
+    studyButton.addEventListener('click', () => goToStudyMode(deck));
+
+    editDeckHeader.innerHTML = `<h2>Edit Deck:  <span id="edit-deck-title">${deck.title}</span></h2>`;
     
-    editDeckHeader.innerHTML= `<h2>Edit Deck:  ${deck.title}</h2>`;
+    editDeckHeader.querySelector('#edit-deck-title')
+    .addEventListener('click', ()=> 
+
+    fetchTopicFromTitle(deck.topic))
+
     editDeckSection.appendChild(editDeckHeader)
     editDeckSection.append(studyButton);
-    const enableEditing = ()=> {
+    const enableEditing = () => {
         let allCards = document.querySelectorAll(".edit-deck--card");
         const clickOut = () => {
 
@@ -70,12 +95,12 @@ const renderEditDeck = (deck) => {
                     let oldTerm = term.placeholder;
                     replaced.setTerm((term.value != '' ? term.value : term.placeholder))
                     replaced.setDefinition((definition.value != '' ? definition.value : definition.placeholder))
-                 
+
                     let cardForm = new FormData()
-                        cardForm.append('oldTerm', oldTerm)
-                        cardForm.append('updatedTerm', replaced._cardTerm.innerText)
-                        cardForm.append('updatedDef', replaced._cardDefinition.innerText)
-                    
+                    cardForm.append('oldTerm', oldTerm)
+                    cardForm.append('updatedTerm', replaced._cardTerm.innerText)
+                    cardForm.append('updatedDef', replaced._cardDefinition.innerText)
+
                     someCard.replaceWith(replaced.render())
                     updateCardOnDeck(deck, cardForm);
                     // console.log(someCard)
@@ -86,7 +111,7 @@ const renderEditDeck = (deck) => {
             const cardContent = card;
             // const editButton = card.querySelector('.edit')
             cardContent.addEventListener('click', () => {
-                console.log(deck.id)
+
                 const newCard = new EditDeckBuilder()
                 let term = card.firstElementChild;
                 let definition = card.firstElementChild.nextElementSibling.nextElementSibling
@@ -97,30 +122,30 @@ const renderEditDeck = (deck) => {
             })
         })
     }
-    const createAddCard = () =>{
+    const createAddCard = () => {
         let addCard = new EditDeckBuilder()
-        .setTerm("Click To Add New...")
-        .setDefinition('...')
-        .render();
-    editDeckIndex.appendChild(addCard);
+            .setTerm("Click To Add New...")
+            .setDefinition('...')
+            .render();
+        editDeckIndex.appendChild(addCard);
     }
     const buildEditDeck = (deckJson) => {
         createAddCard();
         deckJson.cards.forEach(card => {
-           let newDeck = new EditDeckBuilder()
-           .setTerm(card.term)
-           .setDefinition(card.definition)
-           .render();
-          editDeckIndex.appendChild(newDeck);
+            let newDeck = new EditDeckBuilder()
+                .setTerm(card.term)
+                .setDefinition(card.definition)
+                .render();
+            editDeckIndex.appendChild(newDeck);
         })
-    
-   
-    editDeckSection.appendChild(editDeckIndex)
-    enableEditing();
+
+
+        editDeckSection.appendChild(editDeckIndex)
+        enableEditing();
     }
-fetch('http://localhost:8080/decks/id/' + deck.id)
-    .then(results => results.json())
-    .then(deckJson => buildEditDeck(deckJson))
+    fetch('http://localhost:8080/decks/id/' + deck.id)
+        .then(results => results.json())
+        .then(deckJson => buildEditDeck(deckJson))
 
     return editDeckSection;
 }
@@ -166,15 +191,6 @@ const renderAllTopics = () => {
             goToAllTopics();
         })
 
-        // let allTopics = document.querySelectorAll('.single-topic')
-        // allTopics.forEach(topicElement => { 
-        //     // const link = topicSection.querySelector(`[id=${topic.title}]`)
-        //     topicElement.addEventListener('click', () => {
-        //         console.log(topicElement.innerText);
-        //         // goToAllDecks(topic);
-        //     })
-        // })
-
     }
     fetch('http://localhost:8080/topics')
         .then(results => results.json())
@@ -188,7 +204,10 @@ const renderAllDecks = (topic) => {
     const deckIndex = document.createElement('div')
     const decksHeader = document.createElement('div')
     decksHeader.classList.add('all-decks-header')
-    decksHeader.innerHTML = `All Decks in <span> ${topic.title}</span>`;
+    decksHeader.innerHTML = `All Decks in <span id="topic-title"> ${topic.title}</span>`;
+    decksHeader.querySelector('#topic-title').addEventListener('click', () => {
+        goToAllTopics();
+    })
     deckMode.appendChild(decksHeader)
     deckMode.classList.add('deck-mode')
     deckIndex.classList.add('deck-index');
@@ -225,13 +244,13 @@ const renderAllDecks = (topic) => {
         });
         deckMode.appendChild(deckIndex);
         buildAddDeck();
-  
+
     }
     fetch('http://localhost:8080/topics/' + topic.title)
         .then(results => results.json())
         .then(json => buildAllDecks(json))
 
-return deckMode;
+    return deckMode;
 }
 
 const renderStudyMode = (deck) => {
@@ -239,15 +258,15 @@ const renderStudyMode = (deck) => {
     const studyMode = document.createElement('section');
     const header = document.createElement('div')
     header.innerHTML = `Studying <span>${deck.title}</span>`
-    header.addEventListener('click', ()=>{
-        fetchTopicFromTitle(deck.topic);
+    header.addEventListener('click', () => {
+        fetchTopicFromTitle(deck.topic.title != null ? deck.topic.title : deck.topic);
     })
     const deckIndex = document.createElement('div')
     studyMode.classList.add('study-mode')
     studyMode.appendChild(header);
     header.id = 'study-mode-header';
     deckIndex.classList.add('study-mode--card-view');
-    
+
     const buildStudyMode = (deckResult) => {
         // deckResult.cards.forEach((card) => {
         //     let newCard = new CardCreator()
@@ -256,11 +275,11 @@ const renderStudyMode = (deck) => {
         //         .render();
         //     deckIndex.appendChild(newCard)
         // })
-        for (let i = 0; i < deckResult.cards.length - 1; i++) {
+        for (let i = 0; i < deckResult.cards.length; i++) {
             let newCard = new CardCreator()
-            .setFront('div', deckResult.cards[i].term)
-            .setBack('div', deckResult.cards[i].definition)
-            .render();
+                .setFront('div', deckResult.cards[i].term)
+                .setBack('div', deckResult.cards[i].definition)
+                .render();
 
             if (i === 0) {
                 newCard.classList.add('current-card');
@@ -277,8 +296,8 @@ const renderStudyMode = (deck) => {
         .then(results => results.json())
         .then(deckResult => buildStudyMode(deckResult))
 
- 
- return studyMode;       
+
+    return studyMode;
 }
 
 const renderEditCard = (id) => {
@@ -309,7 +328,7 @@ const renderAllCards = () => {
     submitNewCard.addEventListener('click', () => {
         let newTerm = document.querySelector('#new-card-title').value
         let newDef = document.querySelector('#new-card-definition').value
-        
+
 
         addCardToDb(id, newTerm, newDef);
         buildAllCards();
@@ -324,5 +343,7 @@ export {
     renderEditDeck,
     renderStudyMode,
     renderAllTopics,
-    renderNav
+    renderNav,
+    renderLogin,
+    renderAbout
 }

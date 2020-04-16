@@ -1,7 +1,7 @@
 import {
     renderAllCards, renderEditDeck
 } from './render-views.js'
-import { goToAllDecks, goToAllTopics, goToEditDeck } from './app.js';
+import { goToAllDecks, goToAllTopics, goToEditDeck, goToStudyMode } from './app.js';
 
 // TOPICS // 
 const addTopicToDb = (title) => {
@@ -26,9 +26,7 @@ const deleteTopic = (topicId) => {
 }
 // DECKS // 
 const deleteDeck = (id) => {
-
     let topicId;
-
     fetch(`http://localhost:8080/decks/id/${id}`)
     .then(deck => deck.json())
     .then(json => {
@@ -44,7 +42,6 @@ const deleteDeck = (id) => {
             })
                 .then(() => goToAllDecks(topicJson))
         }).catch(e => console.error(e))
-
     }).catch(e => console.error(e))
 }
 
@@ -96,6 +93,12 @@ const fetchTopicFromTitle = (title) => {
         .then(results => results.json())
         .then(topic => goToAllDecks(topic))
 }
+
+const getDeckFromDeckTitleOnly = (deckTitle) => {
+    fetch('http://localhost:8080/decks/' + deckTitle)
+    .then(results => results.json())
+    .then(deck => goToStudyMode(deck));
+}
 export {
     deleteDeck,
     addDeckToDb,
@@ -104,5 +107,6 @@ export {
     deleteTopic,
     addTopicToDb,
     updateCardOnDeck,
-    fetchTopicFromTitle
+    fetchTopicFromTitle,
+    getDeckFromDeckTitleOnly
 }
