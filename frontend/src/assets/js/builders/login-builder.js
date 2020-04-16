@@ -1,3 +1,7 @@
+import {
+  login
+} from '../login.js';
+
 class LoginBuilder {
 
   constructor() {
@@ -30,7 +34,11 @@ class FormBuilder {
     button.id = id;
 
     button.type = type;
-
+    button.innerText = "Log In"
+    button.addEventListener('click', e => {
+      e.preventDefault();
+      login();
+    })
     this._form.appendChild(button);
 
     return this;

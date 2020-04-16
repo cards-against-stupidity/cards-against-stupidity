@@ -51,8 +51,12 @@ const flipCard = () => {
     currentCard = allCards[i];
     let cardFront = currentCard.querySelector('.single-card__card-front');
     let cardBack = currentCard.querySelector('.single-card__card-back');
+    let cardHeader = currentCard.querySelector('.single-card--header');
+    let cardFooter = currentCard.querySelector('.single-card--footer');
     //ternary
     currentCard.classList.toggle("flip-show");
+    // cardHeader.classList.toggle('flip-show');
+    // cardFooter.classList.toggle('flip-show')
     cardFront.classList.toggle("flip-hide");
     cardBack.classList.toggle("flip-show");
 };

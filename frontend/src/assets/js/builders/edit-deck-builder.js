@@ -47,7 +47,6 @@ class EditDeckBuilder {
         // this._container.append(this._button);
         this._container.addEventListener('keyup', (e)=>{
             if(e.keyCode == 13){ 
-                console.log('added')
             addCardToDb(deck.id, inputTerm.value, inputDef.value)
             }
         })

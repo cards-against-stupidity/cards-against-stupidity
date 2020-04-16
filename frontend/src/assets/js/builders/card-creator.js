@@ -1,6 +1,9 @@
 import {
     renderStudyMode
 } from '../render-views.js';
+import{
+    getRandomColor
+} from '../layout.js';
 
 class CardCreator {
 

@@ -45,3 +45,11 @@ function getRandomColor() {
     }
     return color;
 }
+
+const makeChangingColor = (element) => {
+setInterval(()=>{
+    element.style.backgroundColor = getRandomColor();
+}, 500)
+}
+
+export {getRandomColor, makeChangingColor}
