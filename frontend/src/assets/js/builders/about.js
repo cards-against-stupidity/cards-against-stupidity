@@ -17,7 +17,7 @@ class AboutSection {
         The idea for the app is simple, log in, create a topic and make a deck of
         cards that will help you study.  After creating a deck, you can 
         enter 'study mode' and start studying.  Things like the timer make
-        it more exciting so you can track your project.`;
+        it more exciting so you can track your progress.`;
 
         this._container.appendChild(this._header)
         this._container.appendChild(this._body)
