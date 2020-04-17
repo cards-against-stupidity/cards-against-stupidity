@@ -51,7 +51,7 @@ class TimerBuilder {
         body.appendChild(this._timerContainer)
         this._moveButton.addEventListener('click', () => {
 
-            var c = (this._moveButton.checked == true) ? (timer.move()) : (timer.stop());
+            this._moveButton.checked ? (timer.move()) : (timer.stop());
         })
     }
 

@@ -154,6 +154,12 @@ const renderAllTopics = () => {
     const topicSection = document.createElement('section')
     topicSection.classList.add('all-topics')
 
+    const allTopicsHeader = document.createElement('div')
+    allTopicsHeader.classList.add('edit-deck--header');
+
+    allTopicsHeader.innerHTML = '<h2> All Topics</h2>';
+    topicSection.appendChild(allTopicsHeader);
+
     const topicIndex = document.createElement('div')
     topicIndex.classList.add('topics-display');
 
@@ -257,12 +263,31 @@ const renderStudyMode = (deck) => {
 
     const studyMode = document.createElement('section');
     const header = document.createElement('div')
-    header.innerHTML = `Studying <span>${deck.title}</span>`
-    header.addEventListener('click', () => {
+
+    const clickTopic = document.createElement('span')
+    clickTopic.id = "topic-name";
+    clickTopic.innerText = `${deck.title}`;
+
+
+    header.innerText = 'Studying ';
+    header.appendChild(clickTopic);
+    
+    const directions = document.createElement('div')
+    directions.innerHTML = `<p>Press <span id="f-icon"></span> to Flip Card 
+    <span id = "pipe">|</span> 
+    <span id = "left-icon"> </span>
+    <span id = "right-icon" > </span>
+    to Cycle Cards <span id="pipe">|</span> 
+    <span id = "s-icon"></span> and <span id="d-icon"></span> to toggle Timer
+    </p>`
+    // const clickTopic = document.querySelector('#topic-name')
+    clickTopic.addEventListener('click', () => {
         fetchTopicFromTitle(deck.topic.title != null ? deck.topic.title : deck.topic);
     })
     const deckIndex = document.createElement('div')
     studyMode.classList.add('study-mode')
+
+    header.appendChild(directions);
     studyMode.appendChild(header);
     header.id = 'study-mode-header';
     deckIndex.classList.add('study-mode--card-view');

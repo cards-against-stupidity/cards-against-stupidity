@@ -5,14 +5,16 @@ import {
 class LoginBuilder {
 
   constructor() {
+    this._container = document.createElement('section');
+    this._container.classList.add('login-section')
     this._form = new FormBuilder('box', 'login-form')
       .addInput('text', 'usernameField', 'username', 'Username')
       .addInput('password', 'passwordField', 'password', 'Password')
       .addButton('btn')
-      .addImage()
-      .render();
+      .addImage();
+    this._container.appendChild(this._form.render());
 
-    return this._form;
+    return this._container;
   }
 
 }
