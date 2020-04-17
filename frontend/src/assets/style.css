@@ -15,7 +15,6 @@ body {
   color: var(--cas-brand3);
   background-color: #ffffff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23d2d2d2' fill-opacity='0.3' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  
 }
 
 h2 {
@@ -27,12 +26,14 @@ h2 {
 #timer {
   width: 100%;
   background-color: #ddd;
+  border-radius: 20px;
 }
 
 #bar {
-  height: 30px;
-  transition: background-color 0.2s ease, width 0.2s ease;
-  background-color: green;
+  height: 20px;
+  border-radius: 20px;
+  /* transition: background-color 0.2s ease, width 0.2s ease; */
+  background-color: var(--cas-green);
 }
 
 #wrapper {
@@ -165,7 +166,7 @@ footer {
 }
 
 #menuToggle input:checked~span#x:nth-last-child(2) {
-  transform: rotate(-45deg) translate(3px,6px);
+  transform: rotate(-45deg) translate(3px, 6px);
 }
 
 #nav-expanded {
@@ -275,6 +276,79 @@ footer {
   margin-right: auto;
 }
 
+#input-holder {
+  position: relative;
+  width: max-content;
+  display: inline;
+  margin-right: 50px;
+  left: 2px;
+}
+
+#timer-onoff {
+  opacity: 0;
+  cursor: pointer;
+}
+
+#timer-button-span {
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 50px;
+  border-radius: 100%;
+  z-index: 100;
+  position: absolute;
+}
+
+/* On mouse-over, add a grey background color */
+
+#timer-container input~#timer-button-span {
+  background-color: #f7f7f7;
+  width: 20px;
+  transition: left 0.2s ease;
+  left: -1px;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+#timer-container input:checked~#timer-button-span {
+  background-color: var(--cas-green);
+  width: 20px;
+  transition: left 0.2s ease;
+  left: 20px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+#timer-button-span:after {
+  content: "";
+  position: absolute;
+  /* display: none; */
+}
+
+#timer-container input:checked~#timer-button-span:after {
+  display: block;
+  z-index: 100;
+  width: 50px;
+}
+
+#timer-container #button-bg {
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: -1px;
+  left: -2px;
+  height: 24px;
+  border-radius: 20px;
+  width: 44px;
+  background-color: rgba(99, 99, 99, 1);
+}
+
+#timer-label {
+  margin-left: 35px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
 /* scrunch the nav bar at this width */
 
 @media screen and (max-width: 1000px) {}
@@ -325,14 +399,11 @@ footer {
   position: absolute;
   height: var(--card-height);
   width: var(--card-width);
- background-color: #fff;
- background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
- linear-gradient(#eee .1em, transparent .1em);
- background-size: 100% 1.2em;
+  background-color: #fff;
+  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
   transform-style: preserve-3d;
   user-select: none;
-
-
 }
 
 @media screen and (max-width: 700px) {
@@ -376,21 +447,20 @@ footer {
   -webkit-transition: all 0.2s ease 0s;
 }
 
-.single-card__card-front div:nth-of-type(1) { 
-/* .single-card__card-back div:nth-of-type(1) { */
+.single-card__card-front div:nth-of-type(1) {
+  /* .single-card__card-back div:nth-of-type(1) { */
   font-size: 3rem;
   /* padding: 1.5rem; */
   text-align: center;
 }
-.single-card__card-back div:nth-of-type(1) { 
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 1.5rem;
-    line-height: 2.5rem;
-    color: #39363c;
 
+.single-card__card-back div:nth-of-type(1) {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  line-height: 2.5rem;
+  color: #39363c;
 }
-
 
 .single-card__card-front {
   grid-area: middle;
@@ -426,7 +496,6 @@ footer {
 }
 
 .next-card, .previous-card {
-
   justify-content: center;
   min-height: 20rem;
   box-shadow: 0px 5px 4px 4px lightgrey;
@@ -460,10 +529,10 @@ footer {
   font-weight: 200;
   cursor: pointer;
 }
-.all-decks-header span:hover{
+
+.all-decks-header span:hover {
   background-color: rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-
 }
 
 .all-decks-header span {
@@ -520,11 +589,9 @@ footer {
 .single-deck:hover~div:nth-child(2) {
   background-color: var(--cas-brand3);
   transform: scale(0.95);
-
 }
 
 .single-deck~div:nth-child(3) {
-
   z-index: 97;
 }
 
@@ -534,13 +601,12 @@ footer {
 }
 
 .single-deck~div:nth-child(4) {
-  
   z-index: 96;
 }
 
 .single-deck:hover~div:nth-child(4) {
   transform: rotate(10deg);
-    transition: background-color 1s ease;
+  transition: background-color 1s ease;
 }
 
 .single-deck--top-card {
@@ -664,18 +730,20 @@ form#add-deck {
   display: inline-block;
 }
 
-.edit-deck--header #edit-deck-title{
+.edit-deck--header #edit-deck-title {
   font-weight: 500;
   padding-left: 5px;
   padding-right: 5px;
   transition: background-color 0.2s ease;
   cursor: pointer;
 }
-.edit-deck--header #edit-deck-title:hover{
+
+.edit-deck--header #edit-deck-title:hover {
   transition: background-color 0.2s ease;
   background-color: var(--cas-brand1);
   color: var(--cas-white);
 }
+
 .go-to-study {
   display: inline-block;
   position: relative;
@@ -855,7 +923,7 @@ form#add-deck {
   border-bottom: 1px solid grey;
 }
 
-.topnav li{
+.topnav li {
   padding-left: 6px;
   padding-right: 6px;
   height: 80%;
@@ -863,14 +931,13 @@ form#add-deck {
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 }
+
 .topnav li:last-child {
   margin-right: 20px;
   background-color: var(--cas-melon);
   margin-left: 20px;
 }
-
 
 #wrapper.toggled .topnav {
   list-style-type: none;
@@ -996,75 +1063,75 @@ form#add-deck {
 }
 
 /* LOGIN FORM */
-  form.box {
-    width: 300px;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgb(75, 73, 73);
-    text-align: center;
-  }
 
-  form.box h1 {
-    color: ghostwhite;
-    font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+form.box {
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(75, 73, 73);
+  text-align: center;
+}
 
-  form.box input[type="text"],
-  .box input[type="password"] {
-    font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid rgba(63, 142, 211, 0.863);
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: floralwhite;
-    border-radius: 24px;
-    transition: 0.25s;
-  }
+form.box h1 {
+  color: ghostwhite;
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
-  form.box input[type="text"]:focus,
-  .box input[type="password"]:focus {
-    width: 250px;
-    border-color: rgb(68, 199, 79);
-  }
+form.box input[type="text"], .box input[type="password"] {
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid rgba(63, 142, 211, 0.863);
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: floralwhite;
+  border-radius: 24px;
+  transition: 0.25s;
+}
 
-  #btn {
-    font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
-    border: 0;
-    background-color: rgb(80, 238, 31);
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border-radius: 2px solid rgb(17, 117, 17);
-    padding: 14px 40px;
-    outline: none;
-    color: rgb(240, 255, 244);
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-  }
+form.box input[type="text"]:focus, .box input[type="password"]:focus {
+  width: 250px;
+  border-color: rgb(68, 199, 79);
+}
 
-  #btn:hover {
-    background: rgba(15, 224, 32, 0.589);
-  }
+#btn {
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  border: 0;
+  background-color: rgb(80, 238, 31);
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 2px solid rgb(17, 117, 17);
+  padding: 14px 40px;
+  outline: none;
+  color: rgb(240, 255, 244);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
 
-  .about-section h1 {
-    font-size: 4rem;
-    line-height: 0em;
-  }
-  .about-section{
-    font-size: 1.25rem;
-    font-weight:200;
-    line-height: 2.5rem;
-    padding: 3rem;
-    width: 600px;
-  }
+#btn:hover {
+  background: rgba(15, 224, 32, 0.589);
+}
+
+.about-section h1 {
+  font-size: 4rem;
+  line-height: 0em;
+}
+
+.about-section {
+  font-size: 1.25rem;
+  font-weight: 200;
+  line-height: 2.5rem;
+  padding: 3rem;
+  width: 600px;
+}

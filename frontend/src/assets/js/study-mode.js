@@ -1,4 +1,5 @@
 import {renderStudyMode } from './render-views.js';
+import * as timer from './timer.js'
 
 const createStudyMode = () =>{ 
 
@@ -38,11 +39,13 @@ const getVisibleCards = () => {
 
 const getNextCard = () => {
     i = (i !== allCards.length - 1 ? i + 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 
 const getPreviousCard = () => {
     i = (i !== 0 ? i - 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 

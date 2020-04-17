@@ -268,13 +268,6 @@ const renderStudyMode = (deck) => {
     deckIndex.classList.add('study-mode--card-view');
 
     const buildStudyMode = (deckResult) => {
-        // deckResult.cards.forEach((card) => {
-        //     let newCard = new CardCreator()
-        //         .setFront('div', card.term)
-        //         .setBack('div', card.definition)
-        //         .render();
-        //     deckIndex.appendChild(newCard)
-        // })
         for (let i = 0; i < deckResult.cards.length; i++) {
             let newCard = new CardCreator()
                 .setFront('div', deckResult.cards[i].term)
