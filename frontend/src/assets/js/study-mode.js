@@ -1,7 +1,8 @@
 import {renderStudyMode } from './render-views.js';
+import * as timer from './timer.js'
 
 const createStudyMode = () =>{ 
-
+const timerOnOff = document.getElementById('timer-onoff')
 const allCards = document.querySelectorAll('.single-card')
 let i = 0;
 let currentCard = allCards[i];
@@ -38,11 +39,13 @@ const getVisibleCards = () => {
 
 const getNextCard = () => {
     i = (i !== allCards.length - 1 ? i + 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 
 const getPreviousCard = () => {
     i = (i !== 0 ? i - 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 
@@ -72,6 +75,13 @@ const handleKey = (event) => {
         case 37:
             getPreviousCard();
             break;
+        case 83:
+            timer.move();
+            timerOnOff.checked = true;
+            break;
+        case 68:
+            timer.stop();
+            timerOnOff.checked = false;
         default:
     }
 }
