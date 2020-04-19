@@ -1,7 +1,7 @@
 import {
-    renderAllCards
+    renderAllCards, renderEditDeck
 } from './render-views.js'
-import { goToAllDecks, goToAllTopics, goToEditDeck } from './app.js';
+import { goToAllDecks, goToAllTopics, goToEditDeck, goToStudyMode } from './app.js';
 
 // TOPICS // 
 const addTopicToDb = (title) => {
@@ -26,10 +26,23 @@ const deleteTopic = (topicId) => {
 }
 // DECKS // 
 const deleteDeck = (id) => {
-    fetch('http://localhost:8080/decks/delete?id=' + id, {
-        method: 'DELETE'
-    })
-    .then(allDecks => goToAllDecks(allDecks))
+    let topicId;
+    fetch(`http://localhost:8080/decks/id/${id}`)
+    .then(deck => deck.json())
+    .then(json => {
+        topicId = json.topic.id;
+
+        console.log(topicId)
+
+        fetch(`http://localhost:8080/topics/id/${topicId}`)
+        .then(topic => topic.json())
+        .then(topicJson => {
+            fetch('http://localhost:8080/decks/delete?id=' + id, {
+                method: 'DELETE'
+            })
+                .then(() => goToAllDecks(topicJson))
+        }).catch(e => console.error(e))
+    }).catch(e => console.error(e))
 }
 
 const addDeckToDb = (topic, deck) => {
@@ -41,18 +54,17 @@ const addDeckToDb = (topic, deck) => {
         },
         body: JSON.stringify(deck)
     })
-    .then(results => goToAllDecks(topic))
+    .then(() => goToAllDecks(topic))
   
 }
 
-
 // CARDS // 
-const addCardToDb = (term, def) => {
+const addCardToDb = (id, term, def) => {
     let card = {
-        "term" : term,
-        "definition" : def
+        term : term,
+        definition : def
     }
-    fetch('http://localhost:8080/decks/2/add-card', {
+    fetch(`http://localhost:8080/decks/${id}/add-card`, {
         method: 'PUT',
         headers: {
             "content-type": "application/json"
@@ -69,11 +81,32 @@ const deleteCard = (id) => {
     }).then(renderAllCards)
 }
 
+const updateCardOnDeck = (deck, cardForm) => {
+    fetch(`http://localhost:8080/decks/${deck.id}/edit-card`, { 
+        method: 'PATCH',
+        body : cardForm
+    }).then(() => goToEditDeck(deck))
+}
+
+const fetchTopicFromTitle = (title) => {
+    fetch('http://localhost:8080/topics/' + title)
+        .then(results => results.json())
+        .then(topic => goToAllDecks(topic))
+}
+
+const getDeckFromDeckTitleOnly = (deckTitle) => {
+    fetch('http://localhost:8080/decks/' + deckTitle)
+    .then(results => results.json())
+    .then(deck => goToStudyMode(deck));
+}
 export {
     deleteDeck,
     addDeckToDb,
     deleteCard,
     addCardToDb,
     deleteTopic,
-    addTopicToDb
+    addTopicToDb,
+    updateCardOnDeck,
+    fetchTopicFromTitle,
+    getDeckFromDeckTitleOnly
 }

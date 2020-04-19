@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface TopicStorage {
     
     Optional<Topic> findById(Long id);
-    
+
     Optional<Topic> findTopicByTitle(String title);
 
     Collection<Topic> findAllTopics();

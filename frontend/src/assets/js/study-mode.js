@@ -1,12 +1,15 @@
 import {renderStudyMode } from './render-views.js';
+import * as timer from './timer.js'
 
 const createStudyMode = () =>{ 
-
+const timerOnOff = document.getElementById('timer-onoff')
 const allCards = document.querySelectorAll('.single-card')
 let i = 0;
 let currentCard = allCards[i];
 
 const getVisibleCards = () => { 
+
+    currentCard = allCards[i];
    
     currentCard.classList.add('current-card');
 
@@ -35,22 +38,28 @@ const getVisibleCards = () => {
 
 
 const getNextCard = () => {
-    i = (i != allCards.length - 1 ? i + 1 : i)
+    i = (i !== allCards.length - 1 ? i + 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 
 const getPreviousCard = () => {
-    i = (i != 0 ? i - 1 : i)
+    i = (i !== 0 ? i - 1 : i)
+    timer.reset();
     getVisibleCards();
 }
 
 const flipCard = () => {
     //switch them
     currentCard = allCards[i];
-    cardFront = currentCard.querySelector('.single-card__card-front');
-    cardBack = currentCard.querySelector('.single-card__card-back');
+    let cardFront = currentCard.querySelector('.single-card__card-front');
+    let cardBack = currentCard.querySelector('.single-card__card-back');
+    let cardHeader = currentCard.querySelector('.single-card--header');
+    let cardFooter = currentCard.querySelector('.single-card--footer');
     //ternary
     currentCard.classList.toggle("flip-show");
+    // cardHeader.classList.toggle('flip-show');
+    // cardFooter.classList.toggle('flip-show')
     cardFront.classList.toggle("flip-hide");
     cardBack.classList.toggle("flip-show");
 };
@@ -66,6 +75,13 @@ const handleKey = (event) => {
         case 37:
             getPreviousCard();
             break;
+        case 83:
+            timer.move();
+            timerOnOff.checked = true;
+            break;
+        case 68:
+            timer.stop();
+            timerOnOff.checked = false;
         default:
     }
 }

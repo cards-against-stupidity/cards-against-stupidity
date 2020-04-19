@@ -1,13 +1,13 @@
 
 import {
-    deleteDeck
+    deleteDeck, getDeckFromDeckTitleOnly
 } from '../all-crud.js'
 import {
     goToStudyMode,
     goToAllDecks,
     goToEditDeck
 } from '../app.js'
-
+import {getRandomColor, makeChangingColor} from '../layout.js';
 
 class DeckCreator {
 
@@ -23,6 +23,8 @@ class DeckCreator {
         this._topCard = document.createElement('div');
         this._topCard.classList = ('single-deck single-deck--top-card')
         this._topCardTitle = document.createElement('div')
+        makeChangingColor(this._thirdCard);
+        makeChangingColor(this._secondCard);
 
     }
     addOptions(deck) {
@@ -36,12 +38,11 @@ class DeckCreator {
         let eye = document.createElement('i');
         eye.classList.add('fas', 'fa-eye')
         eye.addEventListener('click', () => {
-            goToStudyMode(deck)
+            getDeckFromDeckTitleOnly(deck.title)
         })
         let trash = document.createElement('i');
         trash.addEventListener('click', () => {
             deleteDeck(deck.id)
-            goToAllDecks();
         })
         trash.classList.add('fas', 'fa-trash')
         let share = document.createElement('i');
@@ -65,7 +66,7 @@ class DeckCreator {
         // const addDiv = document.createElement('div')
         const input = document.createElement('input')
         const button = document.createElement('button')
-        this._topCardTitle.innerText = 'Add A Deck'
+        this._topCardTitle.innerText = 'Create A Deck'
 
         input.id = 'new-deck-name'
         input.name = 'title'

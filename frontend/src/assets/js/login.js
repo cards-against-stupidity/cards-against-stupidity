@@ -1,3 +1,5 @@
+import { goToAllTopics } from "./app.js";
+
 const login = () => {
 
     let formData = new FormData();
@@ -13,12 +15,14 @@ const login = () => {
         .then(res => res.json())
         .then(user => {
             if (user.username != null) {
-                document.querySelector('#username').innerText = user.username;
-                return user.username;
+                document.querySelector('#topbar-user').innerHTML = ` <i class="fas fa-user"></i> ${user.username}`;
+                document.querySelector('#sidebar-user').innerText = user.username;
+        
+                // return user.username;
             }
         });
 
-    return 'fail';
+    goToAllTopics();
 }
 
 export {
