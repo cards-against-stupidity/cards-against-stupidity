@@ -38,9 +38,6 @@ public class UserController {
         
         if (loggingInUser.isPresent()) {
             
-            if (loggingInUser.get().isLoggedIn()) {
-                return null;
-            }
             
             loggingInUser.get().setLoggedIn(true);
             
