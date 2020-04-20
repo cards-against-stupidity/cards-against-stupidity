@@ -13,11 +13,11 @@ function readFormData() {
   return formData;
 }
 
-const deleteTopic= (topicId) => {
-  fetch('http://localhost:8080/topics/delete?id=' + topicId, {
-      method: 'DELETE',    
-  }).then(result => result.json())
-  .then(json => renderAllTopics(json))
+const deleteTopic = (topicId) => {
+  fetch('https://random-access-cards.herokuapp.com/topics/delete?id=' + topicId, {
+      method: 'DELETE',
+    }).then(result => result.json())
+    .then(json => renderAllTopics(json))
 }
 
 
@@ -29,7 +29,7 @@ const addTopicToDb = (title) => {
   let jsonObject = {
     title: title
   }
-  fetch('http://localhost:8080/topics/create-topic', {
+  fetch('https://random-access-cards.herokuapp.com/topics/create-topic', {
     method: 'PUT',
     headers: {
       "content-type": "application/json"
@@ -71,7 +71,7 @@ function renderAllTopics(data) {
 }
 
 const fetchAllTopics = () => {
-  fetch("http://localhost:8080/topics")
+  fetch("https://random-access-cards.herokuapp.com/topics")
     .then((results) => results.json())
     .then(renderAllTopics);
 };

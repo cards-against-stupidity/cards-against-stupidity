@@ -72,11 +72,11 @@ const renderEditDeck = (deck) => {
     studyButton.addEventListener('click', () => goToStudyMode(deck));
 
     editDeckHeader.innerHTML = `<h2>Edit Deck:  <span id="edit-deck-title">${deck.title}</span></h2>`;
-    
-    editDeckHeader.querySelector('#edit-deck-title')
-    .addEventListener('click', ()=> 
 
-    fetchTopicFromTitle(deck.topic))
+    editDeckHeader.querySelector('#edit-deck-title')
+        .addEventListener('click', () =>
+
+            fetchTopicFromTitle(deck.topic))
 
     editDeckSection.appendChild(editDeckHeader)
     editDeckSection.append(studyButton);
@@ -143,7 +143,7 @@ const renderEditDeck = (deck) => {
         editDeckSection.appendChild(editDeckIndex)
         enableEditing();
     }
-    fetch('http://localhost:8080/decks/id/' + deck.id)
+    fetch('https://random-access-cards.herokuapp.com/decks/id/' + deck.id)
         .then(results => results.json())
         .then(deckJson => buildEditDeck(deckJson))
 
@@ -198,7 +198,7 @@ const renderAllTopics = () => {
         })
 
     }
-    fetch('http://localhost:8080/topics')
+    fetch('https://random-access-cards.herokuapp.com/topics')
         .then(results => results.json())
         .then(allTopics => buildAllTopics(allTopics))
 
@@ -252,7 +252,7 @@ const renderAllDecks = (topic) => {
         buildAddDeck();
 
     }
-    fetch('http://localhost:8080/topics/' + topic.title)
+    fetch('https://random-access-cards.herokuapp.com/topics/' + topic.title)
         .then(results => results.json())
         .then(json => buildAllDecks(json))
 
@@ -271,7 +271,7 @@ const renderStudyMode = (deck) => {
 
     header.innerText = 'Studying ';
     header.appendChild(clickTopic);
-    
+
     const directions = document.createElement('div')
     directions.innerHTML = `<p>Press <span id="f-icon"></span> to Flip Card 
     <span id = "pipe">|</span> 
@@ -310,7 +310,7 @@ const renderStudyMode = (deck) => {
         createStudyMode();
     }
 
-    fetch('http://localhost:8080/decks/id/' + deck.id)
+    fetch('https://random-access-cards.herokuapp.com/decks/id/' + deck.id)
         .then(results => results.json())
         .then(deckResult => buildStudyMode(deckResult))
 
@@ -338,7 +338,7 @@ const renderAllCards = () => {
 
         anchor.appendChild(cardIndex);
     }
-    fetch('http://localhost:8080/cards')
+    fetch('https://random-access-cards.herokuapp.com/cards')
         .then(results => results.json())
         .then(buildAllCards)
 
